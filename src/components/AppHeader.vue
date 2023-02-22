@@ -2,6 +2,7 @@
   <!-- <div>
     <router-link :to="{ name: 'restaurants' }">Contatti</router-link>
   </div> -->
+
   <header class="container ">
     <nav class="navbar navbar-expand-lg fixed-top navbar-scroll">
       <div class="container">
@@ -18,7 +19,7 @@
               <a class="nav-link" aria-current="page" href="#news">Home</a>
             </li>
             <li class="nav-item">
-              <router-link :to="{ name: 'restaurants' }">Ristoranti</router-link>
+              <router-link :to="{ name: 'Restaurants' }">Ristoranti</router-link>
             </li>
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="">Chi siamo</a>
