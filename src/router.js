@@ -15,27 +15,27 @@ const router = createRouter({
     {
       path: "/",
       name: "homepage",
-      component: HomePage,
+      component: HomePage
     },
     {
       path: "/ristoranti",
-      name: "Restaurants",
-      component: Restaurants,
+      name: "restaurants",
+      component: Restaurants
     },
     {
       path: "/chi-siamo",
       name: "about-us",
-      component: AboutUs,
+      component: AboutUs
     },
     {
       path: "/piatti",
       name: "dishes",
-      component: Dishes,
+      component: Dishes
     },
     {
       path: "/carrello",
       name: "checkout",
-      component: Checkout,
+      component: Checkout
     },
     {
       path: "/:pathMatch(.*)*",

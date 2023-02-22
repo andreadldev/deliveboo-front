@@ -1,13 +1,13 @@
-<template>
-  <div>
-    <h1>Contatti</h1>
-  </div>
-</template>
-
 <script>
 export default {
   name: "Checkout",
 };
 </script>
+
+<template>
+  <h1>Carrello</h1>
+</template>
+
+
 
 <style lang="scss" scoped></style>
