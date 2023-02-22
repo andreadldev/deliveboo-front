@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <router-link :to="{ name: 'contact-us' }">Contatti</router-link>
-  </div>
+  <!-- <div>
+    <router-link :to="{ name: 'restaurants' }">Contatti</router-link>
+  </div> -->
   <header class="container ">
     <nav class="navbar navbar-expand-lg fixed-top navbar-scroll">
       <div class="container">
@@ -18,16 +18,16 @@
               <a class="nav-link" aria-current="page" href="#news">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#pets">Ristoranti</a>
+              <router-link :to="{ name: 'restaurants' }">Ristoranti</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#adoptions">Chi siamo</a>
+              <a class="nav-link" aria-current="page" href="">Chi siamo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#foundation">Lavora con noi</a>
+              <a class="nav-link" aria-current="page" href="">Lavora con noi</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#contact">Contatti</a>
+              <a class="nav-link" aria-current="page" href="">Contatti</a>
             </li>
           </ul>
 

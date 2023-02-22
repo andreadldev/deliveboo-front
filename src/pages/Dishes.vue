@@ -1,14 +1,12 @@
 <template>
   <div>
-    <h1>Home Page</h1>
-    categorie
-
+    <h1>Contatti</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HomePage",
+  name: "Dishes",
 };
 </script>
 

@@ -2,7 +2,11 @@ import { createRouter, createWebHistory } from "vue-router";
 
 // Pages
 import HomePage from "./pages/HomePage.vue";
-import ContactUs from "./pages/ContactUs.vue";
+import Restaurants from "./pages/Restaurants.vue";
+import AboutUs from "./pages/AboutUs.vue";
+import Dishes from "./pages/Dishes.vue";
+import Checkout from "./pages/Checkout.vue";
+
 import Page404 from "./pages/Page404.vue";
 
 const router = createRouter({
@@ -14,9 +18,24 @@ const router = createRouter({
       component: HomePage,
     },
     {
-      path: "/contatti",
-      name: "contact-us",
-      component: ContactUs,
+      path: "/ristoranti",
+      name: "restaurants",
+      component: Restaurants,
+    },
+    {
+      path: "/chi-siamo",
+      name: "about-us",
+      component: AboutUs,
+    },
+    {
+      path: "/piatti",
+      name: "dishes",
+      component: Dishes,
+    },
+    {
+      path: "/carrello",
+      name: "checkout",
+      component: Checkout,
     },
     {
       path: "/:pathMatch(.*)*",
