@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 // Pages
 import HomePage from "./pages/HomePage.vue";
 import Restaurants from "./pages/Restaurants.vue";
+import SingleRestaurant from "./pages/SingleRestaurant.vue";
 import AboutUs from "./pages/AboutUs.vue";
 import Dishes from "./pages/Dishes.vue";
 import Checkout from "./pages/Checkout.vue";
@@ -15,27 +16,32 @@ const router = createRouter({
     {
       path: "/",
       name: "homepage",
-      component: HomePage
+      component: HomePage,
     },
     {
       path: "/ristoranti",
       name: "restaurants",
-      component: Restaurants
+      component: Restaurants,
     },
     {
       path: "/chi-siamo",
       name: "about-us",
-      component: AboutUs
+      component: AboutUs,
     },
     {
       path: "/piatti",
       name: "dishes",
-      component: Dishes
+      component: Dishes,
+    },
+    {
+      path: "/ristorante",
+      name: "single-restaurant",
+      component: SingleRestaurant,
     },
     {
       path: "/carrello",
       name: "checkout",
-      component: Checkout
+      component: Checkout,
     },
     {
       path: "/:pathMatch(.*)*",
