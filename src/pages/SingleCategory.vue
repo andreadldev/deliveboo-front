@@ -13,7 +13,7 @@ export default {
         axios
             .get(`http://localhost:8000/api/restaurants/${this.$route.params.slug}`)
             .then((response) => {
-                this.restaurant = response.data;
+                this.restaurants = response.data;
             })
             .catch((err) => {
                 console.log(err);
