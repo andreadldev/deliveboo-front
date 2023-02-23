@@ -5,7 +5,7 @@
             <div v-if="category.slug == this.$route.params.slug">
                 <span>{{ restaurant.name }}</span>
                 <router-link class="text-decoration-none text-white  btn btn-warning rounded-0"
-                    :to="{ name: 'checkout' }">Ordina</router-link>
+                    :to="{ name: 'checkout' }">Menù</router-link>
             </div>
 
         </div>

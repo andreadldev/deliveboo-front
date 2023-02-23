@@ -8,7 +8,7 @@
       <span>Costo spedizione: {{ restaurant.price_shipping }}</span>
       <div class="m-4">
         <router-link class="text-decoration-none text-white  btn btn-warning rounded-0"
-          :to="{ name: 'checkout' }">Ordina</router-link>
+          :to="{ name: 'checkout' }">Menù</router-link>
       </div>
 
     </div>
