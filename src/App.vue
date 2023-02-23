@@ -20,6 +20,9 @@ export default {
     axios.get("http://127.0.0.1:8000/api/restaurants").then((response) => {
       this.store.restaurants = response.data;
     });
+    axios.get("http://127.0.0.1:8000/api/categories").then((response) => {
+      this.store.categories = response.data;
+    });
   },
 };
 </script>
