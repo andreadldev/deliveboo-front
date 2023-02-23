@@ -28,8 +28,6 @@ export default {
             .get(`http://localhost:8000/api/restaurants/`)
             .then((response) => {
                 this.restaurants = response.data;
-                console.log(this.$route.params.slug);
-                console.log(this.restaurants[0].categories);
             })
             .catch((err) => {
                 console.log(err);
