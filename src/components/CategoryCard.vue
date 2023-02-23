@@ -10,7 +10,8 @@ export default {
 <template>
     <div class="w-100 card m-4">
         <div class="card-body">
-            <h5 class="card-title">{{ data.name }}</h5>
+            <router-link :to="{ name: 'single-category', params: { slug: data.slug } }" class="btn btn-primary">{{ data.name
+            }}</router-link>
         </div>
     </div>
 </template>
