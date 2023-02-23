@@ -8,7 +8,7 @@ export default {
   <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #ffa500">
     <div class="container">
       <a class="navbar-brand d-md-none d-xs-block py-3" href="#">
-        <img src="" height="40" alt="Company Logo">
+        <img src="../assets/img/DELI.png" height="40" alt="Company Logo">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@ export default {
     </div>
   </nav>
   <div class="text-center p-3 d-none d-md-block">
-    <img src="/static_files/images/logos/beer.png" height="120" alt="Company Logo">
+    <img src="../assets/img/HAMB-LOGO orange.png" height="120" alt="Company Logo">
   </div>
 </template>
 
