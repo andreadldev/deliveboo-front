@@ -8,8 +8,8 @@ export default {
 </script>
 
 <template>
-    <div class="w-100 card m-4">
-        <div class="card-body">
+    <div class="w-100 m-4">
+        <div>
             <router-link :to="{ name: 'single-category', params: { slug: data.slug } }" class="btn btn-primary">{{ data.name
             }}</router-link>
         </div>
