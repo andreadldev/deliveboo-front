@@ -10,8 +10,14 @@ export default {
     data() {
         return {
             store,
+            selected: [],
         };
     },
+    methods: {
+        prova() {
+            console.log(store.categories)
+        }
+    }
 };
 </script>
 
@@ -20,6 +26,15 @@ export default {
         <div class="row">
             <div class="col-4" v-for="category in store.categories">
                 <CategoryCard :data="category" />
+            </div>
+            <div>
+                <p> Seleziona categoria </p>
+
+                <div class="col-4" v-for="category in store.categories" @click="prova()">
+                    <input type="checkbox" :value=category.slug v-model="selected">
+                    <label>{{category.name}}</label>
+                </div>
+                <p>Lista: {{ selected }}</p>
             </div>
         </div>
     </section>
