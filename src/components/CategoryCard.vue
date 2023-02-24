@@ -10,10 +10,6 @@ export default {
 <template>
     <div class="w-100 m-4">
         <div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 939e6c6e443b4033fbd03f8b972b06787cef1650
             <router-link :to="{ name: 'single-category', params: { slug: data.slug } }" class="btn btn-primary">{{ data.name
             }}</router-link>
         </div>
