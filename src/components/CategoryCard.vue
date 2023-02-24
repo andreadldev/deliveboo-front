@@ -10,6 +10,7 @@ export default {
 <template>
     <div class="w-100 m-4">
         <div>
+            <input type="checkbox">
             <router-link :to="{ name: 'single-category', params: { slug: data.slug } }" class="btn btn-primary">{{ data.name
             }}</router-link>
         </div>
