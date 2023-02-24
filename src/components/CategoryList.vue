@@ -2,6 +2,7 @@
 import { store } from "../store";
 import CategoryCard from "./CategoryCard.vue";
 
+import axios from "axios";
 export default {
     name: "CategorysList",
     components: {
@@ -11,11 +12,21 @@ export default {
         return {
             store,
             selected: [],
+            prova: []
+            // this.selected.slice(-1)[0]
         };
     },
     methods: {
-        prova() {
-            console.log(store.categories)
+        prova_api() {
+            axios.get(`http://localhost:8000/api/restaurants/`)
+            .then((response) => {
+                this.prova=response.data;
+                console.log(this.prova);
+            })
+            .catch((err) => {
+                console.log(err);
+                // this.$router.push({ name: "page-404" });
+            });
         }
     }
 };
@@ -30,11 +41,20 @@ export default {
             <div>
                 <p> Seleziona categoria </p>
 
-                <div class="col-4" v-for="category in store.categories" @click="prova()">
+                <div class="col-4" v-for="category in store.categories" @click="prova_api()">
                     <input type="checkbox" :value=category.slug v-model="selected">
                     <label>{{category.name}}</label>
                 </div>
                 <p>Lista: {{ selected }}</p>
+
+                <div class="m-4" v-for="restaurant in this.prova">
+                    <div v-for="category in restaurant.categories">
+                        <div v-if="category.slug == this.selected.slice(-1)[0]">
+                            <span>{{ restaurant.name }}</span>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </section>
