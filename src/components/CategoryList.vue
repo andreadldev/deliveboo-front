@@ -21,7 +21,6 @@ export default {
             axios.get(`http://localhost:8000/api/restaurants/`)
             .then((response) => {
                 this.prova=response.data;
-                console.log(this.prova);
             })
             .catch((err) => {
                 console.log(err);
@@ -47,14 +46,16 @@ export default {
                 </div>
                 <p>Lista: {{ selected }}</p>
 
-                <div class="m-4" v-for="restaurant in this.prova">
-                    <div v-for="category in restaurant.categories">
-                        <div v-if="category.slug == this.selected.slice(-1)[0]">
-                            <span>{{ restaurant.name }}</span>
+                <div v-for="(select, index) in selected">
+                    <div class="m-4" v-for="restaurant in this.prova">
+                        <div v-for="category in restaurant.categories">
+                            <div v-if="category.slug == this.selected[index]">
+                                <span>{{ restaurant.name }}</span>
+                            </div>
                         </div>
-
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
