@@ -10,6 +10,7 @@ export default {
     data() {
         return {
             store,
+            visible: false,
         };
     },
     computed: {
@@ -17,18 +18,22 @@ export default {
             // Get an array of selected category names
             const selectedCategories = this.store.categories
             .filter(category => category.selected)
-            .map(category => category.name);            
+            .map(category => category.name);     
             // Filter the restaurants based on the selected categories
             return this.store.restaurants.filter(restaurant => {
-            // Get an array of category names for the current restaurant
-            const categoryNames = restaurant.categories.map(category => category.name);
+                // Get an array of category names for the current restaurant
+                const categoryNames = restaurant.categories.map(category => category.name);
             // Check if every selected category is included in the current restaurant's categories
             return selectedCategories.every(category => categoryNames.includes(category));
         });
         },
     toggleCategory(index) {
             this.store.categories[index].selected = !this.store.categories[index].selected;
+
         },
+        isActive(){
+            return this.store.categories.some(category => category.selected);
+        }
     },
 };
 </script>
@@ -47,7 +52,7 @@ export default {
         </div>
         <div>
            <h2>Restaurants</h2>
-            <ul>
+            <ul v-if="isActive">
                 <li v-for="(restaurant, index) in filteredRestaurants" :key="index">
                 {{ restaurant.name }}
                 </li>
@@ -57,4 +62,7 @@ export default {
   </template>
 
 <style lang="scss" scoped>
+ul {
+    list-style: none;
+}
 </style>
