@@ -1,5 +1,5 @@
 <script>
-import { store } from "../store";
+import { store } from "../store.js";
 import RestaurantCard from "./RestaurantCard.vue";
 
 export default {
@@ -12,6 +12,9 @@ export default {
       store,
     };
   },
+  created() {
+    console.log(this.store.restaurants);
+  }
 };
 </script>
 

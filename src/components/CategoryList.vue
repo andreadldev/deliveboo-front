@@ -2,7 +2,6 @@
 import { store } from "../store";
 import CategoryCard from "./CategoryCard.vue";
 
-import axios from "axios";
 export default {
     name: "CategorysList",
     components: {
@@ -11,54 +10,51 @@ export default {
     data() {
         return {
             store,
-            selected: [],
-            prova: []
-            // this.selected.slice(-1)[0]
         };
     },
-    methods: {
-        prova_api() {
-            axios.get(`http://localhost:8000/api/restaurants/`)
-            .then((response) => {
-                this.prova=response.data;
-            })
-            .catch((err) => {
-                console.log(err);
-                // this.$router.push({ name: "page-404" });
-            });
-        }
-    }
+    computed: {
+    filteredRestaurants() {
+            // Get an array of selected category names
+            const selectedCategories = this.store.categories
+            .filter(category => category.selected)
+            .map(category => category.name);            
+            // Filter the restaurants based on the selected categories
+            return this.store.restaurants.filter(restaurant => {
+            // Get an array of category names for the current restaurant
+            const categoryNames = restaurant.categories.map(category => category.name);
+            // Check if every selected category is included in the current restaurant's categories
+            return selectedCategories.every(category => categoryNames.includes(category));
+        });
+        },
+    toggleCategory(index) {
+            this.store.categories[index].selected = !this.store.categories[index].selected;
+        },
+    },
 };
 </script>
-
 <template>
-    <section class="container">
-        <div class="row">
-            <div class="col-4" v-for="category in store.categories">
-                <CategoryCard :data="category" />
-            </div>
-            <div>
-                <p> Seleziona categoria </p>
-
-                <div class="col-4" v-for="category in store.categories" @click="prova_api()">
-                    <input type="checkbox" :value=category.slug v-model="selected">
-                    <label>{{category.name}}</label>
+    <div class="d-flex justify-content-around">
+        <div>
+            <h2>Categories</h2>
+            <ul>
+                <li v-for="(category, index) in store.categories" :key="index">
+                <div>
+                    <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
+                    {{ category.name }}
                 </div>
-                <p>Lista: {{ selected }}</p>
-
-                <div v-for="(select, index) in selected">
-                    <div class="m-4" v-for="restaurant in this.prova">
-                        <div v-for="category in restaurant.categories">
-                            <div v-if="category.slug == this.selected[index]">
-                                <span>{{ restaurant.name }}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+                </li>
+            </ul>
         </div>
-    </section>
-</template>
+        <div>
+           <h2>Restaurants</h2>
+            <ul>
+                <li v-for="(restaurant, index) in filteredRestaurants" :key="index">
+                {{ restaurant.name }}
+                </li>
+            </ul> 
+        </div>
+    </div>
+  </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>
