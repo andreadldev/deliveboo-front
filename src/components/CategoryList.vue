@@ -1,11 +1,13 @@
 <script>
 import { store } from "../store";
 import CategoryCard from "./CategoryCard.vue";
+import RestaurantCard from "./RestaurantCard.vue";
 
 export default {
   name: "CategorysList",
   components: {
     CategoryCard,
+    RestaurantCard,
   },
   data() {
     return {
@@ -72,17 +74,19 @@ export default {
       </div>
       <div>
         <h2 class="mt-3">Restaurants</h2>
-        <ul v-if="isActive">
-          <li v-for="(restaurant, index) in filteredRestaurants" :key="index">
-            <router-link
-              :to="{
-                name: 'single-restaurant',
-                params: { slug: restaurant.slug },
-              }"
-              >{{ restaurant.name }}</router-link
-            >
-          </li>
-        </ul>
+        <div class="col-4">
+          <ul v-if="isActive">
+            <li v-for="(restaurant, index) in filteredRestaurants" :key="index">
+              <RestaurantCard :data="restaurant" />
+              <router-link
+                :to="{
+                  name: 'single-restaurant',
+                  params: { slug: restaurant.slug },
+                }"
+              ></router-link>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -107,14 +111,6 @@ body {
   max-width: 300px;
   margin: 0 auto;
 }
-
-// .app i {
-//     font-size: 80px;
-
-//     animation-duration: 3s;
-//     animation-name: slidein;
-//     animation-iteration-count: 1;
-// }
 
 article {
   position: relative;
@@ -149,54 +145,4 @@ article input {
 input[type="checkbox"]:checked ~ div {
   background-color: #f2b150;
 }
-
-// .upgrade-btn {
-//     display: block;
-//     margin: 30px auto;
-//     width: 200px;
-//     padding: 10px 20px;
-//     border: 2px solid #50bcf2;
-//     border-radius: 50px;
-//     color: #f5f5f5;
-//     font-size: 18px;
-//     font-weight: 600;
-//     text-decoration: none;
-//     transition: .3s ease;
-// }
-
-// .upgrade-btn:hover {
-//     background-color: #50bcf2;
-// }
-
-// .blue-color {
-//     color: #50bcf2;
-// }
-
-// .gray-color {
-//     color: #555;
-// }
-
-// .social i:before {
-//     width: 14px;
-//     height: 14px;
-//     position: fixed;
-//     color: #fff;
-//     background: #0077B5;
-//     padding: 10px;
-//     border-radius: 50%;
-//     top: 5px;
-//     right: 5px;
-// }
-
-// @keyframes slidein {
-//     from {
-//         margin-top: 100%;
-//         width: 300%;
-//     }
-
-//     to {
-//         margin: 0%;
-//         width: 100%;
-//     }
-// }
 </style>
