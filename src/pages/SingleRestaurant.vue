@@ -16,11 +16,11 @@
             <div v-for="dish, index in restaurant.dishes">
             <div>
               <label for="check">{{ dish.name }}</label>
-              <input :class=dish.name type="checkbox" :value=dish.name name="check" id="check" v-model="order.dish" @click="disable(dish.name)">
+              <input class="check-dish" type="checkbox" :value=dish.name name="check" id="check" v-model="order.dish" @click="disable(dish.name)">
             </div>
             <div>
               <label class="w-25px" for="quantity">Inserisci la quantità</label>
-              <input type="number" name="quantity" id="quantity" pattern="[0-9]+([\.][0-9]+)?" v-model="order.quantity[index]">
+              <input disabled class="check-quantity" type="number" name="quantity" id="quantity" pattern="[0-9]+([\.][0-9]+)?" v-model="order.quantity[index]">
             </div>
           </div>
           <button class="btn btn-warning" type="submit" >Aggiungi al carrello</button>
@@ -59,13 +59,13 @@ export default {
         console.log(localStorage.getItem('my_data'))
       },
       disable(dish){
-        const inputCheckbox = document.querySelector(dish);
-                const inputFile = document.getElementById('quantity');
+        const inputCheckbox = document.querySelector('.check-dish');
+                const inputFile = document.querySelector('.check-quantity');
                 inputCheckbox.addEventListener('change', function() {
                   if( inputCheckbox.checked ) {
-                    inputFile.disabled = true;
-                  } else {
                     inputFile.disabled = false;
+                  } else {
+                    inputFile.disabled = true;
                   }
                 });
       }
