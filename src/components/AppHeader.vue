@@ -5,9 +5,9 @@ export default {
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #ffa500">
+  <nav class="navbar navbar-expand-md navbar-dark my-nav" style="background-color: #ffa500">
     <div class="container">
-      <a class="navbar-brand d-md-none d-xs-block py-3" href="#">
+      <a class="navbar-brand d-md-none d-xs-block py-3 " href="#">
         <img src="../assets/img/DELI.png" height="40" alt="Company Logo">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -38,7 +38,7 @@ export default {
       </div>
     </div>
   </nav>
-  <div class="text-center p-3 d-none d-md-block">
+  <div class="text-center p-3 d-none d-md-block m-5">
     <img src="../assets/img/HAMB-LOGO orange.png" height="120" alt="Company Logo">
   </div>
 </template>
@@ -54,6 +54,12 @@ export default {
 
   .navbar {
     padding: 0
+  }
+  .my-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
   }
 }
 </style>

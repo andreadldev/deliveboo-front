@@ -4,42 +4,7 @@ export default {
 };
 </script>
 
-<template>
-  <!-- <div class="bg-warning text-decoration-none text-success">
-    <div class="container d-flex justify-content-between">
-      <ul>
-        <li>dsashvbjn</li>
-        <li>dsashvbjn</li>
-        <li>dsashvbjn</li>
-        <li>dsashvbjn</li>
-        <li>dsashvbjn</li>
-        <li>dsashvbjn</li>
-        <li>dsashvbjn</li>
-        <li>dsashvbjn</li>
-      </ul>
-      <ul>
-        <li>dsashvbjn</li>
-        <li>dsashvbjn</li>
-        <li>dsashvbjn</li>
-        <li>dsashvbjn</li>
-        <li>dsashvbjn</li>
-        <li>dsashvbjn</li>
-        <li>dsashvbjn</li>
-        <li>dsashvbjn</li>
-      </ul>
-      <ul>
-        <li>dsashvbjn</li>
-        <li>dsashvbjn</li>
-        <li>dsashvbjn</li>
-        <li>dsashvbjn</li>
-        <li>dsashvbjn</li>
-        <li>dsashvbjn</li>
-                            <li>dsashvbjn</li>
-                            <li>dsashvbjn</li>
-                          </ul>
-                        </div>
-
-                      </div> -->
+<template >
   <!-- Remove the container if you want to extend the Footer to full width. -->
   <div class=" my-5 ">
     <!-- Footer -->
@@ -168,4 +133,6 @@ export default {
 
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>
