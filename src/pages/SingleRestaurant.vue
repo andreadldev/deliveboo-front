@@ -13,14 +13,14 @@
       <h5>I nostri piatti:</h5>
       <!-- inizio form -->
       <form @submit.prevent="saveData()">
-            <div v-for="dish in restaurant.dishes">
+            <div v-for="dish, index in restaurant.dishes">
             <div>
               <label for="check">{{ dish.name }}</label>
-              <input type="checkbox" name="check" id="check" v-model="order.dish">
+              <input type="checkbox" :value=dish.name name="check" id="check" v-model="order.dish">
             </div>
             <div>
-              <label class="w-25px" for="number">Inserisci la quantità</label>
-              <input type="number" name="quantity" id="quantity" pattern="[0-9]+([\.][0-9]+)?">
+              <label class="w-25px" for="quantity">Inserisci la quantità</label>
+              <input type="number" name="quantity" id="quantity" pattern="[0-9]+([\.][0-9]+)?" v-model="order.quantity[index]">
             </div>
           </div>
           <button class="btn btn-warning" type="submit" >Aggiungi al carrello</button>
@@ -40,19 +40,26 @@ export default {
       restaurant: null,
       order:{
         dish:[],
-        quantity:[]
+        quantity:[],
+        filteredQuantity:[]
       },
       currentUser: ''
     };
   },
   methods:{
     saveData(){
-      localStorage.setItem('my_data', JSON.stringify(this.user))
-      }
+      // console.log(this.order)
+      this.order.filteredQuantity = this.order.quantity.filter((str) => str !== '') 
+
+      // console.log(this.order.filteredQuantity)
+      localStorage.setItem('my_data', JSON.stringify(this.order))
+      console.log('my_data', JSON.stringify(this.order))
+      },
+      showlog(){
+      console.log(localStorage.getItem('my_data'))
     },
-    showlog(){
-      console.log('ciao')
     },
+    
   mounted(){
     if(this.currentUser){
       this.currentUser = JSON.parse(localStorage.getItem('my_data'))
