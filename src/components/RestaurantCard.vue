@@ -21,8 +21,8 @@ export default {
       <div>
         <span>Costo di spedizione: €{{ data.price_shipping }}</span>
       </div>
-      <!-- <div class="text-center m-4"><router-link :to="{ name: 'single-restaurant', params: { slug: data.slug } }"
-          class="btn btn-primary">Dettagli</router-link></div> -->
+      <div class="text-center m-4"><router-link :to="{ name: 'single-restaurant', params: { slug: data.slug } }"
+          class="btn btn-primary">Dettagli</router-link></div>
 
     </div>
   </div>
