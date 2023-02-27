@@ -15,23 +15,25 @@ export default {
     },
     computed: {
     filteredRestaurants() {
-            
+            //prendo l'array dei nomi delle categorie
             const selectedCategories = this.store.categories
             .filter(category => category.selected)
-            .map(category => category.name);     
-            
+            .map(category => category.name);
+                 
+            // filtro i risultati basandomi su quell'array
             return this.store.restaurants.filter(restaurant => {
-                
+                // prendo l'array dei nomi delle categorie per quei ristoranti
                 const categoryNames = restaurant.categories.map(category => category.name);
-            
+            // controllo se TUTTE le categorie selezionate sono presenti in quelle dei risto
             return selectedCategories.every(category => categoryNames.includes(category));
         });
         },
-    toggleCategory(index) {
+        toggleCategory(index) {
             this.store.categories[index].selected = !this.store.categories[index].selected;
 
         },
         isActive(){
+            // di base nasconde la sezione dedicata ai ristoranti ma si attiva se almeno uno è selezionato
             return this.store.categories.some(category => category.selected);
         }
     },
