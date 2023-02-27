@@ -15,35 +15,36 @@
       <form @submit.prevent="saveData()">
             <div v-for="dish, index in restaurant.dishes">
             <div>
-              <label for="check">{{ dish.name }}</label>
-              <input class="check-dish" type="checkbox" :value=dish.name name="check" id="check" v-model="order.dish" @click="disable(dish.name)">
+              <label for='check'>{{ dish.name }}</label>
+              <input class='check' type="checkbox" :value=dish id='check' v-model="order.dish">
             </div>
             <div>
               <label class="w-25px" for="quantity">Inserisci la quantità</label>
-              <input disabled class="check-quantity" type="number" name="quantity" id="quantity" pattern="[0-9]+([\.][0-9]+)?" v-model="order.quantity[index]">
+              <input class='dish.slug' type="number" id="quantity" pattern="[0-9]+([\.][0-9]+)?" v-model="order.quantity[index]">
             </div>
           </div>
           <button class="btn btn-warning" type="submit" >Aggiungi al carrello</button>
           <button @click="showlog()">Log</button>
-        </form>        
+      </form>        
 
     </div>
   </div>
 </template>
 
 <script>
+import { store } from "../store";
 import axios from "axios";
 export default {
   name: "SingleRestaurant",
   data() {
     return {
+      store,
       restaurant: null,
       order:{
         dish:[],
         quantity:[],
         filteredQuantity:[]
       },
-      currentUser: ''
     };
   },
   methods:{
@@ -58,22 +59,30 @@ export default {
         showlog(){
         console.log(localStorage.getItem('my_data'))
       },
-      disable(dish){
-        const inputCheckbox = document.querySelector('.check-dish');
-                const inputFile = document.querySelector('.check-quantity');
-                inputCheckbox.addEventListener('change', function() {
-                  if( inputCheckbox.checked ) {
-                    inputFile.disabled = false;
-                  } else {
-                    inputFile.disabled = true;
-                  }
-                });
+      disable(name,slug){
+        // const inputCheckbox = document.querySelector(name);
+        //         const inputFile = document.querySelector(slug);
+        //         inputCheckbox.addEventListener('change', function() {
+        //           if( inputCheckbox.checked ) {
+        //             inputFile.disabled = false;
+        //           } else {
+        //             inputFile.disabled = true;
+        //           }
+        //         });
+
+                // const highlightedItems = userList.querySelectorAll(".highlighted");
+
+                // highlightedItems.forEach((userItem) => {
+                //   deleteUser(userItem);
+                // });
+
+
       }
     },
     
   mounted(){
-    if(this.currentUser){
-      this.currentUser = JSON.parse(localStorage.getItem('my_data'))
+    if(store.currentUser){
+      store.currentUser = JSON.parse(localStorage.getItem('my_data'))
     }
   },
   created() {
