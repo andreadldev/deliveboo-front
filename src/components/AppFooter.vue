@@ -98,6 +98,10 @@ export default {
                 © 2023 Copyright:
                 <a class="text-white" href="">Deliveboo.com</a>
               </div>
+              <div class="p-3">
+                © 2023 Copyright:
+                <a class="text-white" href="">Deliveboo.com</a>
+              </div>
               <!-- Copyright -->
             </div>
             <!-- Grid column -->
