@@ -74,8 +74,11 @@ export default {
       </div>
       <div>
         <h2 class="mt-3">Restaurants</h2>
-        <div class="col-4">
-          <ul v-if="isActive">
+        <div>
+          <ul
+            class="d-flex flex-wrap justify-content-between gy-3 col-lg-3 m-auto"
+            v-if="isActive"
+          >
             <li v-for="(restaurant, index) in filteredRestaurants" :key="index">
               <RestaurantCard :data="restaurant" />
               <router-link
