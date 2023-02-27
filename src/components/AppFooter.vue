@@ -18,11 +18,15 @@ export default {
             <!-- Grid column -->
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 my-column-footer">
               <h6 class="text-uppercase mb-4 my-font">
-                Deliveboo
+                Scopri Deliveroo
               </h6>
               <small>
-                I piatti e i prodotti che ami, consegnati in pochissimo tempo. Vedrai quando il rider ha ritirato
-                l'ordine, che potrai seguire passo passo, e riceverai una notifica quando sarà quasi da te.
+                <a href="/chi-siamo" class="my-link">Investitori</a> <br>
+                <a href="/chi-siamo" class="my-link">Chi siamo</a> <br>
+                <a href="/ristoranti" class="my-link">Ristoranti</a> <br>
+                <a href="" class="my-link">Altro</a> <br>
+                <a href="" class="my-link">Lavora con noi</a> <br>
+                <a href="" class="my-link">Diventa nostro partner</a>
               </small>
             </div>
             <!-- Grid column -->
@@ -31,7 +35,7 @@ export default {
 
             <!-- Grid column -->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 my-column-footer">
-              <h6 class="text-uppercase mb-4 my-font">Products</h6>
+              <h6 class="text-uppercase mb-4 my-font">Note legali</h6>
               <p>
                 <a class="text-white">MDBootstrap</a>
               </p>
@@ -52,7 +56,7 @@ export default {
             <!-- Grid column -->
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3 my-column-footer">
               <h6 class="text-uppercase mb-4 my-font">
-                Social
+                Contatti
               </h6>
               <p>
                 <a class="text-white">Facebook</a>
@@ -73,7 +77,7 @@ export default {
 
             <!-- Grid column -->
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3 my-column-footer">
-              <h6 class="text-uppercase mb-4 my-font">Contatti</h6>
+              <h6 class="text-uppercase mb-4 my-font">Social</h6>
               <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
               <p><i class="fas fa-envelope mr-3"></i> info@deliveboo.com</p>
               <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
@@ -126,5 +130,10 @@ export default {
 
 .my-font {
   font-weight: 800;
+}
+
+.my-link {
+  color: white;
+  text-decoration: none;
 }
 </style>
