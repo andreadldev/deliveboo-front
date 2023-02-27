@@ -32,17 +32,31 @@ export default {
 
 <template>
   <div>
-    <AppHeader />
-    <AppMain />
-    <AppFooter />
+    <AppHeader class="my-header" />
+    <AppMain class="my-main"/>
+    <AppFooter class="my-footer"/>
   </div>
 </template>
 
 <style lang="scss">
 @import "./style/global.scss";
 
-body {
-  height: 100vh;
+body{
+  font-family: 'Roboto Serif', serif, ;
+  font-weight: bold;
+}
+
+.my-header {
+  height: 80px;
+}
+
+.my-main {
+  flex-grow: 1;
+}
+
+.my-footer {
+  height: 300px;
+  bottom: 0;
 }
 
 </style>
