@@ -36,18 +36,11 @@ export default {
             <!-- Grid column -->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 my-column-footer">
               <h6 class="text-uppercase mb-4 my-font">Note legali</h6>
-              <p>
-                <a class="text-white">MDBootstrap</a>
-              </p>
-              <p>
-                <a class="text-white">MDWordPress</a>
-              </p>
-              <p>
-                <a class="text-white">BrandFlow</a>
-              </p>
-              <p>
-                <a class="text-white">Bootstrap Angular</a>
-              </p>
+              <small>
+                <a href="" class="my-link">Termini & Condizioni</a> <br>
+                <a href="" class="my-link">Informativa sulla privacy</a> <br>
+                <a href="" class="my-link">Cookies</a>
+              </small>
             </div>
             <!-- Grid column -->
 
@@ -58,18 +51,13 @@ export default {
               <h6 class="text-uppercase mb-4 my-font">
                 Contatti
               </h6>
-              <p>
-                <a class="text-white">Facebook</a>
-              </p>
-              <p>
-                <a class="text-white">Instagram</a>
-              </p>
-              <p>
-                <a class="text-white">TikTok</a>
-              </p>
-              <p>
-                <a class="text-white">Twitter</a>
-              </p>
+              <small>
+                <a href="https://www.google.it/maps/place/Deliveroo+-+Uffici/@45.440727,9.1550847,15z/data=!3m1!4b1!4m5!3m4!1s0x4786c3eb2e46548f:0x41f8390b6101381c!8m2!3d45.4407273!4d9.163818"
+                  class="my-link">Indirizzo</a> <br>
+                <a href="" class="my-link">+39 3476589065</a> <br>
+                <a href="" class="my-link">800 666 898</a> <br>
+                <a href="" class="my-link">help@deliveboo.com</a>
+              </small>
             </div>
 
             <!-- Grid column -->
@@ -78,10 +66,21 @@ export default {
             <!-- Grid column -->
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3 my-column-footer">
               <h6 class="text-uppercase mb-4 my-font">Social</h6>
-              <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-              <p><i class="fas fa-envelope mr-3"></i> info@deliveboo.com</p>
-              <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-              <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+
+              <small>
+                <p>
+                  <a class="text-white">Facebook</a>
+                </p>
+                <p>
+                  <a class="text-white">Instagram</a>
+                </p>
+                <p>
+                  <a class="text-white">TikTok</a>
+                </p>
+                <p>
+                  <a class="text-white">Twitter</a>
+                </p>
+              </small>
             </div>
             <!-- Grid column -->
           </div>
