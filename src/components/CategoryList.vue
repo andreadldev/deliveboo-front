@@ -1,17 +1,21 @@
 <script>
 import { store } from "../store";
-import CategoryCard from "./CategoryCard.vue";
 
 export default {
     name: "CategorysList",
-    components: {
-        CategoryCard,
-    },
     data() {
         return {
             store,
             visible: false,
         };
+    },
+    methods:{
+        toggleCategory(index) {
+            this.store.categories.forEach(element => {                
+                element[index].selected = !element[index].selected;
+            });
+
+        },
     },
     computed: {
     filteredRestaurants() {
@@ -27,10 +31,6 @@ export default {
             // controllo se TUTTE le categorie selezionate sono presenti in quelle dei risto
             return selectedCategories.every(category => categoryNames.includes(category));
         });
-        },
-        toggleCategory(index) {
-            this.store.categories[index].selected = !this.store.categories[index].selected;
-
         },
         isActive(){
             // di base nasconde la sezione dedicata ai ristoranti ma si attiva se almeno uno è selezionato

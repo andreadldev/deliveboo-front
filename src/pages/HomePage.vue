@@ -11,7 +11,7 @@ export default {
 <template>
   <div>
     <h1>Home Page</h1>
-    <CategoryList class="text-center" />
+    <CategoryList/>
     <div class="text-center">
       <button>Search</button>
     </div>
