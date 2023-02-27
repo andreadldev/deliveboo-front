@@ -16,7 +16,7 @@
             <div v-for="dish, index in restaurant.dishes">
             <div>
               <label for="check">{{ dish.name }}</label>
-              <input type="checkbox" :value=dish.name name="check" id="check" v-model="order.dish">
+              <input :class=dish.name type="checkbox" :value=dish.name name="check" id="check" v-model="order.dish" @click="disable(dish.name)">
             </div>
             <div>
               <label class="w-25px" for="quantity">Inserisci la quantità</label>
@@ -47,17 +47,28 @@ export default {
     };
   },
   methods:{
-    saveData(){
-      // console.log(this.order)
-      this.order.filteredQuantity = this.order.quantity.filter((str) => str !== '') 
+      saveData(){
+        // console.log(this.order)
+        this.order.filteredQuantity = this.order.quantity.filter((str) => str !== '') 
 
-      // console.log(this.order.filteredQuantity)
-      localStorage.setItem('my_data', JSON.stringify(this.order))
-      console.log('my_data', JSON.stringify(this.order))
+        // console.log(this.order.filteredQuantity)
+        localStorage.setItem('my_data', JSON.stringify(this.order))
+        console.log('my_data', JSON.stringify(this.order))
+        },
+        showlog(){
+        console.log(localStorage.getItem('my_data'))
       },
-      showlog(){
-      console.log(localStorage.getItem('my_data'))
-    },
+      disable(dish){
+        const inputCheckbox = document.querySelector(dish);
+                const inputFile = document.getElementById('quantity');
+                inputCheckbox.addEventListener('change', function() {
+                  if( inputCheckbox.checked ) {
+                    inputFile.disabled = true;
+                  } else {
+                    inputFile.disabled = false;
+                  }
+                });
+      }
     },
     
   mounted(){
