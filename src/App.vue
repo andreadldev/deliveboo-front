@@ -33,17 +33,17 @@ export default {
 <template>
   <div>
     <AppHeader class="my-header" />
-    <AppMain class="my-main"/>
-    <AppFooter class="my-footer"/>
+    <AppMain class="my-main" />
+    <AppFooter class="my-footer" />
   </div>
 </template>
 
 <style lang="scss">
 @import "./style/global.scss";
 
-body{
+body {
   font-family: 'Roboto Serif', serif, ;
-  font-weight: bold;
+
 }
 
 .my-header {
@@ -58,5 +58,4 @@ body{
   height: 300px;
   bottom: 0;
 }
-
 </style>

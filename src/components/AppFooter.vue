@@ -16,23 +16,22 @@ export default {
           <!--Grid row-->
           <div class="row">
             <!-- Grid column -->
-            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 my-column-footer">
+              <h6 class="text-uppercase mb-4 my-font">
                 Deliveboo
               </h6>
-              <p>
-                Here you can use rows and columns to organize your footer
-                content. Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit.
-              </p>
+              <small>
+                I piatti e i prodotti che ami, consegnati in pochissimo tempo. Vedrai quando il rider ha ritirato
+                l'ordine, che potrai seguire passo passo, e riceverai una notifica quando sarà quasi da te.
+              </small>
             </div>
             <!-- Grid column -->
 
             <hr class="w-100 clearfix d-md-none" />
 
             <!-- Grid column -->
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 my-column-footer">
+              <h6 class="text-uppercase mb-4 my-font">Products</h6>
               <p>
                 <a class="text-white">MDBootstrap</a>
               </p>
@@ -51,8 +50,8 @@ export default {
             <hr class="w-100 clearfix d-md-none" />
 
             <!-- Grid column -->
-            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3 my-column-footer">
+              <h6 class="text-uppercase mb-4 my-font">
                 Social
               </h6>
               <p>
@@ -73,8 +72,8 @@ export default {
             <hr class="w-100 clearfix d-md-none" />
 
             <!-- Grid column -->
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">Contatti</h6>
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3 my-column-footer">
+              <h6 class="text-uppercase mb-4 my-font">Contatti</h6>
               <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
               <p><i class="fas fa-envelope mr-3"></i> info@deliveboo.com</p>
               <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
@@ -90,14 +89,10 @@ export default {
 
         <!-- Section: Copyright -->
         <section class="p-3 pt-0">
-          <div class="row d-flex align-items-center">
+          <div class="row d-flex align-items-center my-column-footer">
             <!-- Grid column -->
             <div class="col-md-7 col-lg-8 text-center text-md-start">
               <!-- Copyright -->
-              <div class="p-3">
-                © 2023 Copyright:
-                <a class="text-white" href="">Deliveboo.com</a>
-              </div>
               <div class="p-3">
                 © 2023 Copyright:
                 <a class="text-white" href="">Deliveboo.com</a>
@@ -127,5 +122,9 @@ export default {
   bottom: 0;
   width: 100%;
 
+}
+
+.my-font {
+  font-weight: 800;
 }
 </style>
