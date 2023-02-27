@@ -38,9 +38,9 @@ export default {
       </div>
     </section>
     <!-- End Hero Section -->
-    <div>
+    <!-- <div>
       <CategoryList class="text-center" />
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -127,7 +127,7 @@ export default {
   }
 }
 .rotate {
-  animation: rotation 7s infinite linear;
+  animation: rotation 15s infinite linear;
 }
 @keyframes rotation {
   from {

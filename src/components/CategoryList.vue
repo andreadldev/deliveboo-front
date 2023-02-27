@@ -49,7 +49,7 @@ export default {
   <div class="container">
     <div class="d-flex flex-column">
       <div>
-        <h2>Scegli una o più Categoria:</h2>
+        <h2 class="mt-5">Scegli una o più Categoria:</h2>
         <ul
           class="d-flex flex-wrap justify-content-between gy-3 col-lg-6 m-auto"
         >
