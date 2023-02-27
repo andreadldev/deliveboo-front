@@ -2,7 +2,7 @@
 import { store } from "../store";
 
 export default {
-    name: "CategorysList",
+    name: "CategoryList",
     data() {
         return {
             store,
@@ -11,10 +11,7 @@ export default {
     },
     methods:{
         toggleCategory(index) {
-            this.store.categories.forEach(element => {                
-                element[index].selected = !element[index].selected;
-            });
-
+            this.store.categories[index].selected = !this.store.categories[index].selected
         },
     },
     computed: {
@@ -46,7 +43,7 @@ export default {
             <ul>
                 <li v-for="(category, index) in store.categories" :key="index">
                 <div>
-                    <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
+                    <input type="checkbox" v-model="category.selected">
                     {{ category.name }}
                 </div>
                 </li>
