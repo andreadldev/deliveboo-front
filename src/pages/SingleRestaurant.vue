@@ -11,17 +11,21 @@
           :to="{ name: 'checkout' }">Menù</router-link>
       </div>
       <h5>I nostri piatti:</h5>
-      <div v-for="dish in restaurant.dishes">
-        <div>
-          <span>{{ dish.name }}</span>
-          <input type="checkbox" name="check" id="check" required>
-        </div>
-        <div>
-          <label class="w-25px" for="number">Inserisci la quantità</label>
-        <input type="number" name="quantity" id="quantity" pattern="[0-9]+([\.][0-9]+)?" required>
-        </div>        
-      </div>
-      <button class="btn btn-warning">Aggiungi al carrello</button>
+      <!-- inizio form -->
+      <form @submit.prevent="saveData()">
+            <div v-for="dish in restaurant.dishes">
+            <div>
+              <label for="check">{{ dish.name }}</label>
+              <input type="checkbox" name="check" id="check" v-model="order.dish">
+            </div>
+            <div>
+              <label class="w-25px" for="number">Inserisci la quantità</label>
+              <input type="number" name="quantity" id="quantity" pattern="[0-9]+([\.][0-9]+)?">
+            </div>
+          </div>
+          <button class="btn btn-warning" type="submit" >Aggiungi al carrello</button>
+          <button @click="showlog()">Log</button>
+        </form>        
 
     </div>
   </div>
@@ -34,7 +38,25 @@ export default {
   data() {
     return {
       restaurant: null,
+      order:{
+        dish:[],
+        quantity:[]
+      },
+      currentUser: ''
     };
+  },
+  methods:{
+    saveData(){
+      localStorage.setItem('my_data', JSON.stringify(this.user))
+      }
+    },
+    showlog(){
+      console.log('ciao')
+    },
+  mounted(){
+    if(this.currentUser){
+      this.currentUser = JSON.parse(localStorage.getItem('my_data'))
+    }
   },
   created() {
     axios

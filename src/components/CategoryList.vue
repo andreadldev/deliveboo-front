@@ -9,11 +9,6 @@ export default {
             visible: false,
         };
     },
-    methods:{
-        toggleCategory(index) {
-            this.store.categories[index].selected = !this.store.categories[index].selected
-        },
-    },
     computed: {
     filteredRestaurants() {
             //prendo l'array dei nomi delle categorie
