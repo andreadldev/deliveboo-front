@@ -11,30 +11,79 @@
           :to="{ name: 'checkout' }">Menù</router-link>
       </div>
       <h5>I nostri piatti:</h5>
-      <div v-for="dish in restaurant.dishes">
-        <div>
-          <span>{{ dish.name }}</span>
-          <input type="checkbox" name="check" id="check" required>
-        </div>
-        <div>
-          <label class="w-25px" for="number">Inserisci la quantità</label>
-        <input type="number" name="quantity" id="quantity" pattern="[0-9]+([\.][0-9]+)?" required>
-        </div>        
-      </div>
-      <button class="btn btn-warning">Aggiungi al carrello</button>
+      <!-- inizio form -->
+      <form @submit.prevent="saveData()">
+            <div v-for="dish, index in restaurant.dishes">
+            <div>
+              <label for='check'>{{ dish.name }}</label>
+              <input class='check' type="checkbox" :value=dish id='check' v-model="order.dish">
+            </div>
+            <div>
+              <label class="w-25px" for="quantity">Inserisci la quantità</label>
+              <input class='dish.slug' type="number" id="quantity" pattern="[0-9]+([\.][0-9]+)?" v-model="order.quantity[index]">
+            </div>
+          </div>
+          <button class="btn btn-warning" type="submit" >Aggiungi al carrello</button>
+          <button @click="showlog()">Log</button>
+      </form>        
 
     </div>
   </div>
 </template>
 
 <script>
+import { store } from "../store";
 import axios from "axios";
 export default {
   name: "SingleRestaurant",
   data() {
     return {
+      store,
       restaurant: null,
+      order:{
+        dish:[],
+        quantity:[],
+        filteredQuantity:[]
+      },
     };
+  },
+  methods:{
+      saveData(){
+        // console.log(this.order)
+        this.order.filteredQuantity = this.order.quantity.filter((str) => str !== '') 
+
+        // console.log(this.order.filteredQuantity)
+        localStorage.setItem('my_data', JSON.stringify(this.order))
+        console.log('my_data', JSON.stringify(this.order))
+        },
+        showlog(){
+        console.log(localStorage.getItem('my_data'))
+      },
+      disable(name,slug){
+        // const inputCheckbox = document.querySelector(name);
+        //         const inputFile = document.querySelector(slug);
+        //         inputCheckbox.addEventListener('change', function() {
+        //           if( inputCheckbox.checked ) {
+        //             inputFile.disabled = false;
+        //           } else {
+        //             inputFile.disabled = true;
+        //           }
+        //         });
+
+                // const highlightedItems = userList.querySelectorAll(".highlighted");
+
+                // highlightedItems.forEach((userItem) => {
+                //   deleteUser(userItem);
+                // });
+
+
+      }
+    },
+    
+  mounted(){
+    if(store.currentUser){
+      store.currentUser = JSON.parse(localStorage.getItem('my_data'))
+    }
   },
   created() {
     axios
