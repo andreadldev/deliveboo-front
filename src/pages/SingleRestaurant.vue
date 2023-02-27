@@ -5,14 +5,25 @@
     <div class="text-center">
       <small>Indirizzo: {{ restaurant.address }}</small>
       <div>Descrizione: {{ restaurant.description }}</div>
-      <span>Costo spedizione: {{ restaurant.price_shipping }}</span>
+      <span>Costo spedizione: {{ restaurant.price_shipping }}€</span>
       <div class="m-4">
         <router-link class="text-decoration-none text-white  btn btn-warning rounded-0"
           :to="{ name: 'checkout' }">Menù</router-link>
       </div>
+      <h5>I nostri piatti:</h5>
+      <div v-for="dish in restaurant.dishes">
+        <div>
+          <span>{{ dish.name }}</span>
+          <input type="checkbox" name="check" id="check" required>
+        </div>
+        <div>
+          <label class="w-25px" for="number">Inserisci la quantità</label>
+        <input type="number" name="quantity" id="quantity" pattern="[0-9]+([\.][0-9]+)?" required>
+        </div>        
+      </div>
+      <button class="btn btn-warning">Aggiungi al carrello</button>
 
     </div>
-
   </div>
 </template>
 
@@ -41,4 +52,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+img {
+  width: 800px;
+}
+</style>

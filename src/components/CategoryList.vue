@@ -15,15 +15,15 @@ export default {
     },
     computed: {
     filteredRestaurants() {
-            // Get an array of selected category names
+            
             const selectedCategories = this.store.categories
             .filter(category => category.selected)
             .map(category => category.name);     
-            // Filter the restaurants based on the selected categories
+            
             return this.store.restaurants.filter(restaurant => {
-                // Get an array of category names for the current restaurant
+                
                 const categoryNames = restaurant.categories.map(category => category.name);
-            // Check if every selected category is included in the current restaurant's categories
+            
             return selectedCategories.every(category => categoryNames.includes(category));
         });
         },
@@ -54,7 +54,7 @@ export default {
            <h2>Restaurants</h2>
             <ul v-if="isActive">
                 <li v-for="(restaurant, index) in filteredRestaurants" :key="index">
-                {{ restaurant.name }}
+                <router-link :to="{name:'single-restaurant', params: { slug: restaurant.slug }}">{{ restaurant.name }}</router-link>
                 </li>
             </ul> 
         </div>
