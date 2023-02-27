@@ -13,19 +13,32 @@
       <h5>I nostri piatti:</h5>
       <!-- inizio form -->
       <form @submit.prevent="saveData()">
-            <div v-for="dish, index in restaurant.dishes">
-            <div>
-              <label for='check'>{{ dish.name }}</label>
-              <input class='check' type="checkbox" :value=dish id='check' v-model="order.dish">
-            </div>
-            <div>
-              <label class="w-25px" for="quantity">Inserisci la quantità</label>
-              <input class='dish.slug' type="number" id="quantity" pattern="[0-9]+([\.][0-9]+)?" v-model="order.quantity[index]">
-            </div>
+        <div v-for="(dish, index) in restaurant.dishes" :key="index">
+          <div>
+            <label :for="'check-' + index">{{ dish.name }}</label>
+            <input
+              :id="'check-' + index"
+              class="check"
+              type="checkbox"
+              :value="dish"
+              v-model="order.dish"
+            >
           </div>
-          <button class="btn btn-warning" type="submit" >Aggiungi al carrello</button>
-          <button @click="showlog()">Log</button>
-      </form>        
+          <div>
+            <label class="w-25px" :for="'quantity-' + index">Inserisci la quantità</label>
+            <input
+              :id="'quantity-' + index"
+              class="dish.slug"
+              type="number"
+              min = 0
+              :disabled="!order.dish.includes(dish)"
+              v-model="quantity[index]"
+            >
+          </div>
+        </div>
+        <button class="btn btn-warning" type="submit">Aggiungi al carrello</button>
+        <button @click="showlog()">Log</button>
+      </form>      
 
     </div>
   </div>
@@ -42,15 +55,15 @@ export default {
       restaurant: null,
       order:{
         dish:[],
-        quantity:[],
         filteredQuantity:[]
       },
+      quantity:[],
     };
   },
   methods:{
       saveData(){
         // console.log(this.order)
-        this.order.filteredQuantity = this.order.quantity.filter((str) => str !== '') 
+        this.order.filteredQuantity = this.quantity.filter((str) => str !== '') 
 
         // console.log(this.order.filteredQuantity)
         localStorage.setItem('my_data', JSON.stringify(this.order))

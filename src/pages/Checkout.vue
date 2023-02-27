@@ -5,11 +5,15 @@ export default {
   data(){
     return {
       store,
+      userCart:[]
     }
   }, 
+  mounted(){
+      this.userCart = JSON.parse(localStorage.getItem('my_data'))
+  },
   methods: {
     showlog(){
-        console.log(store.userCart)
+        console.log(this.userCart)
       },
   } ,
   };
@@ -17,9 +21,8 @@ export default {
 </script>
 
 <template>
-          <button @click="showlog()">Log</button>
 
-  <section class="h-100 h-custom" style="background-color: #eee;">
+  <section class="h-100 h-custom mt-5" style="background-color: #eee;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col">
@@ -44,7 +47,7 @@ export default {
                   </div>
                 </div>
                 <!-- inizio ciclo -->
-                <div v-for="items in store.userCart.dish">
+                <div v-for="(items, index) in this.userCart.dish" :key="index">
                   <div class="card mb-3">
                     <div class="card-body">
                       <div class="d-flex justify-content-between">
@@ -56,15 +59,14 @@ export default {
                           </div>
                           <div class="ms-3">
                             <h5>{{items.name}}</h5>
-                            <!-- <p class="small mb-0">256GB, Navy Blue</p> -->
+                            <p class="small mb-0">{{items.description}}</p>
                           </div>
                         </div>
                         <div class="d-flex flex-row align-items-center">
                           <div style="width: 50px;">
-                            <h5 class="fw-normal mb-0">2</h5>
                           </div>
                           <div style="width: 80px;">
-                            <h5 class="mb-0">$900</h5>
+                            <h5 class="mb-0">{{items.price}}</h5>
                           </div>
                           <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
                         </div>
@@ -72,8 +74,15 @@ export default {
                     </div>
                   </div>
               </div>
+              <div v-for="(items, index) in this.userCart.filteredQuantity" :key="index">
+                <div class="ms-3">
+                    <p class="small mb-0">{{items}}</p>
+                  </div>
+              </div>
               </div>
               <div class="col-lg-5">
+    <button @click="showlog()">Log</button>
+
 
                 <div class="card bg-primary text-white rounded-3">
                   <div class="card-body">
