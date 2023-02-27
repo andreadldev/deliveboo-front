@@ -21,14 +21,6 @@ export default {
             Sed autem laudantium dolores. Voluptatem itaque ea consequatur
             eveniet. Eum quas beatae cumque eum quaerat.
           </p>
-          <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-            <a href="#book-a-table" class="btn-book-a-table">Book a Table</a>
-            <a
-              href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
-              class="glightbox btn-watch-video d-flex align-items-center"
-              ><i class="bi bi-play-circle"></i><span>Watch Video</span></a
-            >
-          </div>
         </div>
         <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
           <img
