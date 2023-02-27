@@ -15,8 +15,7 @@ export default {
       <div class="container">
         <div class="row justify-content-between gy-5">
           <div
-            class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start"
-          >
+            class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
             <h2 data-aos="fade-up">
               Goditi il tuo pasto<br />sano e deliziosissime
             </h2>
@@ -24,23 +23,18 @@ export default {
               Approfitta di un'ampia varietà di ristoranti per ordinare i tuoi
               piatti preferiti!
             </p>
-          </div>
-          <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
-            <img
-              src="src\assets\img\hero-img.png"
-              class="img-fluid rotate"
-              alt=""
-              data-aos="zoom-out"
-              data-aos-delay="300"
-            />
+        </div>
+        <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
+            <img src="src\assets\img\hero-img.png" class="img-fluid rotate" alt="" data-aos="zoom-out"
+              data-aos-delay="300" />
           </div>
         </div>
       </div>
     </section>
     <!-- End Hero Section -->
     <!-- <div>
-      <CategoryList class="text-center" />
-    </div> -->
+        <CategoryList class="text-center" />
+      </div> -->
   </div>
 </template>
 
@@ -126,13 +120,16 @@ export default {
     font-size: 14px;
   }
 }
+
 .rotate {
   animation: rotation 15s infinite linear;
 }
+
 @keyframes rotation {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(359deg);
   }
