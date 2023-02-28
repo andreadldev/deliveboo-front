@@ -9,11 +9,12 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <div class="my-container">
+
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class="hero d-flex align-items-center section-bg">
+    <section id="hero" class="container hero d-flex align-items-center section-bg">
       <div class="container">
-        <div class="row justify-content-between gy-5">
+        <div class="row justify-content-around gy-5 my-hero">
           <div
             class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
             <h2 data-aos="fade-up">
@@ -21,20 +22,25 @@ export default {
             </h2>
             <p data-aos="fade-up" data-aos-delay="100">
               Approfitta di un'ampia varietà di ristoranti per ordinare i tuoi
-              piatti preferiti!
+              piatti preferiti e gustarli direttamente a casa tua!
             </p>
-        </div>
-        <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
+          </div>
+          <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
             <img src="src\assets\img\hero-img.png" class="img-fluid rotate" alt="" data-aos="zoom-out"
               data-aos-delay="300" />
           </div>
         </div>
       </div>
     </section>
-    <!-- End Hero Section -->
-    <div>
-        <CategoryList class="text-center" />
-      </div>
+  </div>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path fill="#fdbb2d" fill-opacity="1"
+      d="M0,128L40,144C80,160,160,192,240,197.3C320,203,400,181,480,154.7C560,128,640,96,720,85.3C800,75,880,85,960,112C1040,139,1120,181,1200,192C1280,203,1360,181,1400,170.7L1440,160L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z">
+    </path>
+  </svg>
+  <!-- End Hero Section -->
+  <div>
+    <CategoryList class="text-center" />
   </div>
 </template>
 
@@ -42,6 +48,11 @@ export default {
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
+
+.my-container {
+  background-color: rgb(253, 187, 45);
+}
+
 .hero {
   width: 100%;
   background-size: cover;
@@ -50,11 +61,16 @@ export default {
   padding: 160px 0 60px 0;
 }
 
+.my-hero {
+  margin: 60px;
+}
+
 .hero h2 {
   font-size: 64px;
   font-weight: 700;
   margin-bottom: 20px;
-  color: #fa8072;
+  color: rgb(195, 34, 34);
+  ;
   font-family: "Dancing Script";
 }
 
@@ -66,6 +82,8 @@ export default {
   color: #4f4f5a;
   font-weight: 400;
   margin-bottom: 30px;
+  font-family: 'Comic Neue', cursive;
+  font-size: 25px;
 }
 
 .hero .btn-book-a-table {

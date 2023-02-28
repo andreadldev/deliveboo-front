@@ -42,8 +42,7 @@ export default {
 @import "./style/global.scss";
 
 body {
-  font-family: 'Roboto Serif', serif, ;
-
+  font-family: 'Comic Neue', cursive, ;
 }
 
 .my-header {
@@ -52,10 +51,8 @@ body {
 
 .my-main {
   flex-grow: 1;
-}
 
-.my-footer {
-  height: 300px;
-  bottom: 0;
+
+
 }
 </style>
