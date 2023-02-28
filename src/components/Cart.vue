@@ -35,8 +35,12 @@ export default {
             },
             QuantityDown(i, price) {
                 let oldPrice = price
-                document.querySelector(`#quantity-${i}`).stepDown();
-                document.querySelector(`#price-${i}`).innerHTML = price / document.querySelector(`#quantity-${i}`).value;
+                if(parseFloat(document.querySelector(`#price-${i}`).innerHTML) > price) {
+                    document.querySelector(`#quantity-${i}`).stepDown();
+                    document.querySelector(`#price-${i}`).innerHTML -=  price;
+                } else {
+                    document.querySelector(`#price-${i}`).innerHTML =  price;
+                }
             }
         }
     };
