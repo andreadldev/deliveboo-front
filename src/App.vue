@@ -42,7 +42,7 @@ export default {
 @import "./style/global.scss";
 
 body {
-  font-family: 'Roboto Serif', serif, ;
+  font-family: 'Comic Neue', cursive, ;
 }
 
 .my-header {

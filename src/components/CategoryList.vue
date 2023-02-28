@@ -46,16 +46,16 @@ export default {
 };
 </script>
 <template>
-  <div class="container">
+  <div class="">
     <div class="d-flex flex-column">
       <div>
-        <h2 class="mt-5">Scegli una o più Categoria:</h2>
-        <ul class="d-flex justify-content-around gy-3 col-lg-9 m-auto category ">
+        <h2 class="mt-5">Seleziona una o più Categorie:</h2>
+        <ul class="d-flex flex-row flex-wrap w-100 justify-content-around gy-3 col-lg-9 m-auto category ">
           <li v-for="(category, index) in store.categories" :key="index">
             <!-- <div>
-                                            <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
-                                                {{ category.name }}
-                                              </div> -->
+                                                        <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
+                                                            {{ category.name }}
+                                                          </div> -->
             <article class="feature1">
               <input type="checkbox" id="feature1" v-model="category.selected" @change="toggleCategory(index)" />
               <div>
@@ -65,7 +65,7 @@ export default {
           </li>
         </ul>
       </div>
-      <div>
+      <div class="container">
         <h2 class="mt-3">Restaurants</h2>
         <div class="d-flex">
           <ul class="row" v-if="isActive">

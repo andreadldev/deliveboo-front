@@ -22,7 +22,7 @@ export default {
             </h2>
             <p data-aos="fade-up" data-aos-delay="100">
               Approfitta di un'ampia varietà di ristoranti per ordinare i tuoi
-              piatti preferiti!
+              piatti preferiti e gustarli direttamente a casa tua!
             </p>
           </div>
           <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
@@ -82,6 +82,8 @@ export default {
   color: #4f4f5a;
   font-weight: 400;
   margin-bottom: 30px;
+  font-family: 'Comic Neue', cursive;
+  font-size: 25px;
 }
 
 .hero .btn-book-a-table {
@@ -149,4 +151,5 @@ export default {
   to {
     transform: rotate(359deg);
   }
-}</style>
+}
+</style>
