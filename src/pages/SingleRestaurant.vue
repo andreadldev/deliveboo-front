@@ -13,34 +13,35 @@
       <h5>I nostri piatti:</h5>
 
       <!-- form -->
-      <form @submit.prevent="saveData()">
-        <div v-for="(dish, index) in restaurant.dishes" :key="index">
-          <div>
-            <label :for="'check-' + index">{{ dish.name }}</label>
-            <input
-              :id="'check-' + index"
-              class="check"
-              type="checkbox"
-              :value="dish"
-              v-model="order.dish"
-            >
+      <form @submit.prevent="saveData()" >
+        <div v-for="(dish, index) in restaurant.dishes" :key="index" >
+          <div class="d-flex justify-content-center flex-column w-10">
+            <div class="wrapper">
+              <label :for="'check-' + index" >{{ dish.name }}</label>
+              <input
+                :id="'check-' + index"
+                class="check ms-1 mt-2"
+                type="checkbox"
+                :value="dish"
+                v-model="order.dish"
+              >
+            </div>
+            <div>
+              <label :for="'quantity-' + index">Inserisci la quantità</label>
+              <input
+                :id="'quantity-' + index"
+                class="quant"
+                type="number"
+                min = 0
+                :disabled="!order.dish.includes(dish)"
+                v-model="quantity[index]"
+              >
           </div>
-          <div>
-            <label class="w-25px" :for="'quantity-' + index">Inserisci la quantità</label>
-            <input
-              :id="'quantity-' + index"
-              class="dish.slug"
-              type="number"
-              min = 0
-              :disabled="!order.dish.includes(dish)"
-              v-model="quantity[index]"
-            >
-          </div>
+          </div>          
         </div>
         <button class="btn btn-warning" type="submit">Aggiungi al carrello</button>
         <button @click="showlog()">Log</button>
       </form>      
-
     </div>
   </div>
 </template>
@@ -109,5 +110,13 @@ export default {
 <style lang="scss" scoped>
 img {
   width: 800px;
+}
+
+.quant {
+  width: 50px;
+}
+
+.wrapper {
+  position: relative
 }
 </style>
