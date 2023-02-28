@@ -1,5 +1,6 @@
 <template>
-  <div v-if="restaurant" class="text-center">
+  <div v-if="restaurant" class="text-center my-restaurant">
+
     <h1>{{ restaurant.name }}</h1>
     <img v-if="restaurant.img" :src="restaurant.img" :alt="restaurant.name">
     <div class="text-center">
@@ -17,31 +18,20 @@
         <div v-for="(dish, index) in restaurant.dishes" :key="index">
           <div>
             <label :for="'check-' + index">{{ dish.name }}</label>
-            <input
-              :id="'check-' + index"
-              class="check"
-              type="checkbox"
-              :value="dish"
-              v-model="order.dish"
-            >
+            <input :id="'check-' + index" class="check" type="checkbox" :value="dish" v-model="order.dish">
           </div>
           <div>
             <label class="w-25px" :for="'quantity-' + index">Inserisci la quantità</label>
-            <input
-              :id="'quantity-' + index"
-              class="dish.slug"
-              type="number"
-              min = 0
-              :disabled="!order.dish.includes(dish)"
-              v-model="quantity[index]"
-            >
+            <input :id="'quantity-' + index" class="dish.slug" type="number" min=0 :disabled="!order.dish.includes(dish)"
+              v-model="quantity[index]">
           </div>
         </div>
         <button class="btn btn-warning" type="submit">Aggiungi al carrello</button>
         <button @click="showlog()">Log</button>
-      </form>      
+      </form>
 
     </div>
+
   </div>
 </template>
 
@@ -54,39 +44,39 @@ export default {
     return {
       store,
       restaurant: null,
-      order:{
-        dish:[],
-        filteredQuantity:[]
+      order: {
+        dish: [],
+        filteredQuantity: []
       },
-      quantity:[],
+      quantity: [],
     };
   },
-  methods:{
-      saveData(){
-        // console.log(this.order)
-        this.order.filteredQuantity = this.quantity.filter((str) => str !== '') 
+  methods: {
+    saveData() {
+      // console.log(this.order)
+      this.order.filteredQuantity = this.quantity.filter((str) => str !== '')
 
-        // console.log(this.order.filteredQuantity)
-        localStorage.setItem('my_data', JSON.stringify(this.order))
-        console.log('my_data', JSON.stringify(this.order))
-        },
-        showlog(){
-        console.log(localStorage.getItem('my_data'))
-      },
-      disableInput() {
-        for (let i = 0; i < this.restaurant.dishes.length; i++) {
-            if (document.querySelector(`.check_${i}`).checked === true){
-                document.querySelector(`.input_${i}`).disabled = false;
-            } 
-            else if (document.querySelector(`.check_${i}`).checked === false) {
-                document.querySelector(`.input_${i}`).value = '';
-                document.querySelector(`.input_${i}`).disabled = true;
-            }
+      // console.log(this.order.filteredQuantity)
+      localStorage.setItem('my_data', JSON.stringify(this.order))
+      console.log('my_data', JSON.stringify(this.order))
+    },
+    showlog() {
+      console.log(localStorage.getItem('my_data'))
+    },
+    disableInput() {
+      for (let i = 0; i < this.restaurant.dishes.length; i++) {
+        if (document.querySelector(`.check_${i}`).checked === true) {
+          document.querySelector(`.input_${i}`).disabled = false;
+        }
+        else if (document.querySelector(`.check_${i}`).checked === false) {
+          document.querySelector(`.input_${i}`).value = '';
+          document.querySelector(`.input_${i}`).disabled = true;
         }
       }
-    },
-  mounted(){
-    if(store.currentUser){
+    }
+  },
+  mounted() {
+    if (store.currentUser) {
       store.currentUser = JSON.parse(localStorage.getItem('my_data'))
     }
   },
@@ -109,5 +99,10 @@ export default {
 <style lang="scss" scoped>
 img {
   width: 800px;
+}
+
+.my-restaurant {
+  padding-top: 200px;
+  padding-bottom: 100px;
 }
 </style>
