@@ -1,137 +1,133 @@
 <script>
 export default {
-  name: "AboutUs",
+    name: "AboutUs",
 };
 </script>
 
 <template>
-  <body>
-    <div class="container">
-    <h1 class="title">Chi Siamo</h1>
-        <div class="row">
-            <div class="col-lg-4 ">
-                <div class="card">
-                    <div class="face front-face">
-                        <img src="src\assets\img\marco (2).jpg"
-                            alt="" class="profile">
-                        <div class="pt-3 text-uppercase name">
-                            Sergio Marco Zanin
+    <body>
+        <div class="container">
+            <h1 class="title"></h1>
+            <div class="row">
+                <div class="col-lg-4 ">
+                    <div class="card">
+                        <div class="face front-face">
+                            <img src="src\assets\img\marco (2).jpg" alt="" class="profile">
+                            <div class="pt-3 text-uppercase name">
+                                Sergio Marco Zanin
+                            </div>
+                            <div class="designation">Full Junior Stack Developer</div>
                         </div>
-                        <div class="designation">Full Junior Stack Developer</div>
-                    </div>
-                    <div class="face back-face">
-                        <span class="fas fa-quote-left"></span>
-                        <div class="testimonial">
-                            I made bacck the purchase price in just 48 hours! Thank you for making it pain less,
-                            pleasant.
-                            The service was execellent. I will refer everyone I know.   
+                        <div class="face back-face">
+                            <span class="fas fa-quote-left"></span>
+                            <div class="testimonial">
+                                I made bacck the purchase price in just 48 hours! Thank you for making it pain less,
+                                pleasant.
+                                The service was execellent. I will refer everyone I know.
+                            </div>
+                            <span class="fas fa-quote-right"></span>
+                            <div>
+                                <a href="https://github.com/SergioMarcoZanin"><i class="fa-brands fa-github"></i></a>
+                            </div>
                         </div>
-                        <span class="fas fa-quote-right"></span>
-                        <div>
-                            <a href="https://github.com/SergioMarcoZanin"><i class="fa-brands fa-github"></i></a>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card">
-                    <div class="face front-face">
-                        <img src="src\assets\img\Ele_foto_cv.jpeg"
-                            alt="" class="profile">
-                        <div class="pt-3 text-uppercase name">
-                            Eleonora Ruggieri
-                        </div>
-                        <div class="designation">Full Junior Stack Developer</div>
-                    </div>
-                    <div class="face back-face">
-                        <span class="fas fa-quote-left"></span>
-                        <div class="testimonial">
-                            Really good, you have saved our business! I made bacck the purchase price in just 48 hours!
-                            man, this thing is getting better and better as I learn more about it.
-                        </div>
-                        <span class="fas fa-quote-right"></span>
-                        <div>
-                            <a href="https://github.com/SergioMarcoZanin"><i class="fa-brands fa-github"></i></a>
-                        </div>
+
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card">
-                    <div class="face front-face">
-                        <img src="src\assets\img\IMG-20230213-WA0011.jpg"
-                            alt="" class="profile">
-                        <div class="pt-3 text-uppercase name">
-                            Valentina Riad
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="face front-face">
+                            <img src="src\assets\img\Ele_foto_cv.jpeg" alt="" class="profile">
+                            <div class="pt-3 text-uppercase name">
+                                Eleonora Ruggieri
+                            </div>
+                            <div class="designation">Full Junior Stack Developer</div>
                         </div>
-                        <div class="designation">Full Junior Stack Developer</div>
+                        <div class="face back-face">
+                            <span class="fas fa-quote-left"></span>
+                            <div class="testimonial">
+                                Really good, you have saved our business! I made bacck the purchase price in just 48 hours!
+                                man, this thing is getting better and better as I learn more about it.
+                            </div>
+                            <span class="fas fa-quote-right"></span>
+                            <div>
+                                <a href="https://github.com/SergioMarcoZanin"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="face back-face">
-                        <span class="fas fa-quote-left"></span>
-                        <div class="testimonial">
-                            Account keeper is the most valuable business research we have EVER purchased. Without
-                            electrician, we would ahave gone bankrupt by now.
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="face front-face">
+                            <img src="src\assets\img\IMG-20230213-WA0011.jpg" alt="" class="profile">
+                            <div class="pt-3 text-uppercase name">
+                                Valentina Riad
+                            </div>
+                            <div class="designation">Full Junior Stack Developer</div>
                         </div>
-                        <span class="fas fa-quote-right"></span>
-                        <div>
-                            <a href="https://github.com/SergioMarcoZanin"><i class="fa-brands fa-github"></i></a>
+                        <div class="face back-face">
+                            <span class="fas fa-quote-left"></span>
+                            <div class="testimonial">
+                                Account keeper is the most valuable business research we have EVER purchased. Without
+                                electrician, we would ahave gone bankrupt by now.
+                            </div>
+                            <span class="fas fa-quote-right"></span>
+                            <div>
+                                <a href="https://github.com/SergioMarcoZanin"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <div class="card">
+                        <div class="face front-face">
+                            <img src="https://images.unsplash.com/photo-1614574762522-6ac2fbba2208?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjY2fHxtYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                                alt="" class="profile">
+                            <div class="pt-3 text-uppercase name">
+                                Nicola Gianfelici
+                            </div>
+                            <div class="designation">Full Junior Stack Developer</div>
+                        </div>
+                        <div class="face back-face">
+                            <span class="fas fa-quote-left"></span>
+                            <div class="testimonial">
+                                Account keeper is the most valuable business research we have EVER purchased. Without
+                                electrician, we would ahave gone bankrupt by now.
+                            </div>
+                            <span class="fas fa-quote-right"></span>
+                            <div>
+                                <a href="https://github.com/SergioMarcoZanin"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <div class="card">
+                        <div class="face front-face">
+                            <img src="https://images.unsplash.com/photo-1614574762522-6ac2fbba2208?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjY2fHxtYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                                alt="" class="profile">
+                            <div class="pt-3 text-uppercase name">
+                                Nicola Gianfelici
+                            </div>
+                            <div class="designation">Full Junior Stack Developer</div>
+                        </div>
+                        <div class="face back-face">
+                            <span class="fas fa-quote-left"></span>
+                            <div class="testimonial">
+                                Account keeper is the most valuable business research we have EVER purchased. Without
+                                electrician, we would ahave gone bankrupt by now.
+                            </div>
+                            <span class="fas fa-quote-right"></span>
+                            <div>
+                                <a href="https://github.com/SergioMarcoZanin"><i class="fa-brands fa-github"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col d-flex justify-content-center">
-                <div class="card">
-                    <div class="face front-face">
-                        <img src="https://images.unsplash.com/photo-1614574762522-6ac2fbba2208?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjY2fHxtYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                            alt="" class="profile">
-                        <div class="pt-3 text-uppercase name">
-                            Nicola Gianfelici
-                        </div>
-                        <div class="designation">Full Junior Stack Developer</div>
-                    </div>
-                    <div class="face back-face">
-                        <span class="fas fa-quote-left"></span>
-                        <div class="testimonial">
-                            Account keeper is the most valuable business research we have EVER purchased. Without
-                            electrician, we would ahave gone bankrupt by now.
-                        </div>
-                        <span class="fas fa-quote-right"></span>
-                        <div>
-                            <a href="https://github.com/SergioMarcoZanin"><i class="fa-brands fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col d-flex justify-content-center">
-                <div class="card">
-                    <div class="face front-face">
-                        <img src="https://images.unsplash.com/photo-1614574762522-6ac2fbba2208?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjY2fHxtYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                            alt="" class="profile">
-                        <div class="pt-3 text-uppercase name">
-                            Nicola Gianfelici
-                        </div>
-                        <div class="designation">Full Junior Stack Developer</div>
-                    </div>
-                    <div class="face back-face">
-                        <span class="fas fa-quote-left"></span>
-                        <div class="testimonial">
-                            Account keeper is the most valuable business research we have EVER purchased. Without
-                            electrician, we would ahave gone bankrupt by now.
-                        </div>
-                        <span class="fas fa-quote-right"></span>
-                        <div>
-                            <a href="https://github.com/SergioMarcoZanin"><i class="fa-brands fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </body>
-  
+    </body>
 </template>
 
 
@@ -145,8 +141,8 @@ export default {
 //     font-family: 'Poppins', sans-serif;
 // }
 
-body{
-    background-color: #f2b150;
+body {
+    background-color: rgb(253, 187, 45);
     min-height: 100vh;
 }
 
@@ -160,23 +156,28 @@ body{
     display: flex;
     justify-content: center;
 }
-.title{
-    padding-top: 150px;
+
+.title {
+    padding-top: 100px;
     padding-bottom: 80px;
     text-align: center;
     color: rgb(195, 34, 34);
 }
-.testimonial{
-  color: rgb(195, 34, 34);
-}
-.designation{
+
+.testimonial {
     color: rgb(195, 34, 34);
 }
-.fa-github{
+
+.designation {
+    color: rgb(195, 34, 34);
+}
+
+.fa-github {
     font-size: 50px;
     color: white;
     margin-top: 50px;
 }
+
 .card {
     width: 300px;
     height: 300px;
@@ -226,7 +227,8 @@ border-bottom: 1px solid #999; */
 
 .card .face.front-face .designation {
     font-size: 0.8rem;
-    color: rgb(195, 34, 34);;
+    color: rgb(195, 34, 34);
+    ;
     letter-spacing: 0.8px;
 }
 
@@ -266,4 +268,5 @@ border-bottom: 1px solid #999; */
         margin-top: 40px;
         margin-bottom: 20px;
     }
-}</style>
+}
+</style>
