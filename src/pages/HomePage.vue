@@ -17,7 +17,7 @@ export default {
           <div
             class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
             <h2 data-aos="fade-up">
-              Goditi il tuo pasto<br />sano e deliziosissime
+              Goditi il tuo pasto<br />sano e deliziosissimo
             </h2>
             <p data-aos="fade-up" data-aos-delay="100">
               Approfitta di un'ampia varietà di ristoranti per ordinare i tuoi
@@ -122,7 +122,7 @@ export default {
 }
 
 .rotate {
-  animation: rotation 15s infinite linear;
+  animation: rotation 100s infinite linear;
 }
 
 @keyframes rotation {

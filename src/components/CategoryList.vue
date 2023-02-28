@@ -51,13 +51,13 @@ export default {
       <div>
         <h2 class="mt-5">Scegli una o più Categoria:</h2>
         <ul
-          class="d-flex flex-wrap justify-content-between gy-3 col-lg-6 m-auto"
+          class="d-flex flex-wrap justify-content-between gy-3 col-lg-9 m-auto category "
         >
           <li v-for="(category, index) in store.categories" :key="index">
             <!-- <div>
-                                                                                                    <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
-                                                                                                    {{ category.name }}
-                                                                                                </div> -->
+              <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
+                  {{ category.name }}
+                </div> -->
             <article class="feature1">
               <input
                 type="checkbox"
@@ -77,7 +77,7 @@ export default {
         <div class="d-flex">
           <ul class="row" v-if="isActive">
             <li
-              class="col-4"
+              class="col-3"
               v-for="(restaurant, index) in filteredRestaurants"
               :key="index"
             >
@@ -148,5 +148,10 @@ article input {
 
 input[type="checkbox"]:checked ~ div {
   background-color: #f2b150;
+}
+
+.category{
+  color:#fa8072;
+  font-size: 18px;
 }
 </style>

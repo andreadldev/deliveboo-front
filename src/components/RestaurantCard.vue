@@ -26,10 +26,10 @@ export default {
       <div>
         <span>Costo di spedizione: €{{ data.price_shipping }}</span>
       </div>
-      <div class="text-center m-4">
+      <div class="text-center m-3">
         <router-link
           :to="{ name: 'single-restaurant', params: { slug: data.slug } }"
-          class="btn btn-primary"
+          class="btn text-white" style="background-color: #fa8072"
           >Dettagli</router-link
         >
       </div>
@@ -37,4 +37,9 @@ export default {
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.card{
+  border-color: orange;
+  border-width: 3px;
+}
+</style>
