@@ -21,11 +21,15 @@ export default {
 <template>
   <section class="container">
     <div class="row">
-      <div class="col-4" v-for="restaurant in store.restaurants">
+      <div class="col-4 my-col" v-for="restaurant in store.restaurants">
         <RestaurantCard :data="restaurant" />
       </div>
     </div>
   </section>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.my-col {
+  margin-top: 50px;
+}
+</style>

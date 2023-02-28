@@ -53,9 +53,9 @@ export default {
         <ul class="d-flex flex-row flex-wrap w-100 justify-content-around gy-3 col-lg-9 m-auto category ">
           <li v-for="(category, index) in store.categories" :key="index">
             <!-- <div>
-                                                        <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
-                                                            {{ category.name }}
-                                                          </div> -->
+                                                                                      <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
+                                                                                          {{ category.name }}
+                                                                                        </div> -->
             <article class="feature1">
               <input type="checkbox" id="feature1" v-model="category.selected" @change="toggleCategory(index)" />
               <div>
@@ -66,10 +66,12 @@ export default {
         </ul>
       </div>
       <div class="container">
-        <h2 class="mt-3">Restaurants</h2>
+
         <div class="d-flex">
+
           <ul class="row" v-if="isActive">
-            <li class="col-3" v-for="(restaurant, index) in filteredRestaurants" :key="index">
+            <h2 class="mt-3">Ristoranti </h2>
+            <li class="col-3 my-card" v-for="(restaurant, index) in filteredRestaurants" :key="index">
               <RestaurantCard :data="restaurant" />
               <router-link :to="{
                 name: 'single-restaurant',
@@ -144,5 +146,15 @@ input[type="checkbox"]:checked~div {
   color: rgb(195, 34, 34);
   ;
   font-size: 18px;
+}
+
+.container {
+  margin-top: 50px;
+  padding-top: 50px;
+}
+
+.my-card {
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 </style>

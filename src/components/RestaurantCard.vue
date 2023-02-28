@@ -8,8 +8,8 @@ export default {
 </script>
 
 <template>
-  <div class="w-100 card m-4">
-    <div class="card-body">
+  <div class="w-100 h-100 card m-4 g-4 my-card-big">
+    <div class="card-body ">
       <h5 class="card-title text-center">{{ data.name }}</h5>
       <img v-if="data.img" :src="data.img" class="card-img-top" :alt="data.name" />
       <small>Telefono: {{ data.phone_number }}</small>
@@ -33,5 +33,9 @@ export default {
 .card {
   border-color: orange;
   border-width: 3px;
+}
+
+.my-card-big {
+  margin-top: 300px;
 }
 </style>
