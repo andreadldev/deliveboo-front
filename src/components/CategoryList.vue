@@ -50,12 +50,12 @@ export default {
     <div class="d-flex flex-column">
       <div>
         <h2 class="mt-5">Scegli una o più Categoria:</h2>
-        <ul class="d-flex flex-wrap justify-content-between gy-3 col-lg-9 m-auto category ">
+        <ul class="d-flex justify-content-around gy-3 col-lg-9 m-auto category ">
           <li v-for="(category, index) in store.categories" :key="index">
             <!-- <div>
-                  <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
-                      {{ category.name }}
-                    </div> -->
+                      <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
+                          {{ category.name }}
+                        </div> -->
             <article class="feature1">
               <input type="checkbox" id="feature1" v-model="category.selected" @change="toggleCategory(index)" />
               <div>
