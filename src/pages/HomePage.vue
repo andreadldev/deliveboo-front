@@ -32,9 +32,9 @@ export default {
       </div>
     </section>
     <!-- End Hero Section -->
-    <!-- <div>
+    <div>
         <CategoryList class="text-center" />
-      </div> -->
+      </div>
   </div>
 </template>
 
