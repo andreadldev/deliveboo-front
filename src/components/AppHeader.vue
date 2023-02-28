@@ -35,8 +35,8 @@ export default {
 
             <li class="nav-item">
               <router-link class="text-decoration-none text-white  nav-link mx-2 btn rounded-0"
-                style="background-color: rgb(195, 34, 34)" :to="{ name: 'checkout' }"><i
-                  class="fa-solid fa-cart-shopping my-cart"></i></router-link>
+                style="background: linear-gradient(0deg, rgba(195,65,34,1) 0%, rgba(78,11,11,1) 100%)"
+                :to="{ name: 'checkout' }"><i class="fa-solid fa-cart-shopping my-cart"></i></router-link>
             </li>
           </ul>
         </div>

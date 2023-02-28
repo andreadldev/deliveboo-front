@@ -51,10 +51,8 @@ body {
 
 .my-main {
   flex-grow: 1;
-}
 
-.my-footer {
-  // height: 300px;
+
 
 }
 </style>
