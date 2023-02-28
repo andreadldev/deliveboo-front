@@ -8,7 +8,7 @@ export default {
   <!-- Remove the container if you want to extend the Footer to full width. -->
   <div class=" my-footer my-5 ">
     <!-- Footer -->
-    <footer class="text-center text-lg-start text-white" style="background-color: #ffa500">
+    <footer class="text-center text-lg-start text-white">
       <!-- Grid container -->
       <div class="container p-4 pb-0">
         <!-- Section: Links -->
@@ -124,6 +124,8 @@ export default {
   left: 0;
   bottom: 0;
   width: 100%;
+  background: rgb(195, 34, 34);
+  background: linear-gradient(0deg, rgba(195, 34, 34, 1) 0%, rgba(253, 187, 45, 1) 100%);
 
 }
 
