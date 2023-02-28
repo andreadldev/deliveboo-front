@@ -43,7 +43,6 @@ export default {
 
 body {
   font-family: 'Roboto Serif', serif, ;
-
 }
 
 .my-header {
@@ -55,7 +54,7 @@ body {
 }
 
 .my-footer {
-  height: 300px;
-  bottom: 0;
+  // height: 300px;
+
 }
 </style>

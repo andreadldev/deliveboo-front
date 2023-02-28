@@ -6,7 +6,7 @@ export default {
 
 <template >
   <!-- Remove the container if you want to extend the Footer to full width. -->
-  <div class=" my-footer my-5 ">
+  <div class=" my-footer ">
     <!-- Footer -->
     <footer class="text-center text-lg-start text-white">
       <!-- Grid container -->
