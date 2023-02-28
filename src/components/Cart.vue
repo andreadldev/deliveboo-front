@@ -32,14 +32,22 @@ export default {
                 let oldPrice = price
                 document.querySelector(`#quantity-${i}`).stepUp();
                 document.querySelector(`#price-${i}`).innerHTML = price * document.querySelector(`#quantity-${i}`).value;
+                if(document.querySelector(`#price-${i}`).innerHTML.includes('.')) {
+                    document.querySelector(`#price-${i}`).innerHTML += '0'
+                } else document.querySelector(`#price-${i}`).innerHTML += '.00'
             },
             QuantityDown(i, price) {
                 let oldPrice = price
                 if(parseFloat(document.querySelector(`#price-${i}`).innerHTML) > price) {
                     document.querySelector(`#quantity-${i}`).stepDown();
-                    document.querySelector(`#price-${i}`).innerHTML -=  price;
+                    document.querySelector(`#price-${i}`).innerHTML -= price;
                 } else {
                     document.querySelector(`#price-${i}`).innerHTML =  price;
+                }
+                if(document.querySelector(`#price-${i}`).innerHTML.includes('.') && document.querySelector(`#price-${i}`).innerHTML != price) {
+                    document.querySelector(`#price-${i}`).innerHTML += '0'
+                } else if (!document.querySelector(`#price-${i}`).innerHTML.includes('.')) {
+                    document.querySelector(`#price-${i}`).innerHTML += '.00'
                 }
             }
         }
@@ -92,8 +100,11 @@ export default {
                             </div>
 
                             <!-- PREZZO -->
-                            <div class="mb-2 text-start text-md-center" :id="'price-' + index">
-                                €{{ item.price }}
+                            <div class="text-center fw-bold price">
+                                <span>€</span>
+                                <div class="d-inline text-start text-md-center" :id="'price-' + index">
+                                    {{ item.price }}
+                                </div>
                             </div>
 
                             </div>
@@ -135,4 +146,11 @@ export default {
     </div>
 </section>
 </template>
+
+<style lang="scss" scoped>
+    .price {
+        position: relative;
+        top: -20px;
+    }
+</style>
 
