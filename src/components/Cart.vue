@@ -104,7 +104,7 @@ export default {
                             <div class="text-center fw-bold price">
                                 <span>€</span>
                                 <div class="d-inline text-start text-md-center" :id="'price-' + index">
-                                    {{ item.price }}
+                                    {{ item.price * this.userCart.filteredQuantity }}
                                 </div>
                             </div>
 
