@@ -23,8 +23,8 @@ export default {
               Approfitta di un'ampia varietà di ristoranti per ordinare i tuoi
               piatti preferiti!
             </p>
-        </div>
-        <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
+          </div>
+          <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
             <img src="src\assets\img\hero-img.png" class="img-fluid rotate" alt="" data-aos="zoom-out"
               data-aos-delay="300" />
           </div>
@@ -33,8 +33,8 @@ export default {
     </section>
     <!-- End Hero Section -->
     <div>
-        <CategoryList class="text-center" />
-      </div>
+      <CategoryList class="text-center" />
+    </div>
   </div>
 </template>
 
@@ -54,7 +54,8 @@ export default {
   font-size: 64px;
   font-weight: 700;
   margin-bottom: 20px;
-  color: #fa8072;
+  color: rgb(195, 34, 34);
+  ;
   font-family: "Dancing Script";
 }
 

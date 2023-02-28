@@ -34,9 +34,9 @@ export default {
             </li>
 
             <li class="nav-item">
-              <router-link class="text-decoration-none text-white nav-link mx-2 btn rounded-0"
+              <router-link class="text-decoration-none text-white  nav-link mx-2 btn rounded-0"
                 style="background-color: rgb(195, 34, 34)" :to="{ name: 'checkout' }"><i
-                  class="fa-solid fa-cart-shopping"></i></router-link>
+                  class="fa-solid fa-cart-shopping my-cart"></i></router-link>
             </li>
           </ul>
         </div>
@@ -80,5 +80,11 @@ export default {
     background: rgb(253, 187, 45);
     background: linear-gradient(0deg, rgba(253, 187, 45, 1) 0%, rgba(195, 34, 34, 1) 100%);
   }
+
+  .my-cart {
+    font-size: 20px;
+  }
+
+
 }
 </style>
