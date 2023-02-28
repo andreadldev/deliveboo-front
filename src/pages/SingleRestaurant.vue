@@ -32,7 +32,7 @@
                 :id="'quantity-' + index"
                 class="quant"
                 type="number"
-                min = 1 max="10"
+                min = 1s max="10"
                 :disabled="!order.dish.includes(dish)"
                 v-model="quantity[index]"
               >
