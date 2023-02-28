@@ -1,7 +1,6 @@
 <script>
 import axios from "axios";
 import Cart from "../components/Cart.vue";
-import { store } from '../store';
 
 export default {
     name: "Checkout",
@@ -10,31 +9,40 @@ export default {
     },
     data(){
         return {
-            store,
             orderTotal: [],
             restaurants: [],
             token: '',
-            sum: 0
+            sum: 0,
         }
     },
-  created() {
-        axios.get(`http://localhost:8000/api/restaurants/`)
-        .then((response) => {
-            this.restaurants = response.data;
-            console.log(this.restaurants)
-        })
-
-        // axios.get(`http://localhost:8000/api/clientToken/`)
-        // .then((response) => {
-        //     this.token = response.data;
-        //     console.log(this.token)
-        // })
+    computed: {
+    myData() {
+      return localStorage.getItem('my_data');
+    }
     },
+    created() {
+            axios.get(`http://localhost:8000/api/restaurants/`)
+            .then((response) => {
+                this.restaurants = response.data;
+            })
+
+            // axios.get(`http://localhost:8000/api/clientToken/`)
+            // .then((response) => {
+            //     this.token = response.data;
+            //     console.log(this.token)
+            // })
+    },
+    methods:{
+    showlog(){
+        console.log(localStorage.getItem('my_data'))
+      },
+    }
 };
 
 </script>
 <template>
-    <Cart/>
+    <Cart :data="myData"/>    
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

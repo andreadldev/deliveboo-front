@@ -1,56 +1,57 @@
 <script>
-import { store } from "../store.js";
-
 export default {
     name: "Cart",
-        data() {
-            return {
-                store,
-            };
+    props: {
+        data: Object,
+    },
+    data() {
+        return {
+            userCart: []
+        };
+    },
+    methods: {
+        addZeroToNumber(num) {
+            if (num != undefined) {
+                if (num.toString().includes(".")) {
+                    return num+"0"
+                } else return num+".00"
+            }
         },
-        created() {
-            console.log(store.userCart);
+        pushPriceInArray(item){
+            this.orderTotal.push(item);
         },
-        methods: {
-            addZeroToNumber(num) {
-                if (num != undefined) {
-                    if (num.toString().includes(".")) {
-                        return num+"0"
-                    } else return num+".00"
-                }
-            },
-            pushPriceInArray(item){
-                this.orderTotal.push(item);
-            },
-            orderTotalPrice() {
-                if (this.orderTotal.length != 0)
-                return this.orderTotal.reduce(function(a, b){
-                    return a + b;
-                })
-            },
-            QuantityUp(i, price) {
-                let oldPrice = price
-                document.querySelector(`#quantity-${i}`).stepUp();
-                document.querySelector(`#price-${i}`).innerHTML = price * document.querySelector(`#quantity-${i}`).value;
-                if(document.querySelector(`#price-${i}`).innerHTML.includes('.')) {
-                    document.querySelector(`#price-${i}`).innerHTML += '0'
-                } else document.querySelector(`#price-${i}`).innerHTML += '.00'
-            },
-            QuantityDown(i, price) {
-                let oldPrice = price
-                if(parseFloat(document.querySelector(`#price-${i}`).innerHTML) > price) {
-                    document.querySelector(`#quantity-${i}`).stepDown();
-                    document.querySelector(`#price-${i}`).innerHTML -= price;
-                } else {
-                    document.querySelector(`#price-${i}`).innerHTML =  price;
-                }
-                if(document.querySelector(`#price-${i}`).innerHTML.includes('.') && document.querySelector(`#price-${i}`).innerHTML != price) {
-                    document.querySelector(`#price-${i}`).innerHTML += '0'
-                } else if (!document.querySelector(`#price-${i}`).innerHTML.includes('.')) {
-                    document.querySelector(`#price-${i}`).innerHTML += '.00'
-                }
+        orderTotalPrice() {
+            if (this.orderTotal.length != 0)
+            return this.orderTotal.reduce(function(a, b){
+                return a + b;
+            })
+        },
+        QuantityUp(i, price) {
+            let oldPrice = price
+            document.querySelector(`#quantity-${i}`).stepUp();
+            document.querySelector(`#price-${i}`).innerHTML = price * document.querySelector(`#quantity-${i}`).value;
+            if(document.querySelector(`#price-${i}`).innerHTML.includes('.')) {
+                document.querySelector(`#price-${i}`).innerHTML += '0'
+            } else document.querySelector(`#price-${i}`).innerHTML += '.00'
+        },
+        QuantityDown(i, price) {
+            let oldPrice = price
+            if(parseFloat(document.querySelector(`#price-${i}`).innerHTML) > price) {
+                document.querySelector(`#quantity-${i}`).stepDown();
+                document.querySelector(`#price-${i}`).innerHTML -= price;
+            } else {
+                document.querySelector(`#price-${i}`).innerHTML =  price;
+            }
+            if(document.querySelector(`#price-${i}`).innerHTML.includes('.') && document.querySelector(`#price-${i}`).innerHTML != price) {
+                document.querySelector(`#price-${i}`).innerHTML += '0'
+            } else if (!document.querySelector(`#price-${i}`).innerHTML.includes('.')) {
+                document.querySelector(`#price-${i}`).innerHTML += '.00'
             }
         }
+    },
+    created(){
+        this.userCart = JSON.parse(this.data)
+    }
     };
 </script>
 
@@ -61,19 +62,19 @@ export default {
             <div class="col-md-8">
                 <div class="card mb-4">
                     <div class="card-header py-3">
-                        <div v-if="store.userCart.dish.length > 1">
-                            <h5 class="mb-0">Carrello - {{ store.userCart.dish.length }} prodotti selezionati</h5>
+                        <div v-if="this.userCart.dish.length > 1">
+                            <h5 class="mb-0">Carrello - {{ this.userCart.dish.length }} prodotti selezionati</h5>
                         </div>
-                        <div v-else-if="store.userCart.dish.length == 1">
-                            <h5 class="mb-0">Carrello - {{ store.userCart.dish.length }} prodotto selezionato</h5>
+                        <div v-else-if="this.userCart.dish.length == 1">
+                            <h5 class="mb-0">Carrello - {{ this.userCart.dish.length }} prodotto selezionato</h5>
                         </div>
-                        <div v-else-if="store.userCart.dish.length == 0">
+                        <div v-else-if="this.userCart.dish.length == 0">
                             <h5 class="mb-0">Carrello - nessun prodotto selezionato</h5>
                         </div>
                     </div>
                     <div class="card-body">
                         <!-- PRODOTTO -->
-                        <div class="row" v-for="item, index in store.userCart.dish">
+                        <div class="row" v-for="item, index in this.userCart.dish">
                             <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
                                 <!-- IMMAGINE -->
                                 <div>
@@ -92,7 +93,7 @@ export default {
                                 <button class="btn btn-primary px-3 me-2 mb-5" @click="QuantityDown(index, item.price)">-</button>
 
                                 <div class="form-outline">
-                                    <input :id="'quantity-' + index" required min="1" max="10" :name="'quantity-' + index" value="1" type="number" class="form-control" />
+                                    <input :id="'quantity-' + index" required min="1" max="10" :name="'quantity-' + index" :value=this.userCart.filteredQuantity type="number" class="form-control" />
                                     <label class="form-label" for="form1">Quantità</label>
                                 </div>
 
@@ -108,7 +109,7 @@ export default {
                             </div>
 
                             </div>
-                            <div v-if="index != store.userCart.dish.length -1 ">
+                            <div v-if="index != this.userCart.dish.length -1 ">
                                 <hr class="mb-4" />
                             </div>
                         </div>

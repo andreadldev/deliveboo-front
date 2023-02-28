@@ -70,7 +70,7 @@ export default {
         localStorage.setItem('my_data', JSON.stringify(this.order))
         console.log('my_data', JSON.stringify(this.order))
         },
-        showlog(){
+      showlog(){
         console.log(localStorage.getItem('my_data'))
       },
       disableInput() {
@@ -85,11 +85,11 @@ export default {
         }
       }
     },
-  mounted(){
-    if(store.currentUser){
-      store.currentUser = JSON.parse(localStorage.getItem('my_data'))
-    }
-  },
+  // mounted(){
+  //   if(store.currentUser){
+  //     store.currentUser = JSON.parse(localStorage.getItem('my_data'))
+  //   }
+  // },
   created() {
     axios
       .get(`http://localhost:8000/api/restaurants/${this.$route.params.slug}`)
