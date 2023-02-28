@@ -53,9 +53,9 @@ export default {
         <ul class="d-flex justify-content-around gy-3 col-lg-9 m-auto category ">
           <li v-for="(category, index) in store.categories" :key="index">
             <!-- <div>
-                      <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
-                          {{ category.name }}
-                        </div> -->
+                                            <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
+                                                {{ category.name }}
+                                              </div> -->
             <article class="feature1">
               <input type="checkbox" id="feature1" v-model="category.selected" @change="toggleCategory(index)" />
               <div>
@@ -108,10 +108,11 @@ body {
 article {
   position: relative;
   width: 140px;
-  height: 100px;
+  height: 50px;
   margin: 5px;
   float: left;
-  border: 2px solid #f2b150;
+  border: 2px solid rgb(253, 187, 45);
+
   box-sizing: border-box;
 }
 
@@ -136,7 +137,7 @@ article input {
 }
 
 input[type="checkbox"]:checked~div {
-  background-color: #f2b150;
+  background-color: rgb(253, 187, 45);
 }
 
 .category {
