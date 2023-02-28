@@ -8,37 +8,41 @@ export default {
   <body>
     <div class="container">
     <h1 class="title">Chi Siamo</h1>
-        <div class="row mt-5">
-            <div class="col-lg-3 ">
+        <div class="row">
+            <div class="col-lg-4 ">
                 <div class="card">
                     <div class="face front-face">
-                        <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80"
+                        <img src="src\assets\img\marco (2).jpg"
                             alt="" class="profile">
                         <div class="pt-3 text-uppercase name">
-                            Robert Garrison
+                            Sergio Marco Zanin
                         </div>
-                        <div class="designation">Android Developer</div>
+                        <div class="designation">Full Junior Stack Developer</div>
                     </div>
                     <div class="face back-face">
                         <span class="fas fa-quote-left"></span>
                         <div class="testimonial">
                             I made bacck the purchase price in just 48 hours! Thank you for making it pain less,
                             pleasant.
-                            The service was execellent. I will refer everyone I know.
+                            The service was execellent. I will refer everyone I know.   
                         </div>
                         <span class="fas fa-quote-right"></span>
+                        <div>
+                            <a href="https://github.com/SergioMarcoZanin"><i class="fa-brands fa-github"></i></a>
+                        </div>
                     </div>
+                    
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <div class="card">
                     <div class="face front-face">
-                        <img src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+                        <img src="src\assets\img\Ele_foto_cv.jpeg"
                             alt="" class="profile">
                         <div class="pt-3 text-uppercase name">
-                            Jeffery Kennan
+                            Eleonora Ruggieri
                         </div>
-                        <div class="designation">Full Stack Developer</div>
+                        <div class="designation">Full Junior Stack Developer</div>
                     </div>
                     <div class="face back-face">
                         <span class="fas fa-quote-left"></span>
@@ -47,18 +51,21 @@ export default {
                             man, this thing is getting better and better as I learn more about it.
                         </div>
                         <span class="fas fa-quote-right"></span>
+                        <div>
+                            <a href="https://github.com/SergioMarcoZanin"><i class="fa-brands fa-github"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <div class="card">
                     <div class="face front-face">
-                        <img src="https://images.unsplash.com/photo-1614574762522-6ac2fbba2208?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjY2fHxtYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                        <img src="src\assets\img\IMG-20230213-WA0011.jpg"
                             alt="" class="profile">
                         <div class="pt-3 text-uppercase name">
-                            Issac Maxwell
+                            Valentina Riad
                         </div>
-                        <div class="designation">Finance Director</div>
+                        <div class="designation">Full Junior Stack Developer</div>
                     </div>
                     <div class="face back-face">
                         <span class="fas fa-quote-left"></span>
@@ -67,18 +74,23 @@ export default {
                             electrician, we would ahave gone bankrupt by now.
                         </div>
                         <span class="fas fa-quote-right"></span>
+                        <div>
+                            <a href="https://github.com/SergioMarcoZanin"><i class="fa-brands fa-github"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
+        </div>
+        <div class="row">
+            <div class="col d-flex justify-content-center">
                 <div class="card">
                     <div class="face front-face">
                         <img src="https://images.unsplash.com/photo-1614574762522-6ac2fbba2208?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjY2fHxtYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
                             alt="" class="profile">
                         <div class="pt-3 text-uppercase name">
-                            Issac Maxwell
+                            Nicola Gianfelici
                         </div>
-                        <div class="designation">Finance Director</div>
+                        <div class="designation">Full Junior Stack Developer</div>
                     </div>
                     <div class="face back-face">
                         <span class="fas fa-quote-left"></span>
@@ -87,6 +99,32 @@ export default {
                             electrician, we would ahave gone bankrupt by now.
                         </div>
                         <span class="fas fa-quote-right"></span>
+                        <div>
+                            <a href="https://github.com/SergioMarcoZanin"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex justify-content-center">
+                <div class="card">
+                    <div class="face front-face">
+                        <img src="https://images.unsplash.com/photo-1614574762522-6ac2fbba2208?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjY2fHxtYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                            alt="" class="profile">
+                        <div class="pt-3 text-uppercase name">
+                            Nicola Gianfelici
+                        </div>
+                        <div class="designation">Full Junior Stack Developer</div>
+                    </div>
+                    <div class="face back-face">
+                        <span class="fas fa-quote-left"></span>
+                        <div class="testimonial">
+                            Account keeper is the most valuable business research we have EVER purchased. Without
+                            electrician, we would ahave gone bankrupt by now.
+                        </div>
+                        <span class="fas fa-quote-right"></span>
+                        <div>
+                            <a href="https://github.com/SergioMarcoZanin"><i class="fa-brands fa-github"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -108,42 +146,36 @@ export default {
 // }
 
 body{
-    background: linear-gradient(to bottom, #000428, #004683);
-    animation: background-color 20s;
+    background-color: #f2b150;
     min-height: 100vh;
 }
 
-@keyframes background-color {
-    0% {
-        background: linear-gradient(to bottom, #000428, #004683);
-    }
 
-    25% {
-        background: linear-gradient(135deg, #1a4223, #5ee95e);
-    }
-
-    50% {
-        background: linear-gradient(to bottom, #421a31, #e95ed2);
-    }
-
-    100% {
-        background: linear-gradient(-135deg, #fae37d, #881da8, #20668f);
-    }
-
-}
-
-.container {
-    margin-top: 150px;
-    margin-bottom: 150px;
-}
+// .container {
+//     margin-top: 100px;
+//     margin-bottom: 100px;
+// }
 
 .container .col-lg-4 {
     display: flex;
     justify-content: center;
 }
-
+.title{
+    padding-top: 150px;
+    padding-bottom: 80px;
+    text-align: center;
+    color: rgb(195, 34, 34);
+}
 .testimonial{
-  color: green;
+  color: rgb(195, 34, 34);
+}
+.designation{
+    color: rgb(195, 34, 34);
+}
+.fa-github{
+    font-size: 50px;
+    color: white;
+    margin-top: 50px;
 }
 .card {
     width: 300px;
@@ -152,22 +184,22 @@ body{
     perspective: 500px;
     border: none;
     background-color: inherit;
+    margin-bottom: 55px;
 }
 
 .card .face {
     position: absolute;
-    color: #fff;
+    color: rgb(195, 34, 34);
     width: 100%;
     height: 100%;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 35px rgb(195, 34, 34);
     border-radius: 15px;
-    background: rgba(255, 255, 255, 0.06);
     transform-style: preserve-3d;
     transition: 1s;
     backface-visibility: hidden;
-    border-top: 1px solid #ddd;
-    border-left: 1px solid #ddd;
+    border-top: 2px solid rgb(195, 34, 34);
+    border-left: 2px solid rgb(195, 34, 34);
     /* border-right: 1px solid #999;
 border-bottom: 1px solid #999; */
 }
@@ -194,7 +226,7 @@ border-bottom: 1px solid #999; */
 
 .card .face.front-face .designation {
     font-size: 0.8rem;
-    color: #ddd;
+    color: rgb(195, 34, 34);;
     letter-spacing: 0.8px;
 }
 
