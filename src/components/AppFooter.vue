@@ -6,7 +6,13 @@ export default {
 
 <template>
   <!-- Remove the container if you want to extend the Footer to full width. -->
+  <svg class="my-rotate" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" data-v-2d1117dc="">
+    <path fill="#fdbb2d" fill-opacity="1"
+      d="M0,128L40,144C80,160,160,192,240,197.3C320,203,400,181,480,154.7C560,128,640,96,720,85.3C800,75,880,85,960,112C1040,139,1120,181,1200,192C1280,203,1360,181,1400,170.7L1440,160L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"
+      data-v-2d1117dc=""></path>
+  </svg>
   <div class="my-footer">
+
     <!-- Footer -->
     <footer class="text-center text-white">
       <!-- Grid container -->
@@ -16,9 +22,7 @@ export default {
           <!--Grid row-->
           <div class="row">
             <!-- Grid column -->
-            <div
-              class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 my-column-footer"
-            >
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 my-column-footer">
               <h6 class="text-uppercase mb-4 my-font">Scopri Deliveroo</h6>
               <small>
                 <a href="/chi-siamo" class="my-link">Investitori</a> <br />
@@ -34,9 +38,7 @@ export default {
             <hr class="w-100 clearfix d-md-none" />
 
             <!-- Grid column -->
-            <div
-              class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 my-column-footer"
-            >
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 my-column-footer">
               <h6 class="text-uppercase mb-4 my-font">Note legali</h6>
               <small>
                 <a href="" class="my-link">Termini & Condizioni</a> <br />
@@ -49,16 +51,11 @@ export default {
             <hr class="w-100 clearfix d-md-none" />
 
             <!-- Grid column -->
-            <div
-              class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3 my-column-footer"
-            >
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3 my-column-footer">
               <h6 class="text-uppercase mb-4 my-font">Contatti</h6>
               <small>
-                <a
-                  href="https://www.google.it/maps/place/Deliveroo+-+Uffici/@45.440727,9.1550847,15z/data=!3m1!4b1!4m5!3m4!1s0x4786c3eb2e46548f:0x41f8390b6101381c!8m2!3d45.4407273!4d9.163818"
-                  class="my-link"
-                  >Indirizzo</a
-                >
+                <a href="https://www.google.it/maps/place/Deliveroo+-+Uffici/@45.440727,9.1550847,15z/data=!3m1!4b1!4m5!3m4!1s0x4786c3eb2e46548f:0x41f8390b6101381c!8m2!3d45.4407273!4d9.163818"
+                  class="my-link">Indirizzo</a>
                 <br />
                 <a href="" class="my-link">+39 3476589065</a> <br />
                 <a href="" class="my-link">800 666 898</a> <br />
@@ -70,31 +67,21 @@ export default {
             <hr class="w-100 clearfix d-md-none" />
 
             <!-- Grid column -->
-            <div
-              class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3 my-column-footer"
-            >
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3 my-column-footer">
               <h6 class="text-uppercase mb-4 my-font">Social</h6>
 
               <small>
                 <p>
-                  <a href="" class="text-white"
-                    ><i class="fa-brands fa-facebook my-social"></i
-                  ></a>
+                  <a href="" class="text-white"><i class="fa-brands fa-facebook my-social"></i></a>
                 </p>
                 <p>
-                  <a class="text-white"
-                    ><i class="fa-brands fa-instagram my-social"></i
-                  ></a>
+                  <a class="text-white"><i class="fa-brands fa-instagram my-social"></i></a>
                 </p>
                 <p>
-                  <a class="text-white"
-                    ><i class="fa-brands fa-tiktok my-social"></i
-                  ></a>
+                  <a class="text-white"><i class="fa-brands fa-tiktok my-social"></i></a>
                 </p>
                 <p>
-                  <a class="text-white"
-                    ><i class="fa-brands fa-twitter my-social"></i
-                  ></a>
+                  <a class="text-white"><i class="fa-brands fa-twitter my-social"></i></a>
                 </p>
               </small>
             </div>
@@ -133,17 +120,19 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.my-rotate {
+  transform: rotate(180deg);
+}
+
 .my-footer {
   // position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   background: rgb(195, 34, 34);
-  background: linear-gradient(
-    0deg,
-    rgba(195, 34, 34, 1) 0%,
-    rgba(253, 187, 45, 1) 100%
-  );
+  background: linear-gradient(0deg,
+      rgba(195, 34, 34, 1) 0%,
+      rgba(253, 187, 45, 1) 100%);
 }
 
 .my-font {
@@ -154,6 +143,7 @@ export default {
   color: white;
   text-decoration: none;
 }
+
 .my-social {
   font-size: 20px;
 }
