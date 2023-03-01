@@ -16,9 +16,20 @@ export default {
 
             images:
                 [
-                    { img: "https://www.1950americandiner.it/media/mobile/home-slide-02.jpg" },
-
+                    "https://co-restaurants.roocdn.com/images/8e40a08dc3c65f93d73e199465e64a963754bf6b/shortcut/barbeque-1.png?width=200&height=114&fit=crop&bg-color=00ccbc&auto=webp&format=png",
+                    "https://co-restaurants.roocdn.com/images/8e40a08dc3c65f93d73e199465e64a963754bf6b/shortcut/sushi-1.png?width=200&height=114&fit=crop&bg-color=cc3a2f&auto=webp&format=png",
+                    "https://co-restaurants.roocdn.com/images/8e40a08dc3c65f93d73e199465e64a963754bf6b/shortcut/organic.png?width=200&height=114&fit=crop&bg-color=007e8a&auto=webp&format=png",
+                    "https://res.cloudinary.com/hz3gmuqw6/image/upload/c_fill,q_60,w_750/tk-traditional-indian-foods-to-taste-in-2022-phpEXAXNS",
+                    "https://www.1950americandiner.it/media/mobile/home-slide-02.jpg",
+                    "https://www.1950americandiner.it/media/mobile/home-slide-02.jpg",
+                    "https://www.1950americandiner.it/media/mobile/home-slide-02.jpg",
+                    "https://www.1950americandiner.it/media/mobile/home-slide-02.jpg",
+                    "https://www.1950americandiner.it/media/mobile/home-slide-02.jpg",
+                    "https://www.1950americandiner.it/media/mobile/home-slide-02.jpg",
+                    "https://www.1950americandiner.it/media/mobile/home-slide-02.jpg",
+                    "https://www.1950americandiner.it/media/mobile/home-slide-02.jpg"
                 ]
+
 
 
 
@@ -62,15 +73,15 @@ export default {
                 <ul class="d-flex flex-row flex-wrap w-100 justify-content-around gy-3 col-lg-9 m-auto category ">
                     <li v-for="(category, index) in store.categories" :key="index">
                         <!-- <div>
-                                                                                                                                                                                                          <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
-                                                                                                                                                                                                              {{ category.name }}
-                                                                                                                                                                                                            </div> -->
+                                                                                                                                                                                                                                                          <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
+                                                                                                                                                                                                                                                              {{ category.name }}
+                                                                                                                                                                                                                                                            </div> -->
                         <article class="feature1">
                             <input type="checkbox" id="feature1" v-model="category.selected"
                                 @change="toggleCategory(index)" />
-                            <div v-for="image in images" class="w-200 d-flex flex-column justify-content-between">
+                            <div class="w-200 d-flex flex-column justify-content-between">
 
-                                <img class="img-fluid w-200" :src="image.img" alt="">
+                                <img class="img-fluid w-200" :src="images[index]" alt="">
                                 <span> {{ category.name }}<br /> </span>
                             </div>
                         </article>
