@@ -9,13 +9,14 @@ export default {
 
 <template>
   <div id="demoRest" class="w-100 h-100 card m-4 g-4 my-card-big" style="background-color: rgb(253, 187, 45)">
-    <router-link :to="{ name: 'single-restaurant', params: { slug: data.slug } }" class="text-white">
+    <router-link :to="{ name: 'single-restaurant', params: { slug: data.slug } }" class="text-white text-decoration-none">
       <div class="card-body p-0 d-flex flex-column justify-content-between">
         <img v-if="data.img" :src="data.img" class="card-img my-card" :alt="data.name" />
-        <h5 class="card-title text-center">{{ data.name }}</h5>
 
-        <div>
-          <span>Costo di spedizione: €{{ data.price_shipping }}</span>
+        <h5 class="card-title text-center" style=" color:rgb(195, 34, 34)">{{ data.name }}</h5>
+
+        <div class="text-center">
+          <small class="card-title ">Consegna €{{ data.price_shipping }}</small>
         </div>
       </div>
     </router-link>
