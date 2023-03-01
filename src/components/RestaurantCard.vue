@@ -45,7 +45,8 @@ export default {
   height: 100px;
 }
 .my-card {
-  width: 100%;
-  height: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 20px;
 }
 </style>
