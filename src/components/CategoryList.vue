@@ -90,7 +90,7 @@ export default {
       <div class="container">
         <div class="d-flex">
           <ul class="row" v-if="isActive">
-            <h2>Hai selezionato:{{ category.name }}</h2>
+            <h2>Hai selezionato:</h2>
             <li
               class="col-3 my-card"
               v-for="(restaurant, index) in filteredRestaurants"
