@@ -59,13 +59,7 @@ $(document).ready(function () {
             <li class="nav-item">
               <router-link
                 class="text-decoration-none text-white nav-link mx-2 btn rounded-0"
-                style="
-                  background: linear-gradient(
-                    0deg,
-                    rgba(195, 65, 34, 1) 0%,
-                    rgba(78, 11, 11, 1) 100%
-                  );
-                "
+                style="background: red"
                 :to="{ name: 'checkout' }"
                 ><i class="fa-solid fa-cart-shopping my-cart"></i
               ></router-link>
@@ -86,7 +80,6 @@ $(document).ready(function () {
     rgba(253, 187, 45, 1) 0%,
     rgba(195, 34, 34, 1) 100%
   );
-  
 }
 
 .brand {
@@ -251,7 +244,7 @@ nav ul li ul li a {
     display: block;
   }
 }
-.nav-bar{
+.nav-bar {
   display: block;
 }
 
@@ -262,7 +255,7 @@ nav ul li ul li a {
   .brand {
     display: none;
   }
-  .nav-bar{
+  .nav-bar {
     display: flex;
   }
 }
