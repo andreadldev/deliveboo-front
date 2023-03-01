@@ -16,7 +16,7 @@ export default {
                             <div class="pt-3 text-uppercase name">
                                 Sergio Marco Zanin
                             </div>
-                            <div class="designation">Full Junior Stack Developer</div>
+                            <div class="designation">Junior Full Stack Developer</div>
                         </div>
                         <div class="face back-face">
                             <span class="fas fa-quote-left"></span>
@@ -40,7 +40,7 @@ export default {
                             <div class="pt-3 text-uppercase name">
                                 Eleonora Ruggieri
                             </div>
-                            <div class="designation">Full Junior Stack Developer</div>
+                            <div class="designation">Junior Full Stack Developer</div>
                         </div>
                         <div class="face back-face">
                             <span class="fas fa-quote-left"></span>
@@ -62,7 +62,7 @@ export default {
                             <div class="pt-3 text-uppercase name">
                                 Valentina Riad
                             </div>
-                            <div class="designation">Full Junior Stack Developer</div>
+                            <div class="designation">Junior Full Stack Developer</div>
                         </div>
                         <div class="face back-face">
                             <span class="fas fa-quote-left"></span>
@@ -87,7 +87,7 @@ export default {
                             <div class="pt-3 text-uppercase name">
                                 Nicola Gianfelici
                             </div>
-                            <div class="designation">Full Junior Stack Developer</div>
+                            <div class="designation">Junior Full Stack Developer</div>
                         </div>
                         <div class="face back-face">
                             <span class="fas fa-quote-left"></span>
@@ -110,7 +110,7 @@ export default {
                             <div class="pt-3 text-uppercase name">
                                 Andrea De Lisi
                             </div>
-                            <div class="designation">Full Junior Stack Developer</div>
+                            <div class="designation">Junior Full Stack Developer</div>
                         </div>
                         <div class="face back-face">
                             <span class="fas fa-quote-left"></span>
