@@ -67,15 +67,15 @@ export default {
 <template>
     <div class="">
         <div class="d-flex flex-column">
-            <div>
+            <div class="m-auto">
                 <h2 class="mt-5">Seleziona una o più Categorie:</h2>
-                <ul class="d-flex flex-row flex-wrap w-100 justify-content-around gy-3 col-lg-9 m-auto category ">
+                <ul class="d-flex flex-row flex-wrap w-100 justify-content-start gy-3 col-lg-9 m-auto category ">
                     <li v-for="(category, index) in store.categories" :key="index">
                         <!-- <div>
-                                                                                                                                                                                                                                                                                                                                                  <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
-                                                                                                                                                                                                                                                                                                                                                      {{ category.name }}
-                                                                                                                                                                                                                                                                                                                                                    </div> -->
-                        <article class="feature1">
+                                                                                                                                                                                                                                                                                                                                                                                      <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
+                                                                                                                                                                                                                                                                                                                                                                                          {{ category.name }}
+                                                                                                                                                                                                                                                                                                                                                                                        </div> -->
+                        <article id="demo" class="feature1">
                             <input type="checkbox" id="feature1" v-model="category.selected"
                                 @change="toggleCategory(index)" />
                             <div class="w-200 d-flex flex-column justify-content-between">
@@ -133,7 +133,7 @@ article {
     position: relative;
     width: 140px;
     height: 120px;
-    margin: 5px;
+    margin: 20px;
     float: left;
     border: 2px solid rgb(253, 187, 45);
 
@@ -158,6 +158,18 @@ article input {
     height: 100px;
     opacity: 0;
     cursor: pointer;
+}
+
+#demo {
+    -webkit-box-shadow: 0px 0px 25px 0px #FFC44A;
+    box-shadow: 0px 0px 25px 0px #FFC44A;
+
+
+}
+
+#demo:hover {
+    transform: scale(1.2);
+    /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 input[type="checkbox"]:checked~div {
