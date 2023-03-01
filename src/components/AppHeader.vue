@@ -86,7 +86,7 @@ $(document).ready(function () {
     rgba(253, 187, 45, 1) 0%,
     rgba(195, 34, 34, 1) 100%
   );
-  display: flex;
+  
 }
 
 .brand {
@@ -213,7 +213,7 @@ nav ul li ul li a {
   transform: rotate(-45deg);
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 799px) {
   .img-preheader {
     display: none;
   }
@@ -251,13 +251,19 @@ nav ul li ul li a {
     display: block;
   }
 }
+.nav-bar{
+  display: block;
+}
 
-@media screen and (min-width: 799px) {
+@media screen and (min-width: 800px) {
   .nav-list {
     display: block !important;
   }
   .brand {
     display: none;
+  }
+  .nav-bar{
+    display: flex;
   }
 }
 .all-header {
