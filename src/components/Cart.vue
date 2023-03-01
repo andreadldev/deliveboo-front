@@ -47,10 +47,14 @@ export default {
             } else if (!document.querySelector(`#price-${i}`).innerHTML.includes('.')) {
                 document.querySelector(`#price-${i}`).innerHTML += '.00'
             }
+        },
+        deleteCart(i){
+            this.userCart.dish.splice(i, 1);
         }
     },
     created(){
         this.userCart = JSON.parse(this.data)
+        console.log(this.userCart)
     }
     };
 </script>
@@ -107,6 +111,8 @@ export default {
                                     {{ item.price * this.userCart.filteredQuantity }}
                                 </div>
                             </div>
+                            <button class="btn btn-danger" @click="deleteCart(index)">Elimina</button>
+
 
                             </div>
                             <div v-if="index != this.userCart.dish.length -1 ">
