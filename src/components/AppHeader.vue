@@ -84,7 +84,16 @@ export default {
   .my-cart {
     font-size: 20px;
   }
+}
 
+@media screen and (max-width: 777px){
+  .my-nav {
+    position: relative;
 
+    width: 100%;
+    z-index: 1;
+    background: rgb(253, 187, 45);
+    background: linear-gradient(0deg, rgba(253, 187, 45, 1) 0%, rgba(195, 34, 34, 1) 100%);
+  }
 }
 </style>
