@@ -1,8 +1,10 @@
 <script>
-import {store} from '../store'
+import {store} from '../store';
+import * as braintree from '../braintree';
 import axios from 'axios';
 export default {
     name: "Cart",
+    braintree,
     props: {
         data: Object,
         slug: String
@@ -24,7 +26,9 @@ export default {
                 email:"",
                 phone_number:"",
                 order_date:null,
-                additional_info: ""
+                additional_info: "",
+                dishesId:[],
+                dishesQuantity:[]
             },
             orderError: false,
             shipping: ''
@@ -44,17 +48,12 @@ export default {
                     order_date: this.orderData.order_date,
                     additional_info: this.orderData.additional_info
                 })
-                // .then((response) => {
-                // this.project.orders.push(response.data);
-                // (this.orderData.name = ""), (this.orderData.content = "");
-                // this.createdorder = true;
-                // if (this.orderError) {
-                //     this.orderError = false;
-                // }
-                // })
-                // .catch((err) => {
-                // this.orderError = err.response.data;
-                // });
+                .then((response) => {
+                    console.log(response)
+                })
+                .catch((err) => {
+          
+                });
             },
         // addZeroToNumber(num) {
         //     if (num != undefined) {
@@ -82,7 +81,6 @@ export default {
                 this.totalPrice[i] += parseFloat(oldPrice)
                 this.subtotal = this.totalPrice.reduce((pv, cv) => pv + cv, 0);
                 this.orderData.price = this.shipping + this.subtotal
-                console.log(this.orderData.price)
             }
 
             // AGGIUNGI ZERO ALLA FINE
@@ -123,17 +121,26 @@ export default {
 
             // data locale
             const date = new Date();
-            this.orderData.order_date = date.toLocaleString();
+            const formattedDate = date.toISOString().replace(/T/, ' ').replace(/\..+/, '');
+            this.orderData.order_date = formattedDate.toLocaleString();
+            console.log(this.orderData.order_date)
 
             // codice random
             const min = 10000;
             const max = 99999;
             this.orderData.code = Math.floor(Math.random() * (max - min + 1)) + min;
+            
 
             //prezzo totale
             this.shipping = parseFloat(document.getElementById('price').innerHTML)
             this.orderData.price = this.shipping + this.subtotal
-            console.log(this.orderData.price)
+            console.log(this.userCart.dish[0].id)
+
+            //dishid e quantity
+            this.userCart.dish.forEach(element => {
+                element.id.push(this.orderData.dishesId)
+            });
+            console.log(this.orderData.dishesId)
         },
     // computed: {
     //     priceCalc(){
@@ -264,16 +271,19 @@ export default {
                                         <input type="text" class="form-control" id="phone-number" pattern="[0-9]+" v-model="orderData.phone_number" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="info" class="col-form-label">Informazioni aggiuntive*:</label>
-                                        <textarea type="textarea" class="form-control" id="info" placeholder="Aggiungi informazioni che possono esserci utili" v-model="orderData.additional_info" required></textarea>
+                                        <label for="info" class="col-form-label">Informazioni aggiuntive:</label>
+                                        <textarea type="textarea" class="form-control" id="info" placeholder="Aggiungi informazioni che possono esserci utili" v-model="orderData.additional_info"></textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                                        <button type="submit" class="btn btn-primary">Conferma ordine</button>
                                     </div>
                                 </form>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                                <button type="button" class="btn btn-primary">Conferma ordine</button>
+                                <div id="dropin-container"></div>
+                                <button id="submit-button" class="button button--small button--green">Purchase</button>
                             </div>
-                            </div>
+                            
                         </div>
                         </div>
                     </div>
@@ -289,5 +299,36 @@ export default {
         position: relative;
         top: -20px;
     }
+    .button {
+        cursor: pointer;
+        font-weight: 500;
+        left: 3px;
+        line-height: inherit;
+        position: relative;
+        text-decoration: none;
+        text-align: center;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 3px;
+        display: inline-block;
+        }
+
+        .button--small {
+        padding: 10px 20px;
+        font-size: 0.875rem;
+        }
+
+        .button--green {
+        outline: none;
+        background-color: #64d18a;
+        border-color: #64d18a;
+        color: white;
+        transition: all 200ms ease;
+        }
+
+        .button--green:hover {
+        background-color: #8bdda8;
+        color: white;
+        }
 </style>
 
