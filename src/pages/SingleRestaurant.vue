@@ -18,6 +18,7 @@
           <div class="d-flex justify-content-center flex-column w-10">
             <div class="wrapper">
               <label :for="'check-' + index" >{{ dish.name }}</label>
+              <!-- modificare e aggiungere bottone -->
               <input
                 :id="'check-' + index"
                 class="check ms-1 mt-2"
@@ -26,17 +27,6 @@
                 v-model="order.dish"
               >
             </div>
-            <div>
-              <label :for="'quantity-' + index">Inserisci la quantità</label>
-              <input
-                :id="'quantity-' + index"
-                class="quant"
-                type="number"
-                min = 1s max="10"
-                :disabled="!order.dish.includes(dish)"
-                v-model="quantity[index]"
-              >
-          </div>
           </div>          
         </div>
         <button class="btn btn-warning" type="submit">Aggiungi al carrello</button>
@@ -47,25 +37,21 @@
 </template>
 
 <script>
-import { store } from "../store";
 import axios from "axios";
 export default {
   name: "SingleRestaurant",
   data() {
     return {
-      store,
       restaurant: null,
       order:{
         dish:[],
-        filteredQuantity:[]
       },
-      quantity:[],
     };
   },
   methods:{
       saveData(){
         // console.log(this.order)
-        this.order.filteredQuantity = this.quantity.filter((str) => str !== '') 
+        // this.order.filteredQuantity = this.quantity.filter((str) => str !== '') 
 
         // console.log(this.order.filteredQuantity)
         localStorage.setItem('my_data', JSON.stringify(this.order))
@@ -86,11 +72,6 @@ export default {
         }
       }
     },
-  // mounted(){
-  //   if(store.currentUser){
-  //     store.currentUser = JSON.parse(localStorage.getItem('my_data'))
-  //   }
-  // },
   created() {
     axios
       .get(`http://localhost:8000/api/restaurants/${this.$route.params.slug}`)

@@ -1,4 +1,5 @@
 <script>
+import {store} from '../store'
 export default {
     name: "Cart",
     props: {
@@ -6,6 +7,8 @@ export default {
     },
     data() {
         return {
+            store,
+            orderTotal: [],
             userCart: [],
         };
     },
@@ -107,7 +110,7 @@ export default {
                                 <button class="btn btn-primary px-3 me-2 mb-5" @click="QuantityDown(index, item.price)">-</button>
 
                                 <div class="form-outline">
-                                    <input :id="'quantity-' + index" required min="1" max="10" :name="'quantity-' + index" :value=this.userCart.filteredQuantity[index] type="number" class="form-control" />
+                                    <input :id="'quantity-' + index" required min="1" max="10" :name="'quantity-' + index" value='1' type="number" class="form-control" />
                                     <label class="form-label" for="form1">Quantità</label>
                                 </div>
 
@@ -119,7 +122,7 @@ export default {
                                 <span>€</span>
                                 <div class="d-inline text-start text-md-center" :id="'price-' + index">
                                     <!-- {{totalOrder(index)}} -->
-                                    {{ item.price * this.userCart.filteredQuantity[index]  }}
+                                    {{ item.price  }}
                                 </div>
                             </div>
                             <button class="btn btn-danger" @click="deleteCart(index)">Elimina</button>
