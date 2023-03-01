@@ -56,6 +56,7 @@ export default {
         localStorage.setItem('my_data', JSON.stringify(this.order))
         localStorage.setItem('slug', JSON.stringify(this.$route.params.slug))
 
+        console.log(this.$route.params.slug)
         console.log('slug', JSON.stringify(this.$route.params.slug))
         console.log('my_data', JSON.stringify(this.order))
         },

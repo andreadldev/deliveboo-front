@@ -5,12 +5,12 @@ export default {
     name: "Cart",
     props: {
         data: Object,
-        slug: Object
+        slug: String
     },
     data() {
         return {
             store,
-            slug: null,
+            restaurant_slug: null,
             restaurant: null,
             userCart: [],
             totalPrice: [],
@@ -32,7 +32,7 @@ export default {
     methods: {
         addNewOrder() {
             axios
-                .post(`http://localhost:8000/api/orders/${this.$route.params.slug}`, {
+                .post(`http://localhost:8000/api/orders/${this.restaurant_slug}`, {
                     firstname: this.orderData.firstname,
                     lastname: this.orderData.lastname,
                     code: this.orderData.code,
@@ -107,10 +107,11 @@ export default {
         },
         created(){
             this.userCart = JSON.parse(this.data)
-            this.slug = JSON.parse(this.slug)
+            this.restaurant_slug = JSON.parse(this.slug)
             console.log(this.data)
             console.log(this.slug)
         },
+
         mounted() {
             for (let i = 0; i < this.userCart.dish.length; i++) {
             this.totalPrice.push(parseFloat(document.querySelector(`#price-${i}`).innerHTML));
@@ -126,19 +127,17 @@ export default {
             const max = 99999;
             this.orderData.code = Math.floor(Math.random() * (max - min + 1)) + min;
 
+            //prezzo totale
+            this.orderData.price = document.getElementById('price').innerHTML
+            console.log(this.orderData.price)
         },
     // computed: {
-    // totalOrder(index) {
-    //     // this.userCart.forEach(element => {
-    //     console.log(this.userCart)
-    //     return 'ciao'
-
-    //         // return this.userCart.dish[index].price * this.userCart.filteredQuantity[index]             
-    //     // });
-        
+    //     priceCalc(){
+    //         this.orderData.price = document.getElementById('price').innerHTML
+    //         console.log(this.orderData.price)
+    //     }
     // }
 }
-    // };
     
 </script>
 
@@ -225,7 +224,7 @@ export default {
                                     <strong>Total amount</strong>
                                     <strong><p class="mb-0">(including VAT)</p></strong>
                                 </div>
-                                <span><strong>$53.98</strong></span>
+                                <span><strong id="price">{{ parseFloat(this.subtotal) + parseFloat(this.store.restaurants[this.userCart.dish[0].restaurant_id -1].price_shipping) }}</strong></span>
                             </li>
                         </ul>
                         <!-- <button type="button" class="btn btn-primary btn-lg btn-block">Go to checkout</button> -->
