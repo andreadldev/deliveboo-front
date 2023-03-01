@@ -82,7 +82,7 @@ export default {
                 <div class="col d-flex justify-content-center">
                     <div class="card">
                         <div class="face front-face">
-                            <img src="https://images.unsplash.com/photo-1614574762522-6ac2fbba2208?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjY2fHxtYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                            <img src="src\assets\img\fp.jfif"
                                 alt="" class="profile">
                             <div class="pt-3 text-uppercase name">
                                 Nicola Gianfelici
@@ -92,12 +92,12 @@ export default {
                         <div class="face back-face">
                             <span class="fas fa-quote-left"></span>
                             <div class="testimonial">
-                                Account keeper is the most valuable business research we have EVER purchased. Without
-                                electrician, we would ahave gone bankrupt by now.
+                                Nel mondo sempre in evoluzione del Web Development la voglia di imparare e di accettare nuove sfide non manca mai!
+                                Mi piace accettarne ogni giorno di nuove e implementare così sempre più le mie conoscenze e abilità.
                             </div>
                             <span class="fas fa-quote-right"></span>
                             <div>
-                                <a href="https://github.com/SergioMarcoZanin"><i class="fa-brands fa-github"></i></a>
+                                <a href="https://github.com/32Fire32"><i class="fa-brands fa-github"></i></a>
                             </div>
                         </div>
                     </div>
@@ -105,10 +105,10 @@ export default {
                 <div class="col d-flex justify-content-center">
                     <div class="card">
                         <div class="face front-face">
-                            <img src="https://images.unsplash.com/photo-1614574762522-6ac2fbba2208?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjY2fHxtYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                            <img src="src\assets\img\profile.jpg"
                                 alt="" class="profile">
                             <div class="pt-3 text-uppercase name">
-                                Nicola Gianfelici
+                                Andrea De Lisi
                             </div>
                             <div class="designation">Full Junior Stack Developer</div>
                         </div>
