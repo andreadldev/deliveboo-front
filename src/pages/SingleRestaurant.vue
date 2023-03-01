@@ -52,15 +52,17 @@ export default {
   },
   methods:{
       saveData(){
-        // console.log(this.order)
-        // this.order.filteredQuantity = this.quantity.filter((str) => str !== '') 
 
-        // console.log(this.order.filteredQuantity)
         localStorage.setItem('my_data', JSON.stringify(this.order))
+        localStorage.setItem('slug', JSON.stringify(this.$route.params.slug))
+
+        console.log('slug', JSON.stringify(this.$route.params.slug))
         console.log('my_data', JSON.stringify(this.order))
         },
+
       showlog(){
         console.log(localStorage.getItem('my_data'))
+        console.log(localStorage.getItem('slug'))
       },
       disableInput() {
         for (let i = 0; i < this.restaurant.dishes.length; i++) {

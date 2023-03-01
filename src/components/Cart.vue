@@ -5,10 +5,12 @@ export default {
     name: "Cart",
     props: {
         data: Object,
+        slug: Object
     },
     data() {
         return {
             store,
+            slug: null,
             restaurant: null,
             userCart: [],
             totalPrice: [],
@@ -107,29 +109,31 @@ export default {
         deleteCart(i){
             this.userCart.dish.splice(i, 1);
         }
-    },
-    created(){
-        this.userCart = JSON.parse(this.data)
-        console.log(this.data)
-    },
-    mounted() {
-        for (let i = 0; i < this.userCart.dish.length; i++) {
-            this.totalPrice.push(parseFloat(document.querySelector(`#price-${i}`).innerHTML));
-        }
-        this.subtotal = this.totalPrice.reduce((pv, cv) => pv + cv, 0);
-        this.first_subtotal = this.subtotal;
-        console.log(this.first_subtotal)
+        },
+        created(){
+            this.userCart = JSON.parse(this.data)
+            this.slug = JSON.parse(this.slug)
+            console.log(this.data)
+            console.log(this.slug)
+        },
+        mounted() {
+            for (let i = 0; i < this.userCart.dish.length; i++) {
+                this.totalPrice.push(parseFloat(document.querySelector(`#price-${i}`).innerHTML));
+            }
+            this.subtotal = this.totalPrice.reduce((pv, cv) => pv + cv, 0);
+            this.first_subtotal = this.subtotal;
+            // console.log(this.first_subtotal)
 
-        // data locale
-        const date = new Date();
-        this.orderData.order_date = date.toLocaleString();
+            // data locale
+            const date = new Date();
+            this.orderData.order_date = date.toLocaleString();
 
-        // codice random
-        const min = 10000;
-        const max = 99999;
-        this.orderData.code = Math.floor(Math.random() * (max - min + 1)) + min;
+            // codice random
+            const min = 10000;
+            const max = 99999;
+            this.orderData.code = Math.floor(Math.random() * (max - min + 1)) + min;
 
-    }
+        },
     // computed: {
     // totalOrder(index) {
     //     // this.userCart.forEach(element => {
@@ -138,6 +142,7 @@ export default {
 
     //         // return this.userCart.dish[index].price * this.userCart.filteredQuantity[index]             
     //     // });
+        
     // }
 }
     // };
