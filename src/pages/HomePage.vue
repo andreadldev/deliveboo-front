@@ -26,7 +26,7 @@ export default {
             </p>
           </div>
           <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
-            <img src="src\assets\img\hero-img.png" class="img-fluid rotate" alt="" data-aos="zoom-out"
+            <img src="src\assets\img\PIZZA HERO_preview_rev_1.png" class="img-fluid rotate" alt="" data-aos="zoom-out"
               data-aos-delay="300" />
           </div>
         </div>
