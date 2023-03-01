@@ -12,7 +12,15 @@ export default {
             restaurant: null,
             userCart: [],
             totalPrice: [],
-            subtotal: 0
+            subtotal: 0,
+            orderData:{
+                name:"",
+                lastname:"",
+                address:"",
+                email:"",
+                phone_number:""
+
+            }
         };
     },
     methods: {
@@ -63,7 +71,33 @@ export default {
         },
         deleteCart(i){
             this.userCart.dish.splice(i, 1);
-        }
+        },
+        addNewOrder() {
+            axios
+                .post("http://localhost:8000/...", {
+                    name: this.commentData.name,
+                    content: this.commentData.content,
+                    name: this.commentData.name,
+                    content: this.commentData.content,
+                    content: this.commentData.content,
+                    })
+                    .then((response) => {
+                    this.project.comments.push(response.data);
+                    (this.commentData.name = ""), (this.commentData.content = "");
+                    this.createdComment = true;
+                    if (this.commentError) {
+                        this.commentError = false;
+                    }
+                    })
+                    .catch((err) => {
+                    this.commentError = err.response.data;
+
+                    if (this.createdComment) {
+                        this.createdComment = false;
+                    }
+                    });
+            },
+        
     },
     created(){
         this.userCart = JSON.parse(this.data)
@@ -175,7 +209,47 @@ export default {
                                 <span><strong>$53.98</strong></span>
                             </li>
                         </ul>
-                        <button type="button" class="btn btn-primary btn-lg btn-block">Go to checkout</button>
+                        <!-- <button type="button" class="btn btn-primary btn-lg btn-block">Go to checkout</button> -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Vai all'ordine</button>
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form @submit.prevent ="addNewOrder()">
+                                <div class="mb-3">
+                                    <label for="first-name" class="col-form-label">Nome*:</label>
+                                    <input type="text" class="form-control" id="first-name" v-model="orderData.firstname" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="last-name" class="col-form-label">Cognome*:</label>
+                                    <input type= "text" class="form-control" id="last-name" v-model="orderData.lastname" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="col-form-label">Indirizzo*:</label>
+                                    <input type= "text" class="form-control" id="address" v-model="orderData.address" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="col-form-label">Email*:</label>
+                                    <input type= "email" class="form-control" id="email" v-model="orderData.email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone-number" class="col-form-label">Numero di telefono*:</label>
+                                    <input type="text" class="form-control" id="phone-number" pattern="[0-9]+" v-model="orderData.phone_number" required>
+                                </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                                <button type="button" class="btn btn-primary">Conferma ordine</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>
