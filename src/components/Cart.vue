@@ -14,16 +14,45 @@ export default {
             totalPrice: [],
             subtotal: 0,
             orderData:{
-                name:"",
+                firstname:"",
                 lastname:"",
+                code: null,
+                price: 0,
                 address:"",
                 email:"",
-                phone_number:""
-
-            }
+                phone_number:"",
+                order_date:null,
+                additional_info: ""
+            },
+            orderError: false
         };
     },
     methods: {
+        addNewOrder() {
+            axios
+                .post(`http://localhost:8000/api/orders/${this.$route.params.slug}`, {
+                    firstname: this.orderData.firstname,
+                    lastname: this.orderData.lastname,
+                    code: this.orderData.code,
+                    price: this.orderData.price,
+                    address: this.orderData.address,
+                    email: this.orderData.email,
+                    phone_number: this.orderData.phone_number,
+                    order_date: this.orderData.order_date,
+                    additional_info: this.orderData.additional_info
+                })
+                // .then((response) => {
+                // this.project.orders.push(response.data);
+                // (this.orderData.name = ""), (this.orderData.content = "");
+                // this.createdorder = true;
+                // if (this.orderError) {
+                //     this.orderError = false;
+                // }
+                // })
+                // .catch((err) => {
+                // this.orderError = err.response.data;
+                // });
+            },
         // addZeroToNumber(num) {
         //     if (num != undefined) {
         //         if (num.toString().includes(".")) {
@@ -90,6 +119,15 @@ export default {
         this.subtotal = this.totalPrice.reduce((pv, cv) => pv + cv, 0);
         this.first_subtotal = this.subtotal;
         console.log(this.first_subtotal)
+
+        // data locale
+        const date = new Date();
+        this.orderData.order_date = date.toLocaleString();
+
+        // codice random
+        const min = 10000;
+        const max = 99999;
+        this.orderData.code = Math.floor(Math.random() * (max - min + 1)) + min;
 
     }
     // computed: {
@@ -204,26 +242,30 @@ export default {
                             </div>
                             <div class="modal-body">
                                 <form @submit.prevent ="addNewOrder()">
-                                <div class="mb-3">
-                                    <label for="first-name" class="col-form-label">Nome*:</label>
-                                    <input type="text" class="form-control" id="first-name" v-model="orderData.firstname" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="last-name" class="col-form-label">Cognome*:</label>
-                                    <input type= "text" class="form-control" id="last-name" v-model="orderData.lastname" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="address" class="col-form-label">Indirizzo*:</label>
-                                    <input type= "text" class="form-control" id="address" v-model="orderData.address" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="col-form-label">Email*:</label>
-                                    <input type= "email" class="form-control" id="email" v-model="orderData.email" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="phone-number" class="col-form-label">Numero di telefono*:</label>
-                                    <input type="text" class="form-control" id="phone-number" pattern="[0-9]+" v-model="orderData.phone_number" required>
-                                </div>
+                                    <div class="mb-3">
+                                        <label for="first-name" class="col-form-label">Nome*:</label>
+                                        <input type="text" class="form-control" id="first-name" v-model="orderData.firstname" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="last-name" class="col-form-label">Cognome*:</label>
+                                        <input type= "text" class="form-control" id="last-name" v-model="orderData.lastname" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="address" class="col-form-label">Indirizzo*:</label>
+                                        <input type= "text" class="form-control" id="address" v-model="orderData.address" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="col-form-label">Email*:</label>
+                                        <input type= "email" class="form-control" id="email" v-model="orderData.email" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="phone-number" class="col-form-label">Numero di telefono*:</label>
+                                        <input type="text" class="form-control" id="phone-number" pattern="[0-9]+" v-model="orderData.phone_number" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="info" class="col-form-label">Informazioni aggiuntive*:</label>
+                                        <textarea type="textarea" class="form-control" id="info" placeholder="Aggiungi informazioni che possono esserci utili" v-model="orderData.additional_info" required></textarea>
+                                    </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
