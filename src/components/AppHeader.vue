@@ -48,14 +48,8 @@ $(document).ready(function () {
                 siamo</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="text-decoration-none text-white nav-link mx-2 btn rounded-0" style="
-                                    background: linear-gradient(
-                                      0deg,
-                                      rgba(195, 65, 34, 1) 0%,
-                                      rgba(78, 11, 11, 1) 100%
-                                    );
-                                  " :to="{ name: 'checkout' }"><i
-                  class="fa-solid fa-cart-shopping my-cart"></i></router-link>
+              <router-link class="text-decoration-none text-white nav-link mx-2 btn rounded-0" style="background: red"
+                :to="{ name: 'checkout' }"><i class="fa-solid fa-cart-shopping my-cart"></i></router-link>
             </li>
           </ul>
         </nav>
@@ -71,7 +65,6 @@ $(document).ready(function () {
   background: linear-gradient(0deg,
       rgba(253, 187, 45, 1) 0%,
       rgba(195, 34, 34, 1) 100%);
-
 }
 
 .brand {
@@ -262,7 +255,7 @@ nav ul li ul li a {
 }
 
 .img-preheader {
-  background-image: url(https://thumbs.dreamstime.com/b/banner-sweet-potato-chips-flat-lay-view-website-header-fast-food-restaurants-136423838.jpg );
+  background-image: url(https://thumbs.dreamstime.com/b/banner-sweet-potato-chips-flat-lay-view-website-header-fast-food-restaurants-136423838.jpg);
   // https://thumbs.dreamstime.com/b/banner-sweet-potato-chips-flat-lay-view-website-header-fast-food-restaurants-136423838.jpg
   // https://www.freewebheaders.com/wp-content/gallery/food/delicious-orange-salmon-caviar-website-header.jpg
   // https://www.freewebheaders.com/wp-content/gallery/food/french-fries-natural-food-website-header-image.jpg
