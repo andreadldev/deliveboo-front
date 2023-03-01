@@ -78,7 +78,8 @@ export default {
             document.querySelector(`#price-${i}`).innerHTML = price * document.querySelector(`#quantity-${i}`).value;
 
             if(document.querySelector(`#quantity-${i}`).value < 10) {
-                this.subtotal += parseFloat(oldPrice)
+                this.totalPrice[i] += parseFloat(oldPrice)
+                this.subtotal = this.totalPrice.reduce((pv, cv) => pv + cv, 0);
             }
 
             // AGGIUNGI ZERO ALLA FINE
@@ -95,15 +96,9 @@ export default {
             } else {
                 document.querySelector(`#price-${i}`).innerHTML =  price;
             }
-            if (this.subtotal > this.first_subtotal) {
-                this.subtotal -= parseFloat(oldPrice)
-            }
-
-            // AGGIUNGI ZERO ALLA FINE
-            if(document.querySelector(`#price-${i}`).innerHTML.includes('.') && document.querySelector(`#price-${i}`).innerHTML != price) {
-                document.querySelector(`#price-${i}`).innerHTML += '0'
-            } else if (!document.querySelector(`#price-${i}`).innerHTML.includes('.')) {
-                document.querySelector(`#price-${i}`).innerHTML += '.00'
+            if (this.totalPrice[i] > oldPrice) {
+                this.totalPrice[i] -= parseFloat(oldPrice)
+                this.subtotal = this.totalPrice.reduce((pv, cv) => pv + cv, 0);
             }
         },
         deleteCart(i){
@@ -118,11 +113,9 @@ export default {
         },
         mounted() {
             for (let i = 0; i < this.userCart.dish.length; i++) {
-                this.totalPrice.push(parseFloat(document.querySelector(`#price-${i}`).innerHTML));
+            this.totalPrice.push(parseFloat(document.querySelector(`#price-${i}`).innerHTML));
             }
             this.subtotal = this.totalPrice.reduce((pv, cv) => pv + cv, 0);
-            this.first_subtotal = this.subtotal;
-            // console.log(this.first_subtotal)
 
             // data locale
             const date = new Date();
