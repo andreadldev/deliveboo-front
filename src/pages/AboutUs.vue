@@ -6,7 +6,7 @@ export default {
 
 <template>
     <body>
-        <div class="container">
+        <div class="container my-container">
             <h1 class="title"></h1>
             <div class="row">
                 <div class="col-lg-4 ">
@@ -82,8 +82,7 @@ export default {
                 <div class="col d-flex justify-content-center">
                     <div class="card">
                         <div class="face front-face">
-                            <img src="src\assets\img\fp.jfif"
-                                alt="" class="profile">
+                            <img src="src\assets\img\fp.jfif" alt="" class="profile">
                             <div class="pt-3 text-uppercase name">
                                 Nicola Gianfelici
                             </div>
@@ -92,8 +91,10 @@ export default {
                         <div class="face back-face">
                             <span class="fas fa-quote-left"></span>
                             <div class="testimonial">
-                                Nel mondo sempre in evoluzione del Web Development la voglia di imparare e di accettare nuove sfide non manca mai!
-                                Mi piace accettarne ogni giorno di nuove e implementare così sempre più le mie conoscenze e abilità.
+                                Nel mondo sempre in evoluzione del Web Development la voglia di imparare e di accettare
+                                nuove sfide non manca mai!
+                                Mi piace accettarne ogni giorno di nuove e implementare così sempre più le mie conoscenze e
+                                abilità.
                             </div>
                             <span class="fas fa-quote-right"></span>
                             <div>
@@ -105,8 +106,7 @@ export default {
                 <div class="col d-flex justify-content-center">
                     <div class="card">
                         <div class="face front-face">
-                            <img src="src\assets\img\profile.jpg"
-                                alt="" class="profile">
+                            <img src="src\assets\img\profile.jpg" alt="" class="profile">
                             <div class="pt-3 text-uppercase name">
                                 Andrea De Lisi
                             </div>
@@ -141,9 +141,13 @@ export default {
 //     font-family: 'Poppins', sans-serif;
 // }
 
+.my-container {
+    padding-top: 300px;
+}
+
 body {
     background-color: rgb(253, 187, 45);
-    min-height: 100vh;
+    height: 100vh;
 }
 
 
