@@ -11,7 +11,8 @@ export default {
   <div id="demoRest" class="w-100 h-100 card m-4 g-4 my-card-big" style="background-color: rgb(253, 187, 45)">
     <router-link :to="{ name: 'single-restaurant', params: { slug: data.slug } }" class="text-white text-decoration-none">
       <div class="card-body p-0 d-flex flex-column justify-content-between">
-        <img v-if="data.img" :src="data.img" class="card-img my-card" :alt="data.name" />
+        <img v-if="data.img" :src="data.img" onerror="this.src='https://nagrannar.is/images/restaurant-placeholder.png'"
+          class="card-img my-card" :alt="data.name" />
 
         <h5 class="card-title text-center" style=" color:rgb(195, 34, 34)">{{ data.name }}</h5>
 
