@@ -26,7 +26,8 @@ export default {
                 order_date:null,
                 additional_info: ""
             },
-            orderError: false
+            orderError: false,
+            shipping: ''
         };
     },
     methods: {
@@ -80,6 +81,8 @@ export default {
             if(document.querySelector(`#quantity-${i}`).value < 10) {
                 this.totalPrice[i] += parseFloat(oldPrice)
                 this.subtotal = this.totalPrice.reduce((pv, cv) => pv + cv, 0);
+                this.orderData.price = this.shipping + this.subtotal
+                console.log(this.orderData.price)
             }
 
             // AGGIUNGI ZERO ALLA FINE
@@ -99,6 +102,8 @@ export default {
             if (this.totalPrice[i] > oldPrice) {
                 this.totalPrice[i] -= parseFloat(oldPrice)
                 this.subtotal = this.totalPrice.reduce((pv, cv) => pv + cv, 0);
+                this.orderData.price = this.shipping + this.subtotal
+                console.log(this.orderData.price)
             }
         },
         deleteCart(i){
@@ -108,8 +113,6 @@ export default {
         created(){
             this.userCart = JSON.parse(this.data)
             this.restaurant_slug = JSON.parse(this.slug)
-            console.log(this.data)
-            console.log(this.slug)
         },
 
         mounted() {
@@ -128,7 +131,8 @@ export default {
             this.orderData.code = Math.floor(Math.random() * (max - min + 1)) + min;
 
             //prezzo totale
-            this.orderData.price = document.getElementById('price').innerHTML
+            this.shipping = parseFloat(document.getElementById('price').innerHTML)
+            this.orderData.price = this.shipping + this.subtotal
             console.log(this.orderData.price)
         },
     // computed: {
