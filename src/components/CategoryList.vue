@@ -16,18 +16,17 @@ export default {
 
             images:
                 [
-                    "https://co-restaurants.roocdn.com/images/8e40a08dc3c65f93d73e199465e64a963754bf6b/shortcut/barbeque-1.png?width=200&height=114&fit=crop&bg-color=00ccbc&auto=webp&format=png",
-                    "https://co-restaurants.roocdn.com/images/8e40a08dc3c65f93d73e199465e64a963754bf6b/shortcut/sushi-1.png?width=200&height=114&fit=crop&bg-color=cc3a2f&auto=webp&format=png",
-                    "https://co-restaurants.roocdn.com/images/8e40a08dc3c65f93d73e199465e64a963754bf6b/shortcut/organic.png?width=200&height=114&fit=crop&bg-color=007e8a&auto=webp&format=png",
+                    "https://thumbs.dreamstime.com/b/memorial-day-usa-independence-picnic-party-fourth-july-concept-patriotic-american-traditional-food-watermelon-burgers-hot-219579658.jpg",
+                    "https://shfoodspro.com/wp-content/uploads/2021/02/Vietnamese-Pho.jpg",
+                    "https://www.limmi.it/wp-content/uploads/2022/05/insalata-ceci-scaled.jpg",
                     "https://res.cloudinary.com/hz3gmuqw6/image/upload/c_fill,q_60,w_750/tk-traditional-indian-foods-to-taste-in-2022-phpEXAXNS",
-                    "https://www.1950americandiner.it/media/mobile/home-slide-02.jpg",
-                    "https://www.1950americandiner.it/media/mobile/home-slide-02.jpg",
-                    "https://www.1950americandiner.it/media/mobile/home-slide-02.jpg",
-                    "https://www.1950americandiner.it/media/mobile/home-slide-02.jpg",
-                    "https://www.1950americandiner.it/media/mobile/home-slide-02.jpg",
-                    "https://www.1950americandiner.it/media/mobile/home-slide-02.jpg",
-                    "https://www.1950americandiner.it/media/mobile/home-slide-02.jpg",
-                    "https://www.1950americandiner.it/media/mobile/home-slide-02.jpg"
+                    "https://theplanetd.com/images/Traditional-Italian-Food.jpg",
+                    "https://cdn4.tuscanynowandmore.com/storage/app/media/discover-italy/bacalao-fish.jpg",
+                    "https://blog.amigofoods.com/wp-content/uploads/2020/09/mexican-food.jpg",
+                    "https://www.viaggioff.it/wp-content/uploads/2021/05/poke-bowl-scaled.jpg",
+                    "https://www.comeindubai.com/wp-content/uploads/2021/04/fast-food-dubai-scaled.jpeg",
+                    "https://www.thespruceeats.com/thmb/KKVYHEcAN6Jt7yvULfCB4r3ad30=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/what-is-sushi-5079606-hero-01-e5a0a26f194a49478f84e04193baaefa.jpg",
+                    "https://resize.indiatvnews.com/en/resize/newbucket/715_-/2018/08/tiramisu-1535368950.jpeg"
                 ]
 
 
@@ -73,9 +72,9 @@ export default {
                 <ul class="d-flex flex-row flex-wrap w-100 justify-content-around gy-3 col-lg-9 m-auto category ">
                     <li v-for="(category, index) in store.categories" :key="index">
                         <!-- <div>
-                                                                                                                                                                                                                                                          <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
-                                                                                                                                                                                                                                                              {{ category.name }}
-                                                                                                                                                                                                                                                            </div> -->
+                                                                                                                                                                                                                                                                                                                      <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
+                                                                                                                                                                                                                                                                                                                          {{ category.name }}
+                                                                                                                                                                                                                                                                                                                        </div> -->
                         <article class="feature1">
                             <input type="checkbox" id="feature1" v-model="category.selected"
                                 @change="toggleCategory(index)" />
