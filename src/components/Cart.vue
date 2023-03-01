@@ -46,8 +46,9 @@ export default {
             document.querySelector(`#quantity-${i}`).stepUp();
             document.querySelector(`#price-${i}`).innerHTML = price * document.querySelector(`#quantity-${i}`).value;
 
-            this.subtotal += parseFloat(oldPrice)
-            document.getElementById('subtotal').innerHTML = this.subtotal
+            if(document.querySelector(`#quantity-${i}`).value < 10) {
+                this.subtotal += parseFloat(oldPrice)
+            }
 
             // AGGIUNGI ZERO ALLA FINE
             if(document.querySelector(`#price-${i}`).innerHTML.includes('.')) {
@@ -55,6 +56,7 @@ export default {
             } else document.querySelector(`#price-${i}`).innerHTML += '.00'
         },
         QuantityDown(i, price) {
+            let oldPrice = price
             // CALCOLO QUANTITA' / PREZZO
             if(parseFloat(document.querySelector(`#price-${i}`).innerHTML) > price) {
                 document.querySelector(`#quantity-${i}`).stepDown();
@@ -62,6 +64,10 @@ export default {
             } else {
                 document.querySelector(`#price-${i}`).innerHTML =  price;
             }
+            if (this.subtotal > this.first_subtotal) {
+                this.subtotal -= parseFloat(oldPrice)
+            }
+
             // AGGIUNGI ZERO ALLA FINE
             if(document.querySelector(`#price-${i}`).innerHTML.includes('.') && document.querySelector(`#price-${i}`).innerHTML != price) {
                 document.querySelector(`#price-${i}`).innerHTML += '0'
@@ -107,7 +113,9 @@ export default {
         for (let i = 0; i < this.userCart.dish.length; i++) {
             this.totalPrice.push(parseFloat(document.querySelector(`#price-${i}`).innerHTML));
         }
-        document.getElementById('subtotal').innerHTML = this.totalPrice.reduce((pv, cv) => pv + cv, 0);
+        this.subtotal = this.totalPrice.reduce((pv, cv) => pv + cv, 0);
+        this.first_subtotal = this.subtotal;
+        console.log(this.first_subtotal)
     }
     // computed: {
     // totalOrder(index) {
