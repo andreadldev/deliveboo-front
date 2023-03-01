@@ -6,7 +6,7 @@ export default {
     },
     data() {
         return {
-            userCart: []
+            userCart: [],
         };
     },
     methods: {
@@ -54,9 +54,19 @@ export default {
     },
     created(){
         this.userCart = JSON.parse(this.data)
-        console.log(this.userCart)
-    }
-    };
+    },
+    // computed: {
+    // totalOrder(index) {
+    //     // this.userCart.forEach(element => {
+    //     console.log(this.userCart)
+    //     return 'ciao'
+
+    //         // return this.userCart.dish[index].price * this.userCart.filteredQuantity[index]             
+    //     // });
+    // }
+}
+    // };
+    
 </script>
 
 <template>
@@ -97,7 +107,7 @@ export default {
                                 <button class="btn btn-primary px-3 me-2 mb-5" @click="QuantityDown(index, item.price)">-</button>
 
                                 <div class="form-outline">
-                                    <input :id="'quantity-' + index" required min="1" max="10" :name="'quantity-' + index" :value=this.userCart.filteredQuantity type="number" class="form-control" />
+                                    <input :id="'quantity-' + index" required min="1" max="10" :name="'quantity-' + index" :value=this.userCart.filteredQuantity[index] type="number" class="form-control" />
                                     <label class="form-label" for="form1">Quantità</label>
                                 </div>
 
@@ -108,7 +118,8 @@ export default {
                             <div class="text-center fw-bold price">
                                 <span>€</span>
                                 <div class="d-inline text-start text-md-center" :id="'price-' + index">
-                                    {{ item.price * this.userCart.filteredQuantity }}
+                                    <!-- {{totalOrder(index)}} -->
+                                    {{ item.price * this.userCart.filteredQuantity[index]  }}
                                 </div>
                             </div>
                             <button class="btn btn-danger" @click="deleteCart(index)">Elimina</button>
