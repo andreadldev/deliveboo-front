@@ -8,43 +8,52 @@ export default {
     data() {
         return {
             store,
-            orderTotal: [],
+            // orderTotal: [],
             userCart: [],
+            totalPrice: [],
+            subtotal: 0
         };
     },
     methods: {
-        addZeroToNumber(num) {
-            if (num != undefined) {
-                if (num.toString().includes(".")) {
-                    return num+"0"
-                } else return num+".00"
-            }
-        },
+        // addZeroToNumber(num) {
+        //     if (num != undefined) {
+        //         if (num.toString().includes(".")) {
+        //             return num+"0"
+        //         } else return num+".00"
+        //     }
+        // },
         pushPriceInArray(item){
             this.orderTotal.push(item);
         },
-        orderTotalPrice() {
-            if (this.orderTotal.length != 0)
-            return this.orderTotal.reduce(function(a, b){
-                return a + b;
-            })
-        },
+        // orderTotalPrice() {
+        //     if (this.orderTotal.length != 0)
+        //     return this.orderTotal.reduce(function(a, b){
+        //         return a + b;
+        //     })
+        // },
         QuantityUp(i, price) {
             let oldPrice = price
+            // CALCOLO QUANTITA' / PREZZO
             document.querySelector(`#quantity-${i}`).stepUp();
             document.querySelector(`#price-${i}`).innerHTML = price * document.querySelector(`#quantity-${i}`).value;
+
+            this.subtotal += parseFloat(oldPrice)
+            document.getElementById('subtotal').innerHTML = this.subtotal
+
+            // AGGIUNGI ZERO ALLA FINE
             if(document.querySelector(`#price-${i}`).innerHTML.includes('.')) {
                 document.querySelector(`#price-${i}`).innerHTML += '0'
             } else document.querySelector(`#price-${i}`).innerHTML += '.00'
         },
         QuantityDown(i, price) {
-            let oldPrice = price
+            // CALCOLO QUANTITA' / PREZZO
             if(parseFloat(document.querySelector(`#price-${i}`).innerHTML) > price) {
                 document.querySelector(`#quantity-${i}`).stepDown();
                 document.querySelector(`#price-${i}`).innerHTML -= price;
             } else {
                 document.querySelector(`#price-${i}`).innerHTML =  price;
             }
+            // AGGIUNGI ZERO ALLA FINE
             if(document.querySelector(`#price-${i}`).innerHTML.includes('.') && document.querySelector(`#price-${i}`).innerHTML != price) {
                 document.querySelector(`#price-${i}`).innerHTML += '0'
             } else if (!document.querySelector(`#price-${i}`).innerHTML.includes('.')) {
@@ -58,6 +67,12 @@ export default {
     created(){
         this.userCart = JSON.parse(this.data)
     },
+    mounted() {
+        for (let i = 0; i < this.userCart.dish.length; i++) {
+            this.totalPrice.push(parseFloat(document.querySelector(`#price-${i}`).innerHTML));
+        }
+        document.getElementById('subtotal').innerHTML = this.totalPrice.reduce((pv, cv) => pv + cv, 0);
+    }
     // computed: {
     // totalOrder(index) {
     //     // this.userCart.forEach(element => {
@@ -121,7 +136,6 @@ export default {
                             <div class="text-center fw-bold price">
                                 <span>€</span>
                                 <div class="d-inline text-start text-md-center" :id="'price-' + index">
-                                    <!-- {{totalOrder(index)}} -->
                                     {{ item.price  }}
                                 </div>
                             </div>
@@ -141,12 +155,12 @@ export default {
             <div class="col-md-4">
                 <div class="card mb-4">
                     <div class="card-header py-3">
-                        <h5 class="mb-0">Summary</h5>
+                        <h5 class="mb-0">Riepilogo ordine</h5>
                     </div>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">Products
-                                <span>$53.98</span>
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">Subtotale
+                                <span id="subtotal">{{ this.subtotal }}</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center px-0">Shipping
                                 <span>Gratis</span>
