@@ -210,6 +210,7 @@ nav ul li ul li a {
   .img-preheader {
     display: none;
   }
+
   .nav-mobile {
     display: block;
   }
@@ -240,6 +241,7 @@ nav ul li ul li a {
   .nav-dropdown {
     position: static;
   }
+
   .brand {
     display: block;
   }
@@ -252,6 +254,7 @@ nav ul li ul li a {
   .nav-list {
     display: block !important;
   }
+
   .brand {
     display: none;
   }
@@ -259,6 +262,7 @@ nav ul li ul li a {
     display: flex;
   }
 }
+
 .all-header {
   position: fixed;
   width: 100%;
@@ -266,10 +270,12 @@ nav ul li ul li a {
 }
 
 .img-preheader {
-  background-image: url(https://www.freewebheaders.com/wp-content/gallery/food/delicious-orange-salmon-caviar-website-header.jpg);
+  background-image: url(https://thumbs.dreamstime.com/b/banner-sweet-potato-chips-flat-lay-view-website-header-fast-food-restaurants-136423838.jpg);
+  // https://thumbs.dreamstime.com/b/banner-sweet-potato-chips-flat-lay-view-website-header-fast-food-restaurants-136423838.jpg
+  // https://www.freewebheaders.com/wp-content/gallery/food/delicious-orange-salmon-caviar-website-header.jpg
   // https://www.freewebheaders.com/wp-content/gallery/food/french-fries-natural-food-website-header-image.jpg
   background-size: cover;
-  height: 100px;
+  height: 130px;
   background-repeat: no-repeat;
   position: relative;
 }
