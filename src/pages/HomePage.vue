@@ -18,7 +18,7 @@ export default {
           <div
             class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
             <h2 data-aos="fade-up">
-              Goditi il tuo pasto<br />sano e deliziosissimo
+              I piatti dei ristoranti che ami, a domicilio
             </h2>
             <p data-aos="fade-up" data-aos-delay="100">
               Approfitta di un'ampia varietà di ristoranti per ordinare i tuoi
@@ -71,7 +71,7 @@ export default {
   margin-bottom: 20px;
   color: rgb(195, 34, 34);
   ;
-  font-family: "Dancing Script";
+
 }
 
 .hero h2 span {
@@ -79,11 +79,11 @@ export default {
 }
 
 .hero p {
-  color: #4f4f5a;
-  font-weight: 400;
+  color: white;
+  font-weight: 200;
   margin-bottom: 30px;
-  font-family: 'Comic Neue', cursive;
-  font-size: 25px;
+  font-style: italic;
+  font-size: 18px;
 }
 
 .hero .btn-book-a-table {
