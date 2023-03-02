@@ -28,6 +28,8 @@
         <router-link class="text-decoration-none text-white  btn btn-warning rounded-0" :to="{ name: 'checkout' }">Vai al
           carrello</router-link>
       </div>
+      <div id="advise" class="d-none"><p>Non puoi ordinare da più ristoranti!</p></div>
+      <div id="success" class="d-none"><p>Piatti aggiunti al carrello!</p></div>
     </div>
 
   </div>
@@ -51,16 +53,25 @@ export default {
   },
   methods: {
     saveData() {
+      if( store.userCart.dish.length > 0){
 
-      localStorage.setItem('my_data', JSON.stringify(this.order))
-      localStorage.setItem('slug', JSON.stringify(this.$route.params.slug))
-      localStorage.setItem('price_shipping', JSON.stringify(this.restaurant))
+        document.getElementById('advise').classList.remove('d-none')
 
+      } else {
+
+        localStorage.setItem('my_data', JSON.stringify(this.order))
+        localStorage.setItem('slug', JSON.stringify(this.$route.params.slug))
+        localStorage.setItem('price_shipping', JSON.stringify(this.restaurant))
+
+        document.getElementById('success').classList.remove('d-none')
+
+      }
     },
 
     showlog() {
-      console.log(localStorage.getItem('my_data'))
-      console.log(localStorage.getItem('slug'))
+      console.log(store.userCart.dish)
+      console.log(this.restaurant.id)
+
     },
     disableInput() {
       for (let i = 0; i < this.restaurant.dishes.length; i++) {
