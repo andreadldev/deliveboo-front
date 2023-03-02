@@ -5,12 +5,11 @@ export default {
 </script>
 
 <template>
-  <h1>Il tuo ordine è andato a buon fine :)</h1>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia repudiandae
-    placeat at quis fugit debitis ducimus sapiente temporibus qui quisquam illum
-    quas quo hic, ullam eaque quam cum voluptate corrupti.
-  </p>
+  <h1 class="space">Il tuo ordine è andato a buon fine :)</h1>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.space {
+  padding: 300px;
+}
+</style>
