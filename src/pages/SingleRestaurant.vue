@@ -24,6 +24,7 @@
                         <input :id="'check-' + index" class="check ms-1 mt-2" type="checkbox" :value="dish" v-model="order.dish">
                         <div>
                         <label :for="'check-' + index">{{ dish.name }}</label>
+                        <img class=" w-50" :src="dish.img" alt="">
                       </div>
                       <!-- modificare e aggiungere bottone -->
                     </article>
@@ -116,6 +117,7 @@ img {
   border-radius: 15px;
   border: solid 1px;
   padding-top: 60px;
+  
 }
 .quant {
   width: 50px;
