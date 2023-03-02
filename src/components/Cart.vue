@@ -11,7 +11,6 @@ export default {
             rest: null,
             restaurant_slug: null,
             restaurant: null,
-            userCart: [],
             totalPrice: [],
             subtotal: 0,
             orderData: {
@@ -57,7 +56,7 @@ export default {
                 });
         },
         showlog(){
-            for (let i = 0; i < this.userCart.dish.length; i++) {
+            for (let i = 0; i < store.userCart.dish.length; i++) {
 
             this.cartItems.dishesQuantity.push(parseFloat(document.querySelector(`#quantity-${i}`).value))
 
@@ -130,7 +129,7 @@ export default {
             if(this.cartItems.dishesQuantity.length > 0) {
                 this.cartItems.dishesQuantity = []
             } else {
-              this.userCart.dish.forEach((element, i) => {
+              store.userCart.dish.forEach((element, i) => {
                 this.cartItems.dishesQuantity.push(parseFloat(document.querySelector(`#quantity-${i}`).value))                    
             });
             console.log(this.cartItems.dishesQuantity)  
@@ -143,10 +142,10 @@ export default {
         },
 
     deleteCart(i) {            
-        this.userCart.dish.splice(i, 1);
-        if(this.userCart.dish.length === 0){
+        store.userCart.dish.splice(i, 1);
+        if(store.userCart.dish.length === 0){
             localStorage.clear()
-            // console.log(this.userCart.dish)
+            // console.log(store.userCart.dish)
             // console.log(localStorage.getItem('my_data'))
             console.log(this.subtotal)
         }
@@ -154,7 +153,7 @@ export default {
     },
     // computed: {
     //     getQuantities() {
-    //                 for (let i = 0; i < this.userCart.dish.length; i++) {
+    //                 for (let i = 0; i < store.userCart.dish.length; i++) {
 
     //                     this.cartItems.dishesQuantity.push(parseFloat(document.querySelector(`#quantity-${i}`).value))
     //                 console.log(this.cartItems.dishesQuantity)
@@ -163,10 +162,10 @@ export default {
     //     },
     // },
     created() {
-        // console.log(this.userCart)
+        // console.log(store.userCart)
         // console.log(localStorage.getItem('my_data'))
-        this.userCart = JSON.parse(localStorage.getItem('my_data'))
-        // console.log(this.userCart)
+        store.userCart = JSON.parse(localStorage.getItem('my_data'))
+        // console.log(store.userCart)
 
         this.restaurant_slug = JSON.parse(localStorage.getItem('slug'))
         this.rest = JSON.parse(localStorage.getItem('price_shipping'))
@@ -175,8 +174,8 @@ export default {
     mounted() {
 
         //calcolo prezzo totale
-        if(this.userCart){
-            for (let i = 0; i < this.userCart.dish.length; i++) {
+        if(store.userCart){
+            for (let i = 0; i < store.userCart.dish.length; i++) {
                 this.totalPrice.push(parseFloat(document.querySelector(`#price-${i}`).innerHTML));
             }
             this.subtotal = this.totalPrice.reduce((pv, cv) => pv + cv, 0);
@@ -196,10 +195,10 @@ export default {
         //prezzo totale
             this.shipping = parseFloat(document.getElementById('price').innerHTML)
             this.orderData.price = this.shipping + this.subtotal
-            // console.log(this.userCart.dish)
+            // console.log(store.userCart.dish)
 
         // id piatti
-        const ids = this.userCart.dish.map(element => element.id);
+        const ids = store.userCart.dish.map(element => element.id);
         this.cartItems.dishesId = ids;
         // console.log(this.dishesId)
 
@@ -213,23 +212,26 @@ export default {
     <section class="pt-5">
         <div class="container pt-5 ">
             <div class="row d-flex justify-content-center my-4 my-cart">
-                <div v-if="this.userCart" class="col-md-8" >
+                <div v-if="store.userCart" class="col-md-8" >
                     <div class="card mb-4">
                         <div class="card-header py-3">
-                            <div v-if="this.userCart.dish.length > 1">
-                                <h5 class="mb-0">Carrello - {{ this.userCart.dish.length }} prodotti selezionati</h5>
+                            <div >
+                                <h2 class="my-2">{{ this.rest.name }}</h2>
                             </div>
-                            <div v-else-if="this.userCart.dish.length == 1">
-                                <h5 class="mb-0">Carrello - {{ this.userCart.dish.length }} prodotto selezionato</h5>
+                            <div v-if="store.userCart.dish.length > 1">
+                                <h5 class="mb-0">Carrello - {{ store.userCart.dish.length }} prodotti selezionati</h5>
                             </div>
-                            <div v-else-if="this.userCart.dish.length == 0">
+                            <div v-else-if="store.userCart.dish.length == 1">
+                                <h5 class="mb-0">Carrello - {{ store.userCart.dish.length }} prodotto selezionato</h5>
+                            </div>
+                            <div v-else-if="store.userCart.dish.length == 0">
                                 <h5 class="mb-0">Carrello - nessun prodotto selezionato</h5>
                             </div>
                             <button @click="showlog()">Log</button>
                         </div>
                         <div class="card-body">
                             <!-- PRODOTTO -->
-                            <div class="row" v-for="item, index in this.userCart.dish">
+                            <div class="row" v-for="item, index in store.userCart.dish">
                                 <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
                                     <!-- IMMAGINE -->
                                     <div>
@@ -269,7 +271,7 @@ export default {
 
 
                                 </div>
-                                <div v-if="index != this.userCart.dish.length - 1">
+                                <div v-if="index != store.userCart.dish.length - 1">
                                     <hr class="mb-4" />
                                 </div>
                             </div>
@@ -279,7 +281,7 @@ export default {
                 <div v-else> <h2>Il carrello è vuoto! </h2></div>
 
                 <!-- RIEPILOGO ORDINE -->
-                <div v-if="this.userCart" class="col-md-4">
+                <div v-if="store.userCart" class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-header py-3">
                             <h5 class="mb-0">Riepilogo ordine</h5>
@@ -292,7 +294,7 @@ export default {
                                     <span id="subtotal">{{ this.subtotal }}</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center px-0">Shipping
-                                    <span> {{ this.rest }}</span>
+                                    <span> {{ this.rest.price_shipping }}</span>
                                 </li>
                                 <li
                                     class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
@@ -304,7 +306,7 @@ export default {
                                     </div>
                                     <span>
                                         <strong id="price">{{ parseFloat(this.subtotal) +
-                                            parseFloat(this.rest) }}
+                                            parseFloat(this.rest.price_shipping) }}
                                         </strong>
                                     </span>
                                 </li>
@@ -357,6 +359,9 @@ export default {
                                                     <textarea type="textarea" class="form-control" id="info"
                                                         placeholder="Aggiungi informazioni che possono esserci utili"
                                                         v-model="orderData.additional_info"></textarea>
+                                                <div id="dropin-container"></div>
+                                                <button id="submit-button"
+                                                    class="button button--small button--green">Purchase</button>>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
@@ -365,9 +370,6 @@ export default {
                                                 </div>
                                             </form>
                                         </div>
-                                        <div id="dropin-container"></div>
-                                        <button id="submit-button"
-                                            class="button button--small button--green">Purchase</button>
                                     </div>
 
                                 </div>

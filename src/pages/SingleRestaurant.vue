@@ -12,6 +12,7 @@
             <div>Orario Apertura {{ restaurant.opening_time }} </div>
             <div>Orario Chiusura {{ restaurant.closing_time }} </div>
             <span>Costo spedizione: {{ restaurant.price_shipping }}€</span>
+            
           </div>
         </div>
         <div class="col-6 dish">
@@ -35,6 +36,11 @@
                   <button class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
                   <button @click="showlog()">Log</button>
                 </div>
+                <div id="advise" class="d-none"><p>Non puoi ordinare da più ristoranti!</p></div>
+                <div id="success" class="d-none"><p>Piatti aggiunti al carrello!</p></div>
+                <div id="warning" class="d-none"><p>Piatti già presenti nel carrello!</p></div>
+                <div id="select" class="d-none"><p>Seleziona almeno un piatto!</p></div>
+
               </form>
           </div>
               <div class="row">
@@ -67,16 +73,37 @@ export default {
   methods: {
 
     saveData() {
+      if(this.order.dish.length != 0){
+          let foundMatchingRestaurant = false;
+        store.userCart.dish.forEach(element => {
+          if (element.restaurant_id === this.restaurant.id) {
+            foundMatchingRestaurant = true;
+          }
+        });
 
-      console.log(this.order)
-      localStorage.setItem('my_data', JSON.stringify(this.order))
-      localStorage.setItem('slug', JSON.stringify(this.$route.params.slug))
-      localStorage.setItem('price_shipping', JSON.stringify(this.restaurant.price_shipping))
+        if (store.userCart.dish.length > 0 && !foundMatchingRestaurant) {
+          document.getElementById('advise').classList.remove('d-none');
+        } else {
+          if(store.userCart.dish.length > 0 && foundMatchingRestaurant){
 
+            document.getElementById('warning').classList.remove('d-none');
+
+            return true;
+          } else {
+            localStorage.setItem('my_data', JSON.stringify(this.order));
+            localStorage.setItem('slug', JSON.stringify(this.$route.params.slug));
+            localStorage.setItem('price_shipping', JSON.stringify(this.restaurant));
+            document.getElementById('success').classList.remove('d-none');
+          }
+        }
+      } else {
+        document.getElementById('select').classList.remove('d-none');       
+      }
+      
     },
 
     showlog() {
-      console.log(this.restaurant.price_shipping)
+      console.log(this.order)
       console.log(localStorage.getItem('slug'))
     },
 
