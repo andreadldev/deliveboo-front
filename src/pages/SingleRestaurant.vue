@@ -20,11 +20,14 @@
               <form @submit.prevent="saveData()">
                 <div v-for="(dish, index) in restaurant.dishes" :key="index">
                   <div class="d-flex justify-content-center flex-column w-10">
-                    <div class="wrapper">
-                    <label :for="'check-' + index">{{ dish.name }}</label>
-                    <!-- modificare e aggiungere bottone -->
-                    <input :id="'check-' + index" class="check ms-1 mt-2" type="checkbox" :value="dish" v-model="order.dish">
-                  </div>
+                    <article class="wrapper " id="demo">
+                      <div>
+                        <label :for="'check-' + index">{{ dish.name }}</label>
+                      </div>
+                      
+                      <!-- modificare e aggiungere bottone -->
+                      <input :id="'check-' + index" class="check ms-1 mt-2" type="checkbox" :value="dish" v-model="order.dish">
+                    </article>
                 </div>
                 </div>
                 <button class="btn btn-warning m-4" type="submit">Aggiungi al carrello</button>
@@ -125,5 +128,49 @@ img {
 
 .my-img {
   padding-top: 60px;
+}
+article {
+    position: relative;
+    width: 140px;
+    height: 120px;
+    margin: 20px;
+    float: left;
+    border: 2px solid rgb(253, 187, 45);
+
+    box-sizing: border-box;
+}
+
+article div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 25px;
+    transition: 0.5s ease;
+}
+
+article input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 140px;
+    height: 100px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#demo {
+    -webkit-box-shadow: 0px 0px 25px 0px #ffc44a;
+    box-shadow: 0px 0px 25px 0px #ffc44a;
+}
+
+#demo:hover {
+    transform: scale(1.2);
+    /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+input[type="checkbox"]:checked~div {
+    background-color: rgb(253, 187, 45);
 }
 </style>
