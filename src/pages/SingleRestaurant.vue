@@ -31,13 +31,13 @@
                     </article>
                   </div>
                 </div>
-              </form>
-          </div>
-              <div class="row">
                 <div>
                   <button class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
                   <button @click="showlog()">Log</button>
                 </div>
+              </form>
+          </div>
+              <div class="row">
             <div class="m-4">
                 <router-link class="text-decoration-none text-white btn rounded-3" :to="{ name: 'checkout' }">Vai al carrello</router-link>
             </div>
@@ -65,18 +65,21 @@ export default {
     };
   },
   methods: {
+
     saveData() {
 
+      console.log(this.order)
       localStorage.setItem('my_data', JSON.stringify(this.order))
       localStorage.setItem('slug', JSON.stringify(this.$route.params.slug))
-      localStorage.setItem('price_shipping', JSON.stringify(this.restaurant))
+      localStorage.setItem('price_shipping', JSON.stringify(this.restaurant.price_shipping))
 
     },
 
     showlog() {
-      console.log(localStorage.getItem('my_data'))
+      console.log(this.restaurant.price_shipping)
       console.log(localStorage.getItem('slug'))
     },
+
     disableInput() {
       for (let i = 0; i < this.restaurant.dishes.length; i++) {
         if (document.querySelector(`.check_${i}`).checked === true) {
