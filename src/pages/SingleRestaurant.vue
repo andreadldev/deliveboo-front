@@ -1,14 +1,22 @@
 <template>
   <div v-if="restaurant" class="text-center my-restaurant">
 
-    <h1 class="name">{{ restaurant.name }}</h1>
-    <img class="my-img" v-if="restaurant.img" :src="restaurant.img" :alt="restaurant.name">
-    <div class="text-center">
-      <div>Indirizzo: {{ restaurant.address }}</div>
-      <div>Orario Apertura {{ restaurant.opening_time }} </div>
-      <div>Orario Chiusura {{ restaurant.closing_time }} </div>
-      <div>Descrizione: {{ restaurant.description }}</div>
-      <span>Costo spedizione: {{ restaurant.price_shipping }}€</span>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-6">
+          <img class="my-img" v-if="restaurant.img" :src="restaurant.img" :alt="restaurant.name">
+        </div>
+        <div class="col-6">
+          <div class="text-center">
+            <h1 class="name">{{ restaurant.name }}</h1>
+            <div> {{ restaurant.description }}</div>
+            <div>{{ restaurant.address }}</div>
+            <div>Orario Apertura {{ restaurant.opening_time }} </div>
+            <div>Orario Chiusura {{ restaurant.closing_time }} </div>
+            <span>Costo spedizione: {{ restaurant.price_shipping }}€</span>
+          </div>
+        </div>
+      </div>
 
       <h5>I nostri piatti:</h5>
 
@@ -92,10 +100,11 @@ export default {
 
 <style lang="scss" scoped>
 .name{
-  padding-top: 200px;
+  padding-top: 250px;
 }
 img {
-  width: 700px;
+  width: 600px;
+  margin-top: 50px;
 }
 
 .quant {
