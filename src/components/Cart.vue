@@ -27,9 +27,11 @@ export default {
                 phone_number:"",
                 order_date:null,
                 additional_info: "",
-                dishesId:[],
-                dishesQuantity:[]
             },
+            cartItems:{
+                dishesId:[],
+                dishesQuantity:[],   
+            },            
             orderError: false,
             shipping: ''
         };
@@ -46,7 +48,9 @@ export default {
                     email: this.orderData.email,
                     phone_number: this.orderData.phone_number,
                     order_date: this.orderData.order_date,
-                    additional_info: this.orderData.additional_info
+                    additional_info: this.orderData.additional_info,
+                    dishes_Id: this.cartItems.dishesId,
+                    tot_quantity: this.cartItems.dishesQuantity
                 })
                 .then((response) => {
                     console.log(response)
@@ -54,7 +58,7 @@ export default {
                 .catch((err) => {
           
                 });
-            },
+        },
         // addZeroToNumber(num) {
         //     if (num != undefined) {
         //         if (num.toString().includes(".")) {
@@ -101,10 +105,28 @@ export default {
                 this.totalPrice[i] -= parseFloat(oldPrice)
                 this.subtotal = this.totalPrice.reduce((pv, cv) => pv + cv, 0);
                 this.orderData.price = this.shipping + this.subtotal
-                console.log(this.orderData.price)
+                // console.log(this.orderData.price)
             }
         },
+
+        getQuantities(){
+                for (let i = 0; i < this.userCart.dish.length; i++) {
+
+                this.cartItems.dishesQuantity.push(parseFloat(document.querySelector(`#quantity-${i}`).value))
+d
+                }
+                console.log(this.cartItems.dishesQuantity)
+        },
+
+        // SaveQuantity(){
+        //     for (let i = 0; i < this.userCart.length; i++){
+        //         console.log(document.querySelector(`#quantity-${i}`).value)
+        //         this.cartItems.dishesQuantity.push(document.querySelector(`#quantity-${i}`).value)
+        //     }
+        // },
+
         deleteCart(i){
+            console.log(this.userCart.dish)
             this.userCart.dish.splice(i, 1);
         }
         },
@@ -115,15 +137,17 @@ export default {
 
         mounted() {
             for (let i = 0; i < this.userCart.dish.length; i++) {
+
             this.totalPrice.push(parseFloat(document.querySelector(`#price-${i}`).innerHTML));
+
             }
             this.subtotal = this.totalPrice.reduce((pv, cv) => pv + cv, 0);
+
 
             // data locale
             const date = new Date();
             const formattedDate = date.toISOString().replace(/T/, ' ').replace(/\..+/, '');
             this.orderData.order_date = formattedDate.toLocaleString();
-            console.log(this.orderData.order_date)
 
             // codice random
             const min = 10000;
@@ -134,20 +158,24 @@ export default {
             //prezzo totale
             this.shipping = parseFloat(document.getElementById('price').innerHTML)
             this.orderData.price = this.shipping + this.subtotal
-            console.log(this.userCart.dish[0].id)
+            // console.log(this.userCart.dish)
 
-            //dishid e quantity
-            this.userCart.dish.forEach(element => {
-                element.id.push(this.orderData.dishesId)
-            });
-            console.log(this.orderData.dishesId)
+            // id piatti
+            const ids = this.userCart.dish.map(element => element.id);
+            this.cartItems.dishesId = ids;
+            // console.log(this.dishesId)
+
         },
-    // computed: {
-    //     priceCalc(){
-    //         this.orderData.price = document.getElementById('price').innerHTML
-    //         console.log(this.orderData.price)
-    //     }
-    // }
+        computed:{
+            getQuantities(){
+                for (let i = 0; i < this.userCart.dish.length; i++) {
+
+                this.cartItems.dishesQuantity.push(parseFloat(document.querySelector(`#quantity-${i}`).value))
+
+                }
+                console.log(this.cartItems.dishesQuantity)
+            }
+        }
 }
     
 </script>
@@ -222,7 +250,7 @@ export default {
                     <div class="card-header py-3">
                         <h5 class="mb-0">Riepilogo ordine</h5>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" >
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">Subtotale
                                 <span id="subtotal">{{ this.subtotal }}</span>
@@ -239,7 +267,7 @@ export default {
                             </li>
                         </ul>
                         <!-- <button type="button" class="btn btn-primary btn-lg btn-block">Go to checkout</button> -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Vai all'ordine</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" @click="getQuantities">Vai all'ordine</button>
 
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
