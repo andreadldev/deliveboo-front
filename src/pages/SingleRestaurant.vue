@@ -35,11 +35,11 @@
           </div>
               <div class="row">
                 <div>
-                  <button class="btn btn-warning m-4" type="submit">Aggiungi al carrello</button>
+                  <button class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
                   <button @click="showlog()">Log</button>
                 </div>
             <div class="m-4">
-                <router-link class="text-decoration-none text-white  btn btn-warning rounded-0" :to="{ name: 'checkout' }">Vai al carrello</router-link>
+                <router-link class="text-decoration-none text-white btn rounded-3" :to="{ name: 'checkout' }">Vai al carrello</router-link>
             </div>
           </div>     
         </div>
@@ -104,14 +104,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.my-restaurant{
+  background-color: rgb(253, 187, 45)
+}
 .name{
   padding-top: 40px;
+  color: rgb(195, 34, 34);
+  font-size: 60px;
 }
-
+.btn{
+  background-color: rgb(195, 34, 34);
+}
 .info{
   margin-top: 250px;
   margin-bottom: 50px;
   padding-bottom: 30px;
+  color: white;
+  font-size: 20px;
 }
 .dish{
   margin-top: 150px;
@@ -129,7 +138,7 @@ export default {
 
 .my-img {
   padding-top: 60px;
-  width: 300px;
+  width: 400px;
 }
 
 article {
@@ -138,8 +147,9 @@ article {
     height: 140px;
     margin: 20px;
     float: left;
-    border: 2px solid rgb(253, 187, 45);
+    border: 2px solid rgb(195, 34, 34);
     box-sizing: border-box;
+    background-color: white;
 }
 
 article div {
@@ -159,8 +169,8 @@ article input {
 }
 
 #demo {
-    -webkit-box-shadow: 0px 0px 25px 0px #ffc44a;
-    box-shadow: 0px 0px 25px 0px #ffc44a;
+    -webkit-box-shadow: 0px 0px 25px 0px rgb(195, 34, 34);
+    box-shadow: 0px 0px 25px 0px rgb(195, 34, 34);
 }
 
 #demo:hover {
@@ -169,6 +179,6 @@ article input {
 }
 
 input[type="checkbox"]:checked~div {
-    background-color: rgb(253, 187, 45);
+    background-color: rgb(195, 34, 34);
 }
 </style>
