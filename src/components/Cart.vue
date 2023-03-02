@@ -4,11 +4,6 @@ import axios from 'axios';
 import * as braintree from '../braintree';
 export default {
     name: "Cart",
-    props: {
-        data: String,
-        slug: String,
-        ps: String
-    },
     data() {
         return {
             braintree,
@@ -55,14 +50,19 @@ export default {
                     tot_quantity: this.cartItems.dishesQuantity
                 })
                 .then((response) => {
-                    console.log(response)
+                    // console.log(response)
                 })
                 .catch((err) => {
 
                 });
         },
         showlog(){
-            console.log(this.orderData.price)
+            for (let i = 0; i < this.userCart.dish.length; i++) {
+
+            this.cartItems.dishesQuantity.push(parseFloat(document.querySelector(`#quantity-${i}`).value))
+
+        }
+        console.log(this.cartItems.dishesQuantity)
         },
         // addZeroToNumber(num) {
         //     if (num != undefined) {
@@ -126,11 +126,20 @@ export default {
         },
 
         getQuantities() {
-            for (let i = 0; i < this.userCart.dish.length; i++) {
-
-                this.cartItems.dishesQuantity.push(parseFloat(document.querySelector(`#quantity-${i}`).value))
-                
+            console.log(this.cartItems.dishesQuantity)
+            if(this.cartItems.dishesQuantity.length > 0) {
+                this.cartItems.dishesQuantity = []
+            } else {
+              this.userCart.dish.forEach((element, i) => {
+                this.cartItems.dishesQuantity.push(parseFloat(document.querySelector(`#quantity-${i}`).value))                    
+            });
+            console.log(this.cartItems.dishesQuantity)  
             }
+            
+                
+        },
+        clearQuantities(){
+            this.cartItems.dishesQuantity = [];
         },
 
     deleteCart(i) {            
@@ -143,11 +152,21 @@ export default {
         }
     }
     },
+    // computed: {
+    //     getQuantities() {
+    //                 for (let i = 0; i < this.userCart.dish.length; i++) {
+
+    //                     this.cartItems.dishesQuantity.push(parseFloat(document.querySelector(`#quantity-${i}`).value))
+    //                 console.log(this.cartItems.dishesQuantity)
+                        
+    //                 }
+    //     },
+    // },
     created() {
         // console.log(this.userCart)
         // console.log(localStorage.getItem('my_data'))
         this.userCart = JSON.parse(localStorage.getItem('my_data'))
-        console.log(this.userCart)
+        // console.log(this.userCart)
 
         this.restaurant_slug = JSON.parse(localStorage.getItem('slug'))
         this.rest = JSON.parse(localStorage.getItem('price_shipping'))
