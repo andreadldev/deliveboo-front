@@ -105,12 +105,17 @@ export default {
 
 <style lang="scss" scoped>
 .my-restaurant{
-  background-color: rgb(253, 187, 45)
+  background-color: rgb(253, 187, 45);
 }
 .name{
   padding-top: 40px;
   color: rgb(195, 34, 34);
   font-size: 60px;
+  font-weight: 700;
+}
+h5{
+  color: rgb(195, 34, 34);
+  font-weight: 700;
 }
 .btn{
   background-color: rgb(195, 34, 34);
@@ -121,6 +126,7 @@ export default {
   padding-bottom: 30px;
   color: white;
   font-size: 20px;
+  font-weight: 700;
 }
 .dish{
   margin-top: 150px;
@@ -150,6 +156,9 @@ article {
     border: 2px solid rgb(195, 34, 34);
     box-sizing: border-box;
     background-color: white;
+    color: rgb(253, 187, 45);
+    font-weight: 700;
+    font-size: 17px;
 }
 
 article div {
