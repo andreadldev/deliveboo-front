@@ -68,9 +68,9 @@ export default {
                 <ul class="d-flex  justify-content-start">
                     <li v-for="(category, index) in store.categories" :key="index">
                         <!-- <div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              {{ category.name }}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          {{ category.name }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div> -->
                         <article id="demo" class="feature1">
                             <input type="checkbox" id="feature1" v-model="category.selected"
                                 @change="toggleCategory(index)" />
@@ -88,8 +88,9 @@ export default {
 
 
             </div>
-
+            <!-- INIZIO CAROSELLO -->
             <div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="false">
+                <!-- bottoni slide centrali sotto -->
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
                         aria-current="true" aria-label="Slide 1"></button>
@@ -98,7 +99,11 @@ export default {
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
                         aria-label="Slide 3"></button>
                 </div>
+                <!-- fine bottoni slide centrali sotto -->
+
+                <!-- intero carosello -->
                 <div class="carousel-inner">
+                    <!-- 1 pagina -->
                     <div class="carousel-item active">
                         <div class="card-group">
                             <div class="card">
@@ -132,6 +137,9 @@ export default {
                         </div>
 
                     </div>
+                    <!-- fine 1 pagina -->
+
+                    <!-- 2 pagina -->
                     <div class="carousel-item">
                         <div class="card-group">
                             <div class="card">
@@ -165,9 +173,10 @@ export default {
                         </div>
 
                     </div>
+                    <!-- fine 2 pagina -->
+
+                    <!-- 3 pagina -->
                     <div class="carousel-item">
-
-
                         <div class="card-group">
                             <div class="card">
                                 <img src="..." class="card-img-top" alt="...">
@@ -199,7 +208,12 @@ export default {
                             </div>
                         </div>
                     </div>
+                    <!-- fine 3 pagina -->
+
                 </div>
+                <!-- fine intero carosello -->
+
+                <!-- bottoni slide -->
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
                     data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -210,7 +224,10 @@ export default {
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
+                <!-- fine bottoni slide -->
+
             </div>
+            <!-- FINE CAROSELLO -->
 
             <div class="container">
                 <div class="d-flex">
@@ -315,4 +332,5 @@ input[type="checkbox"]:checked~div {
 .my-card {
     margin-top: 25px;
     margin-bottom: 25px;
-}</style>
+}
+</style>
