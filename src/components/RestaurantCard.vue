@@ -8,34 +8,47 @@ export default {
 </script>
 
 <template>
-  <div class="w-100 h-100 card m-4 g-4 my-card-big">
-    <div class="card-body ">
-      <h5 class="card-title text-center">{{ data.name }}</h5>
-      <img v-if="data.img" :src="data.img" class="card-img-top" :alt="data.name" />
-      <small>Telefono: {{ data.phone_number }}</small>
-      <div>
-        <span>Apre: {{ data.opening_time }}</span> <br />
-        <span>Chiude: {{ data.closing_time }}</span>
-      </div>
+  <div id="demoRest" class="w-100 h-100 card m-4 g-4 my-card-big" style="background-color: rgb(253, 187, 45)">
+    <router-link :to="{ name: 'single-restaurant', params: { slug: data.slug } }" class="text-white text-decoration-none">
+      <div class="card-body p-0 d-flex flex-column justify-content-between">
+        <img v-if="data.img" :src="data.img" onerror="this.src='https://nagrannar.is/images/restaurant-placeholder.png'"
+          class="card-img my-card" :alt="data.name" />
 
-      <div>
-        <span>Costo di spedizione: €{{ data.price_shipping }}</span>
+        <h5 class="card-title text-center" style=" color:rgb(195, 34, 34)">{{ data.name }}</h5>
+
+        <div class="text-center">
+          <small class="card-title ">Consegna €{{ data.price_shipping }}</small>
+        </div>
       </div>
-      <div class="text-center m-3">
-        <router-link :to="{ name: 'single-restaurant', params: { slug: data.slug } }" class="btn text-white"
-          style="background-color: rgb(253, 187, 45)">Dettagli</router-link>
-      </div>
-    </div>
+    </router-link>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .card {
-  border-color: orange;
+  border-color: rgba(216, 143, 84, 0.5);
   border-width: 3px;
 }
 
 .my-card-big {
   margin-top: 300px;
+  width: 150px;
+  height: 100px;
+}
+
+#demoRest {
+  -webkit-box-shadow: 0px 0px 25px 0px #ffc44a;
+  box-shadow: 0px 0px 25px 0px #ffc44a;
+}
+
+#demoRest:hover {
+  transform: scale(1.1);
+  /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.my-card {
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 20px;
 }
 </style>

@@ -14,24 +14,19 @@ export default {
             store,
             visible: false,
 
-            images:
-                [
-                    "https://thumbs.dreamstime.com/b/memorial-day-usa-independence-picnic-party-fourth-july-concept-patriotic-american-traditional-food-watermelon-burgers-hot-219579658.jpg",
-                    "https://shfoodspro.com/wp-content/uploads/2021/02/Vietnamese-Pho.jpg",
-                    "https://www.limmi.it/wp-content/uploads/2022/05/insalata-ceci-scaled.jpg",
-                    "https://res.cloudinary.com/hz3gmuqw6/image/upload/c_fill,q_60,w_750/tk-traditional-indian-foods-to-taste-in-2022-phpEXAXNS",
-                    "https://theplanetd.com/images/Traditional-Italian-Food.jpg",
-                    "https://cdn4.tuscanynowandmore.com/storage/app/media/discover-italy/bacalao-fish.jpg",
-                    "https://blog.amigofoods.com/wp-content/uploads/2020/09/mexican-food.jpg",
-                    "https://www.viaggioff.it/wp-content/uploads/2021/05/poke-bowl-scaled.jpg",
-                    "https://www.comeindubai.com/wp-content/uploads/2021/04/fast-food-dubai-scaled.jpeg",
-                    "https://www.thespruceeats.com/thmb/KKVYHEcAN6Jt7yvULfCB4r3ad30=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/what-is-sushi-5079606-hero-01-e5a0a26f194a49478f84e04193baaefa.jpg",
-                    "https://resize.indiatvnews.com/en/resize/newbucket/715_-/2018/08/tiramisu-1535368950.jpeg"
-                ]
-
-
-
-
+            images: [
+                "https://thumbs.dreamstime.com/b/memorial-day-usa-independence-picnic-party-fourth-july-concept-patriotic-american-traditional-food-watermelon-burgers-hot-219579658.jpg",
+                "https://shfoodspro.com/wp-content/uploads/2021/02/Vietnamese-Pho.jpg",
+                "https://www.limmi.it/wp-content/uploads/2022/05/insalata-ceci-scaled.jpg",
+                "https://res.cloudinary.com/hz3gmuqw6/image/upload/c_fill,q_60,w_750/tk-traditional-indian-foods-to-taste-in-2022-phpEXAXNS",
+                "https://theplanetd.com/images/Traditional-Italian-Food.jpg",
+                "https://cdn4.tuscanynowandmore.com/storage/app/media/discover-italy/bacalao-fish.jpg",
+                "https://blog.amigofoods.com/wp-content/uploads/2020/09/mexican-food.jpg",
+                "https://www.viaggioff.it/wp-content/uploads/2021/05/poke-bowl-scaled.jpg",
+                "https://www.comeindubai.com/wp-content/uploads/2021/04/fast-food-dubai-scaled.jpeg",
+                "https://www.thespruceeats.com/thmb/KKVYHEcAN6Jt7yvULfCB4r3ad30=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/what-is-sushi-5079606-hero-01-e5a0a26f194a49478f84e04193baaefa.jpg",
+                "https://resize.indiatvnews.com/en/resize/newbucket/715_-/2018/08/tiramisu-1535368950.jpeg",
+            ],
         };
     },
     computed: {
@@ -67,20 +62,19 @@ export default {
 <template>
     <div class="">
         <div class="d-flex flex-column">
-            <div>
+            <div class="m-auto">
                 <h2 class="mt-5">Seleziona una o più Categorie:</h2>
-                <ul class="d-flex flex-row flex-wrap w-100 justify-content-around gy-3 col-lg-9 m-auto category ">
+                <ul class="d-flex flex-row flex-wrap w-100 justify-content-start gy-3 col-lg-9 m-auto category">
                     <li v-for="(category, index) in store.categories" :key="index">
                         <!-- <div>
-                                                                                                                                                                                                                                                                                                                                                  <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
-                                                                                                                                                                                                                                                                                                                                                      {{ category.name }}
-                                                                                                                                                                                                                                                                                                                                                    </div> -->
-                        <article class="feature1">
+                                                                                                                                                                                                                                                                                                                                                                                              <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
+                                                                                                                                                                                                                                                                                                                                                                                                  {{ category.name }}
+                                                                                                                                                                                                                                                                                                                                                                                                </div> -->
+                        <article id="demo" class="feature1">
                             <input type="checkbox" id="feature1" v-model="category.selected"
                                 @change="toggleCategory(index)" />
                             <div class="w-200 d-flex flex-column justify-content-between">
-
-                                <img class="img-fluid w-200" :src="images[index]" alt="">
+                                <img class="img-fluid w-200" :src="images[index]" alt="" />
                                 <span class="my-span"> {{ category.name }}<br /> </span>
                             </div>
                         </article>
@@ -88,11 +82,9 @@ export default {
                 </ul>
             </div>
             <div class="container">
-
                 <div class="d-flex">
-
                     <ul class="row" v-if="isActive">
-                        <h2 class="mt-3">Ristoranti </h2>
+                        <h2>Hai selezionato: </h2>
                         <li class="col-3 my-card" v-for="(restaurant, index) in filteredRestaurants" :key="index">
                             <RestaurantCard :data="restaurant" />
                             <router-link :to="{
@@ -110,7 +102,6 @@ export default {
 <style lang="scss" scoped>
 h2 {
     color: rgb(195, 34, 34);
-    ;
 }
 
 ul {
@@ -133,7 +124,7 @@ article {
     position: relative;
     width: 140px;
     height: 120px;
-    margin: 5px;
+    margin: 20px;
     float: left;
     border: 2px solid rgb(253, 187, 45);
 
@@ -160,13 +151,22 @@ article input {
     cursor: pointer;
 }
 
+#demo {
+    -webkit-box-shadow: 0px 0px 25px 0px #ffc44a;
+    box-shadow: 0px 0px 25px 0px #ffc44a;
+}
+
+#demo:hover {
+    transform: scale(1.2);
+    /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
 input[type="checkbox"]:checked~div {
     background-color: rgb(253, 187, 45);
 }
 
 .category {
     color: rgb(195, 34, 34);
-    ;
     font-size: 18px;
 }
 
@@ -178,6 +178,5 @@ input[type="checkbox"]:checked~div {
 .my-card {
     margin-top: 25px;
     margin-bottom: 25px;
-
 }
 </style>
