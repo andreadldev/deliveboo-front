@@ -62,25 +62,33 @@ export default {
 <template>
     <div class="my-category">
         <div class="d-flex flex-column">
+            <h2 class="mt-5 ">Seleziona una o più Categorie:</h2>
             <div class="m-auto">
-                <h2 class="mt-5">Seleziona una o più Categorie:</h2>
-                <ul class="d-flex flex-row flex-wrap w-100 justify-content-start gy-3 col-lg-9 m-auto category">
+
+                <ul class="d-flex  justify-content-start">
                     <li v-for="(category, index) in store.categories" :key="index">
                         <!-- <div>
-                                                                                                                                                                                                                                                                                                                                                                                                                  <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
-                                                                                                                                                                                                                                                                                                                                                                                                                      {{ category.name }}
-                                                                                                                                                                                                                                                                                                                                                                                                                    </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      {{ category.name }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div> -->
                         <article id="demo" class="feature1">
                             <input type="checkbox" id="feature1" v-model="category.selected"
                                 @change="toggleCategory(index)" />
+
                             <div class="w-200 d-flex flex-column justify-content-between">
                                 <img class="img-fluid w-200" :src="images[index]" alt="" />
                                 <span class="my-span"> {{ category.name }}<br /> </span>
                             </div>
+
                         </article>
+
+
                     </li>
                 </ul>
+
+
             </div>
+
             <div class="container">
                 <div class="d-flex">
                     <ul class="row" v-if="isActive">
