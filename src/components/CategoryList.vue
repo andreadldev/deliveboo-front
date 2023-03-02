@@ -60,16 +60,16 @@ export default {
 };
 </script>
 <template>
-    <div class="">
+    <div class="my-category">
         <div class="d-flex flex-column">
             <div class="m-auto">
                 <h2 class="mt-5">Seleziona una o più Categorie:</h2>
                 <ul class="d-flex flex-row flex-wrap w-100 justify-content-start gy-3 col-lg-9 m-auto category">
                     <li v-for="(category, index) in store.categories" :key="index">
                         <!-- <div>
-                                                                                                                                                                                                                                                                                                                                                                                              <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
-                                                                                                                                                                                                                                                                                                                                                                                                  {{ category.name }}
-                                                                                                                                                                                                                                                                                                                                                                                                </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                  <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
+                                                                                                                                                                                                                                                                                                                                                                                                                      {{ category.name }}
+                                                                                                                                                                                                                                                                                                                                                                                                                    </div> -->
                         <article id="demo" class="feature1">
                             <input type="checkbox" id="feature1" v-model="category.selected"
                                 @change="toggleCategory(index)" />
@@ -84,7 +84,7 @@ export default {
             <div class="container">
                 <div class="d-flex">
                     <ul class="row" v-if="isActive">
-                        <h2>Hai selezionato: </h2>
+                        <h2>La tua selezione: </h2>
                         <li class="col-3 my-card" v-for="(restaurant, index) in filteredRestaurants" :key="index">
                             <RestaurantCard :data="restaurant" />
                             <router-link :to="{
@@ -100,6 +100,11 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.my-category {
+    margin-top: -100px;
+    margin-bottom: -50px;
+}
+
 h2 {
     color: rgb(195, 34, 34);
 }

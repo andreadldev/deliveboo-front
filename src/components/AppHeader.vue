@@ -62,9 +62,8 @@ $(document).ready(function () {
 .nav-bar {
   height: 70px;
   background: rgb(253, 187, 45);
-  background: linear-gradient(0deg,
-      rgba(253, 187, 45, 1) 0%,
-      rgba(195, 34, 34, 1) 100%);
+  border-top: 2px solid rgba(195, 34, 34);
+  border-bottom: 2px solid rgba(195, 34, 34);
 }
 
 .brand {
@@ -101,11 +100,10 @@ nav ul li {
 nav ul li a {
   display: block;
   padding: 0 20px;
-  line-height: 70px;
+  line-height: 50px;
   background: rgb(253, 187, 45);
-  background: linear-gradient(0deg,
-      rgba(253, 187, 45, 1) 0%,
-      rgba(195, 34, 34, 1) 100%);
+  margin-top: 8px;
+  font-size: 20px;
   text-decoration: none;
   color: #fff;
 }
