@@ -16,26 +16,32 @@
         </div>
         <div class="col-6 dish">
           <!-- form -->
-              <h5>I nostri piatti:</h5>
+          <div class="row">
+            <h5>I nostri piatti:</h5>
               <form @submit.prevent="saveData()">
                 <div v-for="(dish, index) in restaurant.dishes" :key="index">
-                  <div class="d-flex justify-content-center flex-column w-10">
+                  <div>
                     <article class="wrapper " id="demo">
                         <input :id="'check-' + index" class="check ms-1 mt-2" type="checkbox" :value="dish" v-model="order.dish">
                         <div>
                         <label :for="'check-' + index">{{ dish.name }}</label>
-                        <img class=" w-50" :src="dish.img" alt="">
+                        <img  class="img-fluid w-50" :src="dish.img" alt="">
                       </div>
                       <!-- modificare e aggiungere bottone -->
                     </article>
+                  </div>
                 </div>
-                </div>
-                <button class="btn btn-warning m-4" type="submit">Aggiungi al carrello</button>
-                <button @click="showlog()">Log</button>
               </form>
+          </div>
+              <div class="row">
+                <div>
+                  <button class="btn btn-warning m-4" type="submit">Aggiungi al carrello</button>
+                  <button @click="showlog()">Log</button>
+                </div>
             <div class="m-4">
                 <router-link class="text-decoration-none text-white  btn btn-warning rounded-0" :to="{ name: 'checkout' }">Vai al carrello</router-link>
             </div>
+          </div>     
         </div>
       </div>
     </div>
@@ -101,21 +107,15 @@ export default {
 .name{
   padding-top: 40px;
 }
-img {
-  width: 300px;
-  border-radius: 15px;
-}
+
 .info{
   margin-top: 250px;
   margin-bottom: 50px;
   padding-bottom: 30px;
-  border: solid 1px;
-  border-radius: 15px;
 }
 .dish{
   margin-top: 150px;
   border-radius: 15px;
-  border: solid 1px;
   padding-top: 60px;
   
 }
@@ -129,25 +129,22 @@ img {
 
 .my-img {
   padding-top: 60px;
+  width: 300px;
 }
+
 article {
     position: relative;
-    width: 140px;
-    height: 120px;
+    width: 160px;
+    height: 140px;
     margin: 20px;
     float: left;
     border: 2px solid rgb(253, 187, 45);
-
     box-sizing: border-box;
 }
 
 article div {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    line-height: 25px;
     transition: 0.5s ease;
 }
 
