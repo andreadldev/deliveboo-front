@@ -190,6 +190,7 @@ nav ul li ul li a {
 @media only screen and (max-width: 799px) {
   .img-preheader {
     display: none;
+
   }
 
   .nav-mobile {
@@ -258,7 +259,7 @@ nav ul li ul li a {
   // https://www.freewebheaders.com/wp-content/gallery/food/delicious-orange-salmon-caviar-website-header.jpg
   // https://www.freewebheaders.com/wp-content/gallery/food/french-fries-natural-food-website-header-image.jpg
   background-size: cover;
-  height: 130px;
+  height: 100px;
   background-repeat: no-repeat;
   position: relative;
 }

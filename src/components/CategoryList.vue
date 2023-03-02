@@ -65,98 +65,98 @@ export default {
             <h2 class="mt-5 ">Seleziona una o più Categorie:</h2>
             <div class="m-auto">
 
-                <ul class="d-flex  justify-content-start">
+                <ul class="container d-flex flex-wrap justify-content-start">
                     <li v-for="(category, index) in store.categories" :key="index">
                         <!-- <div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          {{ category.name }}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      {{ category.name }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div> -->
                         <article id="demo" class="feature1">
                             <input type="checkbox" id="feature1" v-model="category.selected"
                                 @change="toggleCategory(index)" />
 
                             <div class="w-200 d-flex flex-column justify-content-between">
                                 <img class="img-fluid w-200" :src="images[index]" alt="" />
-                                <span class="my-span"> {{ category.name }}<br /> </span>
-                            </div>
+                            <span class="my-span"> {{ category.name }}<br /> </span>
+                        </div>
 
-                        </article>
+                    </article>
 
 
-                    </li>
-                </ul>
+                </li>
+            </ul>
 
 
             </div>
             <!-- INIZIO CAROSELLO -->
-            <div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="false">
-                <!-- bottoni slide centrali sotto -->
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
+            <!-- <div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="false"> -->
+            <!-- bottoni slide centrali sotto -->
+            <!-- <div class="carousel-indicators">
+                                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                                                    aria-current="true" aria-label="Slide 1"></button>
+                                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                                                    aria-label="Slide 2"></button>
 
-                </div>
-                <!-- fine bottoni slide centrali sotto -->
+                                            </div> -->
+            <!-- fine bottoni slide centrali sotto -->
 
-                <!-- intero carosello -->
-                <div class="carousel-inner">
-                    <!-- 1 pagina -->
-                    <div class="carousel-item active d-flex">
-                        <div v-for="(category, index) in store.categories" :key="index" class=" card-group col-2 container">
-                            <div class="card ">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ category.name }}</h5>
+            <!-- intero carosello -->
+            <!-- <div class="carousel-inner"> -->
+            <!-- 1 pagina -->
+            <!-- <div class="carousel-item active d-flex">
+                                                    <div v-for="(category, index) in store.categories" :key="index" class=" card-group col-2 container">
+                                                        <div class="card ">
+                                                            <img src="..." class="card-img-top" alt="...">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">{{ category.name }}</h5>
 
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                    </div>
-                    <!-- fine 1 pagina -->
-
-                    <!-- 2 pagina -->
-                    <div class="carousel-item">
-                        <div class="card-group">
+                                                            </div>
+                                                        </div>
 
 
-                        </div>
+                                                    </div>
 
-                    </div>
-                    <!-- fine 2 pagina -->
+                                                </div> -->
+            <!-- fine 1 pagina -->
 
-                    <!-- 3 pagina -->
+            <!-- 2 pagina -->
+            <!-- <div class="carousel-item">
+                                                    <div class="card-group"> -->
 
-                    <!-- fine 3 pagina -->
 
-                </div>
-                <!-- fine intero carosello -->
+            <!-- </div> -->
 
-                <!-- bottoni slide -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-                <!-- fine bottoni slide -->
+            <!-- </div> -->
+            <!-- fine 2 pagina -->
 
-            </div>
+            <!-- 3 pagina -->
+
+            <!-- fine 3 pagina -->
+
+            <!-- </div> -->
+            <!-- fine intero carosello -->
+
+            <!-- bottoni slide -->
+            <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                                                data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                                                data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button> -->
+            <!-- fine bottoni slide -->
+
+            <!-- </div> -->
             <!-- FINE CAROSELLO -->
 
             <div class="container">
                 <div class="d-flex">
                     <ul class="row" v-if="isActive">
                         <h2>La tua selezione: </h2>
-                        <li class="col-3 my-card" v-for="(restaurant, index) in filteredRestaurants" :key="index">
+                        <li class="col-4 my-card" v-for="(restaurant, index) in filteredRestaurants" :key="index">
                             <RestaurantCard :data="restaurant" />
                             <router-link :to="{
                                 name: 'single-restaurant',
