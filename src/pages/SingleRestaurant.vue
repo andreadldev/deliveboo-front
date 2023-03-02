@@ -3,10 +3,8 @@
 
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-6">
+        <div class="col-6 info">
           <img class="my-img" v-if="restaurant.img" :src="restaurant.img" :alt="restaurant.name">
-        </div>
-        <div class="col-6">
           <div class="text-center">
             <h1 class="name">{{ restaurant.name }}</h1>
             <div> {{ restaurant.description }}</div>
@@ -16,30 +14,28 @@
             <span>Costo spedizione: {{ restaurant.price_shipping }}€</span>
           </div>
         </div>
-      </div>
-
-      <h5>I nostri piatti:</h5>
-
-      <!-- form -->
-      <form @submit.prevent="saveData()">
-        <div v-for="(dish, index) in restaurant.dishes" :key="index">
-          <div class="d-flex justify-content-center flex-column w-10">
-            <div class="wrapper">
-              <label :for="'check-' + index">{{ dish.name }}</label>
-              <!-- modificare e aggiungere bottone -->
-              <input :id="'check-' + index" class="check ms-1 mt-2" type="checkbox" :value="dish" v-model="order.dish">
+        <div class="col-6 dish">
+          <!-- form -->
+              <h5>I nostri piatti:</h5>
+              <form @submit.prevent="saveData()">
+                <div v-for="(dish, index) in restaurant.dishes" :key="index">
+                  <div class="d-flex justify-content-center flex-column w-10">
+                    <div class="wrapper">
+                    <label :for="'check-' + index">{{ dish.name }}</label>
+                    <!-- modificare e aggiungere bottone -->
+                    <input :id="'check-' + index" class="check ms-1 mt-2" type="checkbox" :value="dish" v-model="order.dish">
+                  </div>
+                </div>
+                </div>
+                <button class="btn btn-warning m-4" type="submit">Aggiungi al carrello</button>
+                <button @click="showlog()">Log</button>
+              </form>
+            <div class="m-4">
+                <router-link class="text-decoration-none text-white  btn btn-warning rounded-0" :to="{ name: 'checkout' }">Vai al carrello</router-link>
             </div>
-          </div>
         </div>
-        <button class="btn btn-warning m-4" type="submit">Aggiungi al carrello</button>
-        <button @click="showlog()">Log</button>
-      </form>
-      <div class="m-4">
-        <router-link class="text-decoration-none text-white  btn btn-warning rounded-0" :to="{ name: 'checkout' }">Vai al
-          carrello</router-link>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -100,13 +96,25 @@ export default {
 
 <style lang="scss" scoped>
 .name{
-  padding-top: 250px;
+  padding-top: 40px;
 }
 img {
-  width: 600px;
-  margin-top: 50px;
+  width: 300px;
+  border-radius: 15px;
 }
-
+.info{
+  margin-top: 250px;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border: solid 1px;
+  border-radius: 15px;
+}
+.dish{
+  margin-top: 150px;
+  border-radius: 15px;
+  border: solid 1px;
+  padding-top: 60px;
+}
 .quant {
   width: 50px;
 }
@@ -116,6 +124,6 @@ img {
 }
 
 .my-img {
-  padding-top: 200px;
+  padding-top: 60px;
 }
 </style>
