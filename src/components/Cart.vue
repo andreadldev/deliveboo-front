@@ -1,11 +1,11 @@
 <script>
 import { store } from '../store';
-import * as braintree from '../braintree';
 import axios from 'axios';
+import * as braintree from '../braintree';
 export default {
     name: "Cart",
     props: {
-        data: Object,
+        data: String,
         slug: String,
         ps: String
     },
@@ -126,38 +126,38 @@ export default {
             for (let i = 0; i < this.userCart.dish.length; i++) {
 
                 this.cartItems.dishesQuantity.push(parseFloat(document.querySelector(`#quantity-${i}`).value))
-                d
+                
             }
-            console.log(this.cartItems.dishesQuantity)
         },
 
-        // SaveQuantity(){
-        //     for (let i = 0; i < this.userCart.length; i++){
-        //         console.log(document.querySelector(`#quantity-${i}`).value)
-        //         this.cartItems.dishesQuantity.push(document.querySelector(`#quantity-${i}`).value)
-        //     }
-        // },
-
-        deleteCart(i) {
-            console.log(this.userCart.dish)
-            
-            this.userCart.dish.splice(i, 1);
+    deleteCart(i) {            
+        this.userCart.dish.splice(i, 1);
+        if(this.userCart.dish.length === 0){
+            localStorage.clear()
+            // console.log(this.userCart.dish)
+            // console.log(localStorage.getItem('my_data'))
+            console.log(this.userCart)
         }
+    }
     },
     created() {
-        this.userCart = JSON.parse(this.data)
-        this.restaurant_slug = JSON.parse(this.slug)
-        this.rest = JSON.parse(this.ps)
+        // console.log(this.userCart)
+        // console.log(localStorage.getItem('my_data'))
+        this.userCart = JSON.parse(localStorage.getItem('my_data'))
+        console.log(this.userCart)
+
+        this.restaurant_slug = JSON.parse(localStorage.getItem('slug'))
+        this.rest = JSON.parse(localStorage.getItem('price_shipping'))
     },
 
     mounted() {
-        console.log(this.rest.price_shipping)
 
         //calcolo prezzo totale
-        for (let i = 0; i < this.userCart.dish.length; i++) {
-            this.totalPrice.push(parseFloat(document.querySelector(`#price-${i}`).innerHTML));
-        }
-        this.subtotal = this.totalPrice.reduce((pv, cv) => pv + cv, 0);
+        if(this.userCart){
+            for (let i = 0; i < this.userCart.dish.length; i++) {
+                this.totalPrice.push(parseFloat(document.querySelector(`#price-${i}`).innerHTML));
+            }
+            this.subtotal = this.totalPrice.reduce((pv, cv) => pv + cv, 0);
 
 
         // data locale
@@ -172,24 +172,15 @@ export default {
 
 
         //prezzo totale
-        this.shipping = parseFloat(document.getElementById('price').innerHTML)
-        this.orderData.price = this.shipping + this.subtotal
-        // console.log(this.userCart.dish)
+            this.shipping = parseFloat(document.getElementById('price').innerHTML)
+            this.orderData.price = this.shipping + this.subtotal
+            // console.log(this.userCart.dish)
 
         // id piatti
         const ids = this.userCart.dish.map(element => element.id);
         this.cartItems.dishesId = ids;
         // console.log(this.dishesId)
 
-    },
-    computed: {
-        getQuantities() {
-            for (let i = 0; i < this.userCart.dish.length; i++) {
-
-                this.cartItems.dishesQuantity.push(parseFloat(document.querySelector(`#quantity-${i}`).value))
-
-            }
-            console.log(this.cartItems.dishesQuantity)
         }
     }
 }
@@ -200,7 +191,7 @@ export default {
     <section class="pt-5">
         <div class="container pt-5 ">
             <div class="row d-flex justify-content-center my-4 my-cart">
-                <div class="col-md-8">
+                <div v-if="this.userCart" class="col-md-8" >
                     <div class="card mb-4">
                         <div class="card-header py-3">
                             <div v-if="this.userCart.dish.length > 1">
@@ -262,9 +253,10 @@ export default {
                         </div>
                     </div>
                 </div>
+                <div v-else> <h2>Il carrello è vuoto! </h2></div>
 
                 <!-- RIEPILOGO ORDINE -->
-                <div class="col-md-4">
+                <div v-if="this.userCart" class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-header py-3">
                             <h5 class="mb-0">Riepilogo ordine</h5>

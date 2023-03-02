@@ -21,6 +21,9 @@ export default {
     showlog() {
       console.log(localStorage.getItem('my_data'))
     },
+  },
+  created() {
+        console.log(localStorage.getItem['my_data'])   
   }
 };
 

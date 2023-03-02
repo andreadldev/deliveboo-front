@@ -34,11 +34,15 @@
 </template>
 
 <script>
+import {store} from '../store'
 import axios from "axios";
 export default {
   name: "SingleRestaurant",
   data() {
     return {
+      components:{
+        store
+      },
       restaurant: null,
       order: {
         dish: [],
@@ -50,12 +54,7 @@ export default {
 
       localStorage.setItem('my_data', JSON.stringify(this.order))
       localStorage.setItem('slug', JSON.stringify(this.$route.params.slug))
-      localStorage.setItem('price_shipping', JSON.stringify(this.restaurant.price_shipping))
-
-      console.log(this.$route.params.slug)
-      console.log('slug', JSON.stringify(this.$route.params.slug))
-      console.log('my_data', JSON.stringify(this.order))
-      console.log('price_shipping', JSON.stringify(this.restaurant.price_shipping))
+      localStorage.setItem('price_shipping', JSON.stringify(this.restaurant))
 
     },
 
