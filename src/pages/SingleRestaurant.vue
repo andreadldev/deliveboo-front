@@ -7,10 +7,7 @@
       <small>Indirizzo: {{ restaurant.address }}</small>
       <div>Descrizione: {{ restaurant.description }}</div>
       <span>Costo spedizione: {{ restaurant.price_shipping }}€</span>
-      <div class="m-4">
-        <router-link class="text-decoration-none text-white  btn btn-warning rounded-0"
-          :to="{ name: 'checkout' }">Menù</router-link>
-      </div>
+
       <h5>I nostri piatti:</h5>
 
       <!-- form -->
@@ -27,6 +24,10 @@
         <button class="btn btn-warning m-4" type="submit">Aggiungi al carrello</button>
         <button @click="showlog()">Log</button>
       </form>
+      <div class="m-4">
+        <router-link class="text-decoration-none text-white  btn btn-warning rounded-0" :to="{ name: 'checkout' }">Vai al
+          carrello</router-link>
+      </div>
     </div>
 
   </div>
