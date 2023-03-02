@@ -21,12 +21,11 @@
                 <div v-for="(dish, index) in restaurant.dishes" :key="index">
                   <div class="d-flex justify-content-center flex-column w-10">
                     <article class="wrapper " id="demo">
-                      <div>
+                        <input :id="'check-' + index" class="check ms-1 mt-2" type="checkbox" :value="dish" v-model="order.dish">
+                        <div>
                         <label :for="'check-' + index">{{ dish.name }}</label>
                       </div>
-                      
                       <!-- modificare e aggiungere bottone -->
-                      <input :id="'check-' + index" class="check ms-1 mt-2" type="checkbox" :value="dish" v-model="order.dish">
                     </article>
                 </div>
                 </div>

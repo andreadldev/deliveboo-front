@@ -73,10 +73,10 @@ export default {
                         <article id="demo" class="feature1">
                             <input type="checkbox" id="feature1" v-model="category.selected"
                                 @change="toggleCategory(index)" />
-                            <div class="w-200 d-flex flex-column justify-content-between">
-                                <img class="img-fluid w-200" :src="images[index]" alt="" />
-                                <span class="my-span"> {{ category.name }}<br /> </span>
-                            </div>
+                                <div class="w-200 d-flex flex-column justify-content-between">
+                                    <img class="img-fluid w-200" :src="images[index]" alt="" />
+                                    <span class="my-span"> {{ category.name }}<br /></span>
+                                </div>
                         </article>
                     </li>
                 </ul>
