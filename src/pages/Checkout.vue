@@ -12,6 +12,9 @@ export default {
     },
     ristSlug() {
       return localStorage.getItem('slug')
+    },
+    price_ship(){
+      return localStorage.getItem('price_shipping')
     }
   },
   methods: {
@@ -23,7 +26,7 @@ export default {
 
 </script>
 <template>
-  <Cart :data="myData" :slug="ristSlug" />
+  <Cart :data="myData" :slug="ristSlug" :ps="price_ship" />
 </template>
 
 <style lang="scss" scoped></style>

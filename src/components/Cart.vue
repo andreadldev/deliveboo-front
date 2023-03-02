@@ -4,14 +4,16 @@ import * as braintree from '../braintree';
 import axios from 'axios';
 export default {
     name: "Cart",
-    braintree,
     props: {
         data: Object,
-        slug: String
+        slug: String,
+        ps: String
     },
     data() {
         return {
+            braintree,
             store,
+            rest: null,
             restaurant_slug: null,
             restaurant: null,
             userCart: [],
@@ -80,8 +82,13 @@ export default {
             // CALCOLO QUANTITA' / PREZZO
             document.querySelector(`#quantity-${i}`).stepUp();
             document.querySelector(`#price-${i}`).innerHTML = price * document.querySelector(`#quantity-${i}`).value;
-
-            if (document.querySelector(`#quantity-${i}`).value < 10) {
+            if(document.querySelector(`#quantity-${i}`).value == 10){
+                document.querySelector(`#up-btn-${i}`).disabled = true
+            }
+            if(document.querySelector(`#down-btn-${i}`).disabled == true){
+                document.querySelector(`#down-btn-${i}`).disabled = false
+            }
+            if (document.querySelector(`#quantity-${i}`).value <= 10) {
                 this.totalPrice[i] += parseFloat(oldPrice)
                 this.subtotal = this.totalPrice.reduce((pv, cv) => pv + cv, 0);
                 this.orderData.price = this.shipping + this.subtotal
@@ -95,6 +102,12 @@ export default {
         QuantityDown(i, price) {
             let oldPrice = price
             // CALCOLO QUANTITA' / PREZZO
+            if(document.querySelector(`#up-btn-${i}`).disabled == true){
+                document.querySelector(`#up-btn-${i}`).disabled = false
+            }
+            if(document.querySelector(`#quantity-${i}`).value == 1){
+                document.querySelector(`#down-btn-${i}`).disabled = true
+            }
             if (parseFloat(document.querySelector(`#price-${i}`).innerHTML) > price) {
                 document.querySelector(`#quantity-${i}`).stepDown();
                 document.querySelector(`#price-${i}`).innerHTML -= price;
@@ -127,19 +140,22 @@ export default {
 
         deleteCart(i) {
             console.log(this.userCart.dish)
+            
             this.userCart.dish.splice(i, 1);
         }
     },
     created() {
         this.userCart = JSON.parse(this.data)
         this.restaurant_slug = JSON.parse(this.slug)
+        this.rest = JSON.parse(this.ps)
     },
 
     mounted() {
+        console.log(this.rest.price_shipping)
+
+        //calcolo prezzo totale
         for (let i = 0; i < this.userCart.dish.length; i++) {
-
             this.totalPrice.push(parseFloat(document.querySelector(`#price-${i}`).innerHTML));
-
         }
         this.subtotal = this.totalPrice.reduce((pv, cv) => pv + cv, 0);
 
@@ -215,16 +231,16 @@ export default {
                                 <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                                     <!-- QUANTITA' -->
                                     <div class="d-flex mb-4" style="max-width: 300px">
-                                        <button class="btn btn-primary px-3 me-2 mb-5"
-                                            @click="QuantityDown(index, item.price)">-</button>
+                                        <button class="btn btn-primary px-3 me-2 mb-5" :id="'down-btn-' + index"
+                                            @click="QuantityDown(index, item.price)" disabled>-</button>
 
                                         <div class="form-outline">
-                                            <input :id="'quantity-' + index" required min="1" max="10"
+                                            <input :id="'quantity-' + index" required min="1" max="11"
                                                 :name="'quantity-' + index" value='1' type="number" class="form-control" />
                                             <label class="form-label" for="form1">Quantità</label>
                                         </div>
 
-                                        <button class="btn btn-primary px-3 ms-2 mb-5"
+                                        <button class="btn btn-primary px-3 ms-2 mb-5" :id="'up-btn-' + index"
                                             @click="QuantityUp(index, item.price)">+</button>
                                     </div>
 
@@ -258,11 +274,10 @@ export default {
                                 <li
                                     class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                     Subtotale
-                                    <span id="subtotal">{{ this.subtotal }}</span>
+                                    <span id="subtotal">€ {{ this.subtotal }}</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center px-0">Shipping
-                                    <span>{{ this.store.restaurants[this.userCart.dish[0].restaurant_id
-                                        - 1].price_shipping }}</span>
+                                    <span>€ {{ this.rest.price_shipping }}</span>
                                 </li>
                                 <li
                                     class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
@@ -272,9 +287,11 @@ export default {
                                             <p class="mb-0">(including VAT)</p>
                                         </strong>
                                     </div>
-                                    <span><strong id="price">{{ parseFloat(this.subtotal) +
-                                        parseFloat(this.store.restaurants[this.userCart.dish[0].restaurant_id
-                                            - 1].price_shipping) }}</strong></span>
+                                    <span>
+                                        <strong id="price">€ {{ parseFloat(this.subtotal) +
+                                            parseFloat(this.rest.price_shipping) }}
+                                        </strong>
+                                    </span>
                                 </li>
                             </ul>
                             <!-- <button type="button" class="btn btn-primary btn-lg btn-block">Go to checkout</button> -->

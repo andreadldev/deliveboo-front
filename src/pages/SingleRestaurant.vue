@@ -50,10 +50,13 @@ export default {
 
       localStorage.setItem('my_data', JSON.stringify(this.order))
       localStorage.setItem('slug', JSON.stringify(this.$route.params.slug))
+      localStorage.setItem('price_shipping', JSON.stringify(this.restaurant.price_shipping))
 
       console.log(this.$route.params.slug)
       console.log('slug', JSON.stringify(this.$route.params.slug))
       console.log('my_data', JSON.stringify(this.order))
+      console.log('price_shipping', JSON.stringify(this.restaurant.price_shipping))
+
     },
 
     showlog() {
@@ -77,6 +80,7 @@ export default {
       .get(`http://localhost:8000/api/restaurants/${this.$route.params.slug}`)
       .then((response) => {
         this.restaurant = response.data;
+        // console.log(this.restaurant)
       })
       .catch((err) => {
         console.log(err);
