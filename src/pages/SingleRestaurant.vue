@@ -1,10 +1,12 @@
 <template>
   <div v-if="restaurant" class="text-center my-restaurant">
 
-    <h1>{{ restaurant.name }}</h1>
+    <h1 class="name">{{ restaurant.name }}</h1>
     <img class="my-img" v-if="restaurant.img" :src="restaurant.img" :alt="restaurant.name">
     <div class="text-center">
-      <small>Indirizzo: {{ restaurant.address }}</small>
+      <div>Indirizzo: {{ restaurant.address }}</div>
+      <div>Orario Apertura {{ restaurant.opening_time }} </div>
+      <div>Orario Chiusura {{ restaurant.closing_time }} </div>
       <div>Descrizione: {{ restaurant.description }}</div>
       <span>Costo spedizione: {{ restaurant.price_shipping }}€</span>
 
@@ -89,8 +91,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.name{
+  padding-top: 200px;
+}
 img {
-  width: 800px;
+  width: 700px;
 }
 
 .quant {
