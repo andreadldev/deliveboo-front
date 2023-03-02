@@ -1,35 +1,50 @@
 <template>
   <div v-if="restaurant" class="text-center my-restaurant">
 
-    <h1>{{ restaurant.name }}</h1>
-    <img class="my-img" v-if="restaurant.img" :src="restaurant.img" :alt="restaurant.name">
-    <div class="text-center">
-      <small>Indirizzo: {{ restaurant.address }}</small>
-      <div>Descrizione: {{ restaurant.description }}</div>
-      <span>Costo spedizione: {{ restaurant.price_shipping }}€</span>
-
-      <h5>I nostri piatti:</h5>
-
-      <!-- form -->
-      <form @submit.prevent="saveData()">
-        <div v-for="(dish, index) in restaurant.dishes" :key="index">
-          <div class="d-flex justify-content-center flex-column w-10">
-            <div class="wrapper">
-              <label :for="'check-' + index">{{ dish.name }}</label>
-              <!-- modificare e aggiungere bottone -->
-              <input :id="'check-' + index" class="check ms-1 mt-2" type="checkbox" :value="dish" v-model="order.dish">
-            </div>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-6 info">
+          <img class="my-img" v-if="restaurant.img" :src="restaurant.img" :alt="restaurant.name">
+          <div class="text-center">
+            <h1 class="name">{{ restaurant.name }}</h1>
+            <div> {{ restaurant.description }}</div>
+            <div>{{ restaurant.address }}</div>
+            <div>Orario Apertura {{ restaurant.opening_time }} </div>
+            <div>Orario Chiusura {{ restaurant.closing_time }} </div>
+            <span>Costo spedizione: {{ restaurant.price_shipping }}€</span>
           </div>
         </div>
-        <button class="btn btn-warning m-4" type="submit">Aggiungi al carrello</button>
-        <button @click="showlog()">Log</button>
-      </form>
-      <div class="m-4">
-        <router-link class="text-decoration-none text-white  btn btn-warning rounded-0" :to="{ name: 'checkout' }">Vai al
-          carrello</router-link>
+        <div class="col-6 dish">
+          <!-- form -->
+          <div class="row">
+            <h5>I nostri piatti:</h5>
+              <form @submit.prevent="saveData()">
+                <div v-for="(dish, index) in restaurant.dishes" :key="index">
+                  <div>
+                    <article class="wrapper " id="demo">
+                        <input :id="'check-' + index" class="check ms-1 mt-2" type="checkbox" :value="dish" v-model="order.dish">
+                        <div>
+                        <label :for="'check-' + index">{{ dish.name }}</label>
+                        <!-- <img  class="img-fluid w-50" :src="dish.img" alt=""> -->
+                      </div>
+                      <!-- modificare e aggiungere bottone -->
+                    </article>
+                  </div>
+                </div>
+              </form>
+          </div>
+              <div class="row">
+                <div>
+                  <button class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
+                  <button @click="showlog()">Log</button>
+                </div>
+            <div class="m-4">
+                <router-link class="text-decoration-none text-white btn rounded-3" :to="{ name: 'checkout' }">Vai al carrello</router-link>
+            </div>
+          </div>     
+        </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -92,10 +107,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-img {
-  width: 800px;
+.my-restaurant{
+  background-color: rgb(253, 187, 45);
 }
-
+.name{
+  padding-top: 40px;
+  color: rgb(195, 34, 34);
+  font-size: 60px;
+  font-weight: 700;
+}
+h5{
+  color: rgb(195, 34, 34);
+  font-weight: 700;
+}
+.btn{
+  background-color: rgb(195, 34, 34);
+}
+.info{
+  margin-top: 250px;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+.dish{
+  margin-top: 150px;
+  border-radius: 15px;
+  padding-top: 60px;
+  
+}
 .quant {
   width: 50px;
 }
@@ -105,6 +146,51 @@ img {
 }
 
 .my-img {
-  padding-top: 200px;
+  padding-top: 60px;
+  width: 400px;
+}
+
+article {
+    position: relative;
+    width: 160px;
+    height: 140px;
+    margin: 20px;
+    float: left;
+    border: 2px solid rgb(195, 34, 34);
+    box-sizing: border-box;
+    background-color: white;
+    color: rgb(253, 187, 45);
+    font-weight: 700;
+    font-size: 17px;
+}
+
+article div {
+    width: 100%;
+    height: 100%;
+    transition: 0.5s ease;
+}
+
+article input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 140px;
+    height: 100px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#demo {
+    -webkit-box-shadow: 0px 0px 25px 0px rgb(195, 34, 34);
+    box-shadow: 0px 0px 25px 0px rgb(195, 34, 34);
+}
+
+#demo:hover {
+    transform: scale(1.2);
+    /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+input[type="checkbox"]:checked~div {
+    background-color: rgb(195, 34, 34);
 }
 </style>
