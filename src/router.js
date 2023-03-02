@@ -9,6 +9,7 @@ import SingleCategory from "./pages/SingleCategory.vue";
 import AboutUs from "./pages/AboutUs.vue";
 import Dishes from "./pages/Dishes.vue";
 import Checkout from "./pages/Checkout.vue";
+import Done from "./pages/Done.vue";
 
 import Page404 from "./pages/Page404.vue";
 
@@ -54,6 +55,11 @@ const router = createRouter({
       path: "/:pathMatch(.*)*",
       name: "page-404",
       component: Page404,
+    },
+    {
+      path: "/done",
+      name: "done",
+      component: Done,
     },
   ],
 });
