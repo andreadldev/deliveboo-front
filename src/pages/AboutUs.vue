@@ -77,9 +77,7 @@ export default {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col d-flex justify-content-center">
+                <div class="col-lg-4">
                     <div class="card">
                         <div class="face front-face">
                             <img src="src\assets\img\fp.jfif" alt="" class="profile">
@@ -103,7 +101,7 @@ export default {
                         </div>
                     </div>
                 </div>
-                <div class="col d-flex justify-content-center">
+                <div class="col-lg-4">
                     <div class="card">
                         <div class="face front-face">
                             <img src="src\assets\img\profile.jpg" alt="" class="profile">
@@ -126,6 +124,7 @@ export default {
                     </div>
                 </div>
             </div>
+
         </div>
     </body>
 </template>
@@ -142,12 +141,12 @@ export default {
 // }
 
 .my-container {
-    padding-top: 300px;
+    padding-top: 100px;
 }
 
 body {
     background-color: rgb(253, 187, 45);
-    height: 100vh;
+
 }
 
 

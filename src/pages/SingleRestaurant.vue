@@ -2,7 +2,7 @@
   <div v-if="restaurant" class="text-center my-restaurant">
 
     <h1>{{ restaurant.name }}</h1>
-    <img v-if="restaurant.img" :src="restaurant.img" :alt="restaurant.name">
+    <img class="my-img" v-if="restaurant.img" :src="restaurant.img" :alt="restaurant.name">
     <div class="text-center">
       <small>Indirizzo: {{ restaurant.address }}</small>
       <div>Descrizione: {{ restaurant.description }}</div>
@@ -14,25 +14,19 @@
       <h5>I nostri piatti:</h5>
 
       <!-- form -->
-      <form @submit.prevent="saveData()" >
-        <div v-for="(dish, index) in restaurant.dishes" :key="index" >
+      <form @submit.prevent="saveData()">
+        <div v-for="(dish, index) in restaurant.dishes" :key="index">
           <div class="d-flex justify-content-center flex-column w-10">
             <div class="wrapper">
-              <label :for="'check-' + index" >{{ dish.name }}</label>
+              <label :for="'check-' + index">{{ dish.name }}</label>
               <!-- modificare e aggiungere bottone -->
-              <input
-                :id="'check-' + index"
-                class="check ms-1 mt-2"
-                type="checkbox"
-                :value="dish"
-                v-model="order.dish"
-              >
+              <input :id="'check-' + index" class="check ms-1 mt-2" type="checkbox" :value="dish" v-model="order.dish">
             </div>
-          </div>          
+          </div>
         </div>
-        <button class="btn btn-warning" type="submit">Aggiungi al carrello</button>
+        <button class="btn btn-warning m-4" type="submit">Aggiungi al carrello</button>
         <button @click="showlog()">Log</button>
-      </form>      
+      </form>
     </div>
 
   </div>
@@ -45,38 +39,38 @@ export default {
   data() {
     return {
       restaurant: null,
-      order:{
-        dish:[],
+      order: {
+        dish: [],
       },
     };
   },
-  methods:{
-      saveData(){
+  methods: {
+    saveData() {
 
-        localStorage.setItem('my_data', JSON.stringify(this.order))
-        localStorage.setItem('slug', JSON.stringify(this.$route.params.slug))
+      localStorage.setItem('my_data', JSON.stringify(this.order))
+      localStorage.setItem('slug', JSON.stringify(this.$route.params.slug))
 
-        console.log(this.$route.params.slug)
-        console.log('slug', JSON.stringify(this.$route.params.slug))
-        console.log('my_data', JSON.stringify(this.order))
-        },
+      console.log(this.$route.params.slug)
+      console.log('slug', JSON.stringify(this.$route.params.slug))
+      console.log('my_data', JSON.stringify(this.order))
+    },
 
-      showlog(){
-        console.log(localStorage.getItem('my_data'))
-        console.log(localStorage.getItem('slug'))
-      },
-      disableInput() {
-        for (let i = 0; i < this.restaurant.dishes.length; i++) {
-            if (document.querySelector(`.check_${i}`).checked === true){
-                document.querySelector(`.input_${i}`).disabled = false;
-            } 
-            else if (document.querySelector(`.check_${i}`).checked === false) {
-                document.querySelector(`.input_${i}`).value = '';
-                document.querySelector(`.input_${i}`).disabled = true;
-            }
+    showlog() {
+      console.log(localStorage.getItem('my_data'))
+      console.log(localStorage.getItem('slug'))
+    },
+    disableInput() {
+      for (let i = 0; i < this.restaurant.dishes.length; i++) {
+        if (document.querySelector(`.check_${i}`).checked === true) {
+          document.querySelector(`.input_${i}`).disabled = false;
+        }
+        else if (document.querySelector(`.check_${i}`).checked === false) {
+          document.querySelector(`.input_${i}`).value = '';
+          document.querySelector(`.input_${i}`).disabled = true;
         }
       }
-    },
+    }
+  },
   created() {
     axios
       .get(`http://localhost:8000/api/restaurants/${this.$route.params.slug}`)
@@ -104,5 +98,9 @@ img {
 
 .wrapper {
   position: relative
+}
+
+.my-img {
+  padding-top: 200px;
 }
 </style>
