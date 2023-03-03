@@ -11,8 +11,7 @@
             <div>{{ restaurant.address }}</div>
             <div>Orario Apertura {{ restaurant.opening_time }} </div>
             <div>Orario Chiusura {{ restaurant.closing_time }} </div>
-            <span>Costo spedizione: {{ restaurant.price_shipping }}€</span>
-            
+            <span>Costo spedizione: {{ restaurant.price_shipping }}€</span>            
           </div>
         </div>
         <div class="col-6 dish">
@@ -38,8 +37,31 @@
                 </div>
                 <div id="advise" class="d-none"><p>Non puoi ordinare da più ristoranti!</p></div>
                 <div id="success" class="d-none"><p>Piatti aggiunti al carrello!</p></div>
-                <div id="warning" class="d-none"><p>Piatti già presenti nel carrello!</p></div>
+                <div id="warning" class="d-none"><p>Piatto già presenti nel carrello!</p></div>
                 <div id="select" class="d-none"><p>Seleziona almeno un piatto!</p></div>
+                <!-- <div id="modifying" class="d-none"><p>Attenzione stai creando un nuovo carrello!</p></div> -->
+
+                <!-- //bootstrap modal -->
+                <div id="myModal" class="modal fade" role="dialog" style="display: none;">
+                  <form @submit.prevent="overWriteCart()">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Modal Header</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Attenzione stai creando un nuovo carrello!</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <p id="confirmed" class="d-none">Carrello modificato!</p>
+                          </div>
+                        </div>
+                      </div>
+                  </form>
+                </div>
 
               </form>
           </div>
@@ -72,6 +94,15 @@ export default {
   },
   methods: {
 
+    overWriteCart(){
+        localStorage.removeItem('my_data')
+        
+        localStorage.setItem('my_data', JSON.stringify(this.order));
+
+        document.getElementById('confirmed').classList.remove('d-none');
+
+    },
+
     saveData() {
       if(this.order.dish.length != 0){
           let foundMatchingRestaurant = false;
@@ -82,14 +113,29 @@ export default {
         });
 
         if (store.userCart.dish.length > 0 && !foundMatchingRestaurant) {
+
           document.getElementById('advise').classList.remove('d-none');
+
         } else {
           if(store.userCart.dish.length > 0 && foundMatchingRestaurant){
 
-            document.getElementById('warning').classList.remove('d-none');
+            store.userCart.dish.forEach(cartDish => {
+              this.order.dish.forEach(menuDish => {
+                if(cartDish.name === menuDish.name){
 
-            return true;
+                  document.getElementById('warning').classList.remove('d-none');
+
+                } else {
+
+                  $('#myModal').modal('show');
+
+                }
+                
+              });
+            });
+
           } else {
+
             localStorage.setItem('my_data', JSON.stringify(this.order));
             localStorage.setItem('slug', JSON.stringify(this.$route.params.slug));
             localStorage.setItem('price_shipping', JSON.stringify(this.restaurant));
@@ -103,8 +149,8 @@ export default {
     },
 
     showlog() {
-      console.log(this.order)
-      console.log(localStorage.getItem('slug'))
+      console.log(store.userCart.dish)
+      // console.log(localStorage.getItem('slug'))
     },
 
     disableInput() {
