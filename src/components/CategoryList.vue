@@ -84,7 +84,7 @@ export default {
         <div class="d-flex">
           <ul class="row " v-if="isActive">
             <h4 class="my-title">Hai selezionato:</h4>
-            <li class="col-3 my-card" v-for="(restaurant, index) in filteredRestaurants" :key="index">
+            <li class="col-lg-4 my-card" v-for="(restaurant, index) in filteredRestaurants" :key="index">
               <RestaurantCard :data="restaurant" />
               <router-link :to="{
                 name: 'single-restaurant',
