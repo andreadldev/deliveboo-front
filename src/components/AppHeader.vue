@@ -34,6 +34,8 @@ $(document).ready(function () {
               <span></span>
             </a>
           </div>
+
+
           <ul class="nav-list">
             <li class="nav-item">
               <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
@@ -54,6 +56,7 @@ $(document).ready(function () {
                   class="fa-solid fa-cart-shopping my-cart"></i></router-link>
             </li>
           </ul>
+
         </nav>
       </div>
     </div>
