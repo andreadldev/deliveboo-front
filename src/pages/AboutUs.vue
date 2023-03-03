@@ -50,7 +50,7 @@ export default {
                             </div>
                             <span class="fas fa-quote-right"></span>
                             <div>
-                                <a href="https://github.com/SergioMarcoZanin"><i class="fa-brands fa-github"></i></a>
+                                <a href="https://github.com/Iunora93"><i class="fa-brands fa-github"></i></a>
                             </div>
                         </div>
                     </div>
@@ -72,7 +72,7 @@ export default {
                             </div>
                             <span class="fas fa-quote-right"></span>
                             <div>
-                                <a href="https://github.com/SergioMarcoZanin"><i class="fa-brands fa-github"></i></a>
+                                <a href="https://github.com/Vale-riad"><i class="fa-brands fa-github"></i></a>
                             </div>
                         </div>
                     </div>
@@ -118,7 +118,7 @@ export default {
                             </div>
                             <span class="fas fa-quote-right"></span>
                             <div>
-                                <a href="https://github.com/SergioMarcoZanin"><i class="fa-brands fa-github"></i></a>
+                                <a href="https://github.com/andreadldev"><i class="fa-brands fa-github"></i></a>
                             </div>
                         </div>
                     </div>
@@ -160,12 +160,7 @@ body {
     justify-content: center;
 }
 
-.title {
-    padding-top: 100px;
-    padding-bottom: 80px;
-    text-align: center;
-    color: rgb(195, 34, 34);
-}
+
 
 .testimonial {
     color: rgb(195, 34, 34);
@@ -266,9 +261,15 @@ border-bottom: 1px solid #999; */
     transform: rotateY(360deg);
 }
 
-@media(max-width: 991.5px) {
+@media(min-width: 800px) {
+    .title {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    color: rgb(195, 34, 34);
+}
     .col-lg-4 {
-        margin-top: 40px;
+        margin-top: 30px;
         margin-bottom: 20px;
     }
 }
