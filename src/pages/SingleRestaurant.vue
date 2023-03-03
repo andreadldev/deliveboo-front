@@ -234,7 +234,7 @@ h5{
 article {
     position: relative;
     width: 160px;
-    height: 140px;
+    height: 80px;
     margin: 20px;
     float: left;
     border: 2px solid rgb(195, 34, 34);
