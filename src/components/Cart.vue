@@ -104,7 +104,7 @@ export default {
       if (document.querySelector(`#up-btn-${i}`).disabled == true) {
         document.querySelector(`#up-btn-${i}`).disabled = false;
       }
-      if (document.querySelector(`#quantity-${i}`).value == 1) {
+      if (document.querySelector(`#quantity-${i}`).value < 3) {
         document.querySelector(`#down-btn-${i}`).disabled = true;
       }
       if (parseFloat(document.querySelector(`#price-${i}`).innerHTML) > price) {
