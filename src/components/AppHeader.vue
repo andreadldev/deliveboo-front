@@ -58,7 +58,7 @@ $(document).ready(function () {
             </li>
             <li class="nav-item">
               <router-link
-                class="text-decoration-none text-white nav-link mx-2 btn py-1 rounded-0"
+                class="text-decoration-none text-white nav-link mx-2 m-0 py-2 btn rounded-0"
                 style="background: rgba(195, 34, 34)"
                 :to="{ name: 'checkout' }"
                 ><i class="fa-solid fa-cart-shopping my-cart"></i
@@ -238,6 +238,11 @@ nav ul li ul li a {
 
   .brand {
     display: block;
+  }
+  .nav-list {
+    width: 200px;
+    margin-left: auto;
+    text-align: center;
   }
 }
 
