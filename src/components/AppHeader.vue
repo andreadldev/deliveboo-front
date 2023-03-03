@@ -26,7 +26,12 @@ $(document).ready(function () {
     <div class="nav-bar">
       <div class="nav-container">
         <div class="brand">
-          <a href="/"><img class="img-fluid my-img" src="../assets/img/DELIVEBOO (2)_preview_rev_1.png" alt=""></a>
+          <a href="/"
+            ><img
+              class="img-fluid my-img"
+              src="../assets/img/DELIVEBOO (2)_preview_rev_1.png"
+              alt=""
+          /></a>
         </div>
         <nav>
           <div class="nav-mobile">
@@ -35,28 +40,37 @@ $(document).ready(function () {
             </a>
           </div>
 
-
           <ul class="nav-list">
             <li class="nav-item">
-              <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
-                :to="{ name: 'homepage' }">Home</router-link>
+              <router-link
+                class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
+                :to="{ name: 'homepage' }"
+                >Home</router-link
+              >
             </li>
             <li class="nav-item">
-              <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
-                :to="{ name: 'restaurants' }">Ristoranti</router-link>
+              <router-link
+                class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
+                :to="{ name: 'restaurants' }"
+                >Ristoranti</router-link
+              >
             </li>
             <li class="nav-item">
-              <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
-                :to="{ name: 'about-us' }">Chi
-                siamo</router-link>
+              <router-link
+                class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
+                :to="{ name: 'about-us' }"
+                >Chi siamo</router-link
+              >
             </li>
             <li class="nav-item">
-              <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger btn "
-                style="background: rgba(195, 34, 34)" :to="{ name: 'checkout' }"><i
-                  class="fa-solid fa-cart-shopping my-cart"></i></router-link>
+              <router-link
+                class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger btn"
+                style="background: rgba(195, 34, 34)"
+                :to="{ name: 'checkout' }"
+                ><i class="fa-solid fa-cart-shopping my-cart"></i
+              ></router-link>
             </li>
           </ul>
-
         </nav>
       </div>
     </div>
@@ -65,7 +79,6 @@ $(document).ready(function () {
 
 <style lang="scss" scoped>
 .my-img {
-
   width: 140px;
   margin-top: -22px;
   margin-left: -30px;
@@ -76,6 +89,7 @@ $(document).ready(function () {
   background: rgb(253, 187, 45);
   border-top: 2px solid rgba(195, 34, 34);
   border-bottom: 2px solid rgba(195, 34, 34);
+  box-shadow: 0px 0px 5px 2px rgb(0 0 0 / 20%);
 }
 
 .my-hamburger {
@@ -215,24 +229,20 @@ nav ul li ul li a {
   nav {
     width: 100%;
     padding: 70px 0 15px;
-
   }
 
   nav ul {
     display: none;
-
   }
 
   nav ul li {
     float: none;
-
   }
 
   nav ul li a {
     // padding: 15px;
     // line-height: 20px;
     // padding-left: 25%;
-
   }
 
   nav ul li ul li a {
@@ -251,7 +261,6 @@ nav ul li ul li a {
     width: 200px;
     margin-left: auto;
     text-align: center;
-
   }
 }
 
@@ -285,7 +294,7 @@ nav ul li ul li a {
   // https://www.freewebheaders.com/wp-content/gallery/food/delicious-orange-salmon-caviar-website-header.jpg
   // https://www.freewebheaders.com/wp-content/gallery/food/french-fries-natural-food-website-header-image.jpg
   background-size: cover;
-  height: 100px;
+  height: 70px;
   background-repeat: no-repeat;
   position: relative;
 }
