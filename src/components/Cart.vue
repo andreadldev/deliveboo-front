@@ -1,12 +1,10 @@
 <script>
 import { store } from "../store";
 import axios from "axios";
-import * as braintree from "../braintree";
 export default {
   name: "Cart",
   data() {
     return {
-      braintree,
       store,
       rest: null,
       restaurant_slug: null,
@@ -124,6 +122,10 @@ export default {
     },
 
     getQuantities() {
+    let Script = document.createElement("script");
+    Script.setAttribute("src", "./src/braintree.js");
+    document.head.appendChild(Script);
+
       console.log(this.cartItems.dishesQuantity);
       if (this.cartItems.dishesQuantity.length > 0) {
         this.cartItems.dishesQuantity = [];
