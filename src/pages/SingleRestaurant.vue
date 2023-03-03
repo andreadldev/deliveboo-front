@@ -3,7 +3,7 @@
 
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-6 info">
+        <div class="col-lg-6 info">
           <img class="my-img" v-if="restaurant.img" :src="restaurant.img" :alt="restaurant.name">
           <div class="text-center">
             <h1 class="name">{{ restaurant.name }}</h1>
@@ -14,24 +14,33 @@
             <span>Costo spedizione: {{ restaurant.price_shipping }}€</span>            
           </div>
         </div>
-        <div class="col-6 dish">
+        <div class="col-lg-6 dish">
           <!-- form -->
           <div class="row">
             <h5>I nostri piatti:</h5>
               <form @submit.prevent="saveData()">
                 <div v-for="(dish, index) in restaurant.dishes" :key="index">
                   <div>
-                    <article class="wrapper " id="demo">
+                    <article class="wrapper" id="demo">
                         <input :id="'check-' + index" class="check ms-1 mt-2" type="checkbox" :value="dish" v-model="order.dish">
                         <div>
                         <label :for="'check-' + index">{{ dish.name }}</label>
+                        <div>
+                          <label :for="'check-' + index">{{ dish.price }}</label>
+                        </div>
                         <!-- <img  class="img-fluid w-50" :src="dish.img" alt=""> -->
                       </div>
                       <!-- modificare e aggiungere bottone -->
                     </article>
                   </div>
                 </div>
-                <div>
+                
+
+              </form>
+          </div>
+              <div class="row">
+            <div class="m-4">
+              <div>
                   <button class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
                   <button @click="showlog()">Log</button>
                 </div>
@@ -62,11 +71,6 @@
                       </div>
                   </form>
                 </div>
-
-              </form>
-          </div>
-              <div class="row">
-            <div class="m-4">
                 <router-link class="text-decoration-none text-white btn rounded-3" :to="{ name: 'checkout' }">Vai al carrello</router-link>
             </div>
           </div>     
@@ -245,6 +249,7 @@ article div {
     width: 100%;
     height: 100%;
     transition: 0.5s ease;
+   
 }
 
 article input {
