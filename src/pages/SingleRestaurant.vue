@@ -54,7 +54,7 @@
                             <p>Attenzione stai creando un nuovo carrello!</p>
                           </div>
                           <div class="modal-footer">
-                            <button class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
+                            <button id="cart" class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <p id="confirmed" class="d-none">Carrello modificato!</p>
                           </div>
@@ -100,6 +100,7 @@ export default {
         localStorage.setItem('my_data', JSON.stringify(this.order));
 
         document.getElementById('confirmed').classList.remove('d-none');
+        document.getElementById('cart').classList.add('d-none');
 
     },
 
