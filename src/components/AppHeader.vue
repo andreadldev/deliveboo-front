@@ -26,7 +26,7 @@ $(document).ready(function () {
     <div class="nav-bar">
       <div class="nav-container">
         <div class="brand">
-          <a href="/"><img class="img-fluid my-img" src="../assets/img/2_preview_rev_1.png" alt=""></a>
+          <a href="/"><img class="img-fluid my-img" src="../assets/img/DELIVEBOO (2)_preview_rev_1.png" alt=""></a>
         </div>
         <nav>
           <div class="nav-mobile">
@@ -65,8 +65,9 @@ $(document).ready(function () {
 
 <style lang="scss" scoped>
 .my-img {
-  width: 150px;
-  margin-top: -30px;
+
+  width: 140px;
+  margin-top: -22px;
   margin-left: -30px;
 }
 
