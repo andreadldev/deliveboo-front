@@ -21,7 +21,7 @@ export default {
 <template>
   <section class="container">
     <div class="row">
-      <div class="col-4 my-col" v-for="restaurant in store.restaurants">
+      <div class="col-lg-4 my-col" v-for="restaurant in store.restaurants">
         <RestaurantCard :data="restaurant" />
       </div>
     </div>
@@ -29,7 +29,16 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.my-col {
-  margin-top: 50px;
+
+@media(min-width: 800px) {
+  .my-col {
+  padding-top: 80px;
+}
+}
+@media(max-width: 800px) {
+  .my-col {
+  margin-bottom: 40px;
+  padding-right: 40px;
+}
 }
 </style>
