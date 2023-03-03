@@ -36,20 +36,33 @@ $(document).ready(function () {
           </div>
           <ul class="nav-list">
             <li class="nav-item">
-              <router-link class="text-decoration-none text-white nav-link mx-2"
-                :to="{ name: 'homepage' }">Home</router-link>
+              <router-link
+                class="text-decoration-none text-white nav-link mx-2"
+                :to="{ name: 'homepage' }"
+                >Home</router-link
+              >
             </li>
             <li class="nav-item">
-              <router-link class="text-decoration-none text-white nav-link mx-2"
-                :to="{ name: 'restaurants' }">Ristoranti</router-link>
+              <router-link
+                class="text-decoration-none text-white nav-link mx-2"
+                :to="{ name: 'restaurants' }"
+                >Ristoranti</router-link
+              >
             </li>
             <li class="nav-item">
-              <router-link class="text-decoration-none text-white nav-link mx-2" :to="{ name: 'about-us' }">Chi
-                siamo</router-link>
+              <router-link
+                class="text-decoration-none text-white nav-link mx-2"
+                :to="{ name: 'about-us' }"
+                >Chi siamo</router-link
+              >
             </li>
             <li class="nav-item">
-              <router-link class="text-decoration-none text-white nav-link mx-2 btn rounded-0" style="background: red"
-                :to="{ name: 'checkout' }"><i class="fa-solid fa-cart-shopping my-cart"></i></router-link>
+              <router-link
+                class="text-decoration-none text-white nav-link mx-2 btn py-1 rounded-0"
+                style="background: rgba(195, 34, 34)"
+                :to="{ name: 'checkout' }"
+                ><i class="fa-solid fa-cart-shopping my-cart"></i
+              ></router-link>
             </li>
           </ul>
         </nav>
@@ -190,7 +203,6 @@ nav ul li ul li a {
 @media only screen and (max-width: 799px) {
   .img-preheader {
     display: none;
-
   }
 
   .nav-mobile {
