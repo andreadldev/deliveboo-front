@@ -36,33 +36,22 @@ $(document).ready(function () {
           </div>
           <ul class="nav-list">
             <li class="nav-item">
-              <router-link
-                class="text-decoration-none text-white nav-link mx-2"
-                :to="{ name: 'homepage' }"
-                >Home</router-link
-              >
+              <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
+                :to="{ name: 'homepage' }">Home</router-link>
             </li>
             <li class="nav-item">
-              <router-link
-                class="text-decoration-none text-white nav-link mx-2"
-                :to="{ name: 'restaurants' }"
-                >Ristoranti</router-link
-              >
+              <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
+                :to="{ name: 'restaurants' }">Ristoranti</router-link>
             </li>
             <li class="nav-item">
-              <router-link
-                class="text-decoration-none text-white nav-link mx-2"
-                :to="{ name: 'about-us' }"
-                >Chi siamo</router-link
-              >
+              <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
+                :to="{ name: 'about-us' }">Chi
+                siamo</router-link>
             </li>
             <li class="nav-item">
-              <router-link
-                class="text-decoration-none text-white nav-link mx-2 m-0 py-2 btn rounded-0"
-                style="background: rgba(195, 34, 34)"
-                :to="{ name: 'checkout' }"
-                ><i class="fa-solid fa-cart-shopping my-cart"></i
-              ></router-link>
+              <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger btn "
+                style="background: rgba(195, 34, 34)" :to="{ name: 'checkout' }"><i
+                  class="fa-solid fa-cart-shopping my-cart"></i></router-link>
             </li>
           </ul>
         </nav>
@@ -77,6 +66,10 @@ $(document).ready(function () {
   background: rgb(253, 187, 45);
   border-top: 2px solid rgba(195, 34, 34);
   border-bottom: 2px solid rgba(195, 34, 34);
+}
+
+.my-hamburger {
+  padding-right: 20px;
 }
 
 .brand {
@@ -212,20 +205,24 @@ nav ul li ul li a {
   nav {
     width: 100%;
     padding: 70px 0 15px;
+
   }
 
   nav ul {
     display: none;
+
   }
 
   nav ul li {
     float: none;
+
   }
 
   nav ul li a {
-    padding: 15px;
-    line-height: 20px;
-    padding-left: 25%;
+    // padding: 15px;
+    // line-height: 20px;
+    // padding-left: 25%;
+
   }
 
   nav ul li ul li a {
@@ -239,10 +236,12 @@ nav ul li ul li a {
   .brand {
     display: block;
   }
+
   .nav-list {
     width: 200px;
     margin-left: auto;
     text-align: center;
+
   }
 }
 
