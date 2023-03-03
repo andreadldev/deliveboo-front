@@ -143,12 +143,16 @@ export default {
     },
 
     deleteCart(i) {
-      store.userCart.dish.splice(i, 1);
+        store.userCart.dish.splice(i, 1);
+
+        localStorage.removeItem('my_data')
+        
+        localStorage.setItem('my_data', JSON.stringify(store.userCart));
+
+
       if (store.userCart.dish.length === 0) {
         localStorage.clear();
-        // console.log(store.userCart.dish)
-        // console.log(localStorage.getItem('my_data'))
-        console.log(this.subtotal);
+        
       }
     },
   },
@@ -163,10 +167,7 @@ export default {
   //     },
   // },
   created() {
-    // console.log(store.userCart)
-    // console.log(localStorage.getItem('my_data'))
     store.userCart = JSON.parse(localStorage.getItem("my_data"));
-    // console.log(store.userCart)
 
     this.restaurant_slug = JSON.parse(localStorage.getItem("slug"));
     this.rest = JSON.parse(localStorage.getItem("price_shipping"));

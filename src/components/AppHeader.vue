@@ -1,6 +1,12 @@
 <script>
+import { store } from '../store'
 export default {
   name: "AppHeader",
+  data(){
+    return {
+      store
+    }
+  }
 };
 $(document).ready(function () {
   $("nav ul li a:not(:only-child)").click(function (e) {
@@ -49,9 +55,13 @@ $(document).ready(function () {
                 siamo</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger btn "
+              <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger btn position-relative"
                 style="background: rgba(195, 34, 34)" :to="{ name: 'checkout' }"><i
-                  class="fa-solid fa-cart-shopping my-cart"></i></router-link>
+                  class="fa-solid fa-cart-shopping my-cart"></i>
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {{store.userCart.dish.length}}
+                    <span class="visually-hidden">unread messages</span>
+                  </span></router-link>
             </li>
           </ul>
         </nav>

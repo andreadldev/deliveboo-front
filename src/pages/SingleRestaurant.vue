@@ -105,6 +105,8 @@ export default {
         localStorage.setItem('slug', JSON.stringify(this.$route.params.slug));
         localStorage.setItem('price_shipping', JSON.stringify(this.restaurant));
 
+        store.userCart = JSON.parse(localStorage.getItem("my_data"));
+
         document.getElementById('confirmed').classList.remove('d-none');
         document.getElementById('cart').classList.add('d-none');
 
@@ -148,6 +150,9 @@ export default {
             localStorage.setItem('my_data', JSON.stringify(this.order));
             localStorage.setItem('slug', JSON.stringify(this.$route.params.slug));
             localStorage.setItem('price_shipping', JSON.stringify(this.restaurant));
+
+            store.userCart = JSON.parse(localStorage.getItem("my_data"));
+
             document.getElementById('success').classList.remove('d-none');
           }
         }
@@ -159,15 +164,19 @@ export default {
             localStorage.setItem('my_data', JSON.stringify(this.order));
             localStorage.setItem('slug', JSON.stringify(this.$route.params.slug));
             localStorage.setItem('price_shipping', JSON.stringify(this.restaurant));
+
+            store.userCart = JSON.parse(localStorage.getItem("my_data"));
+
             document.getElementById('success').classList.remove('d-none');
-    }
-      
+    }     
       
     },
 
     showlog() {
-      console.log(store.userCart.dish)
-      // console.log(localStorage.getItem('slug'))
+      // console.log(store.userCart.dish)
+      console.log(localStorage.getItem('my_data'))
+      console.log(this.order)
+      console.log(store.userCart)
     },
 
     disableInput() {
