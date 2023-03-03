@@ -62,22 +62,16 @@ export default {
   <div class="">
     <div class="d-flex flex-column">
       <div class="m-auto">
-        <h2 class="mt-5">Seleziona una o più Categorie:</h2>
+        <h4 class="mt-5 my-select">Seleziona una o più Categorie</h4>
         <ul
-          class="d-flex flex-row flex-wrap w-100 justify-content-start gy-3 col-lg-9 m-auto category"
-        >
+          class="d-flex flex-row flex-wrap w-100 justify-content-start gy-3 col-lg-9 m-auto container-first container category">
           <li v-for="(category, index) in store.categories" :key="index">
             <!-- <div>
-                                                                                                                                                                                                                                                                                                                                                                                              <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
-                                                                                                                                                                                                                                                                                                                                                                                                  {{ category.name }}
-                                                                                                                                                                                                                                                                                                                                                                                                </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  {{ category.name }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div> -->
             <article id="demo" class="feature1">
-              <input
-                type="checkbox"
-                id="feature1"
-                v-model="category.selected"
-                @change="toggleCategory(index)"
-              />
+              <input type="checkbox" id="feature1" v-model="category.selected" @change="toggleCategory(index)" />
               <div class="w-200 d-flex flex-column justify-content-between">
                 <img class="img-fluid w-200" :src="images[index]" alt="" />
                 <span class="my-span"> {{ category.name }}<br /> </span>
@@ -88,23 +82,20 @@ export default {
       </div>
       <div class="container">
         <div class="d-flex">
-          <ul class="row" v-if="isActive">
-            <h2>Hai selezionato:</h2>
-            <li
-              class="col-3 my-card"
-              v-for="(restaurant, index) in filteredRestaurants"
-              :key="index"
-            >
+          <ul class="row " v-if="isActive">
+            <h4 class="my-title">Hai selezionato:</h4>
+            <li class="col-lg-4 my-card" v-for="(restaurant, index) in filteredRestaurants" :key="index">
               <RestaurantCard :data="restaurant" />
-              <router-link
-                :to="{
-                  name: 'single-restaurant',
-                  params: { slug: restaurant.slug },
-                }"
-              ></router-link>
+              <router-link :to="{
+                name: 'single-restaurant',
+                params: { slug: restaurant.slug },
+              }"></router-link>
             </li>
           </ul>
-          <div v-else><RestaurantsList /></div>
+          <div class="my-container" v-else>
+            <h4 class="my-title">Ristoranti su Deliveboo</h4>
+            <RestaurantsList />
+          </div>
         </div>
       </div>
     </div>
@@ -112,26 +103,51 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.container-first {
+  padding: 0px 28px;
+}
+
+.my-container {
+  margin-top: -50px;
+}
+
 .my-category {
   margin-top: -100px;
   margin-bottom: -50px;
 }
-h2 {
-  color: rgb(195, 34, 34);
+
+.my-title {
+  margin-bottom: -150px;
+  margin-left: 35px;
 }
+
+.my-select {
+  margin-bottom: -45px;
+  margin-left: 45px;
+}
+
+h4 {
+  color: rgb(195, 34, 34);
+  text-align: start;
+
+}
+
 ul {
   list-style: none;
 }
+
 body {
   text-align: center;
   color: #f5f5f5;
   background-image: linear-gradient(-90deg, #0c0c0d, #1a1a1a);
   font-family: "Roboto";
 }
+
 .app {
   max-width: 300px;
   margin: 0 auto;
 }
+
 article {
   position: relative;
   width: 140px;
@@ -141,6 +157,7 @@ article {
   border: 2px solid rgb(253, 187, 45);
   box-sizing: border-box;
 }
+
 article div {
   width: 100%;
   height: 100%;
@@ -150,6 +167,7 @@ article div {
   line-height: 25px;
   transition: 0.5s ease;
 }
+
 article input {
   position: absolute;
   top: 0;
@@ -159,25 +177,31 @@ article input {
   opacity: 0;
   cursor: pointer;
 }
+
 #demo {
   -webkit-box-shadow: 0px 0px 25px 0px #ffc44a;
   box-shadow: 0px 0px 25px 0px #ffc44a;
 }
+
 #demo:hover {
   transform: scale(1.2);
   /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
-input[type="checkbox"]:checked ~ div {
+
+input[type="checkbox"]:checked~div {
   background-color: rgb(253, 187, 45);
 }
+
 .category {
   color: rgb(195, 34, 34);
   font-size: 18px;
 }
+
 .container {
   margin-top: 50px;
   padding-top: 50px;
 }
+
 .my-card {
   margin-top: 25px;
   margin-bottom: 25px;
