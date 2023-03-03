@@ -34,11 +34,7 @@
                     </article>
                   </div>
                 </div>
-                
-
-              </form>
-          </div>
-              <div class="row">
+                <div class="row">
             <div class="m-4">
               <div>
                   <button class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
@@ -73,7 +69,11 @@
                 </div>
                 <router-link class="text-decoration-none text-white btn rounded-3" :to="{ name: 'checkout' }">Vai al carrello</router-link>
             </div>
-          </div>     
+          </div>
+
+              </form>
+          </div>
+                   
         </div>
       </div>
     </div>
