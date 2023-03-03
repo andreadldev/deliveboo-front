@@ -26,7 +26,7 @@ $(document).ready(function () {
     <div class="nav-bar">
       <div class="nav-container">
         <div class="brand">
-          <a href="#">Logo</a>
+          <a href="/"><img class="img-fluid my-img" src="../assets/img/2_preview_rev_1.png" alt=""></a>
         </div>
         <nav>
           <div class="nav-mobile">
@@ -61,6 +61,12 @@ $(document).ready(function () {
 </template>
 
 <style lang="scss" scoped>
+.my-img {
+  width: 150px;
+  margin-top: -30px;
+  margin-left: -30px;
+}
+
 .nav-bar {
   height: 70px;
   background: rgb(253, 187, 45);
