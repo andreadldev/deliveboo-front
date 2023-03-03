@@ -217,7 +217,7 @@ export default {
           <div class="card mb-4">
             <div class="card-header py-3">
               <div>
-                <!-- <h2 class="my-2">{{ this.rest.name }}</h2> -->
+                <h2 class="my-2">{{ this.rest.name }}</h2>
               </div>
               <div v-if="store.userCart.dish.length > 1">
                 <h5 class="mb-0">
@@ -460,13 +460,15 @@ export default {
                             placeholder="Aggiungi informazioni che possono esserci utili"
                             v-model="orderData.additional_info"
                           ></textarea>
+                          <!-- //braintree -->
                           <div id="dropin-container"></div>
                           <button
                             id="submit-button"
                             class="button button--small button--green"
                           >
                             Purchase</button
-                          >>
+                          >
+                          <!-- //braintree -->
                         </div>
                         <div class="modal-footer">
                           <button
