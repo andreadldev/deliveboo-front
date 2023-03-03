@@ -122,9 +122,9 @@ export default {
     },
 
     getQuantities() {
-    let Script = document.createElement("script");
-    Script.setAttribute("src", "./src/braintree.js");
-    document.head.appendChild(Script);
+      let Script = document.createElement("script");
+      Script.setAttribute("src", "./src/braintree.js");
+      document.head.appendChild(Script);
 
       console.log(this.cartItems.dishesQuantity);
       if (this.cartItems.dishesQuantity.length > 0) {
@@ -214,19 +214,19 @@ export default {
     <div class="container pt-5">
       <div class="row d-flex justify-content-center my-4 my-cart">
         <div v-if="store.userCart" class="col-md-8">
-          <div class="card mb-4">
-            <div class="card-header py-3">
+          <div class="card my-card mb-4">
+            <div class="card-header py-3" style="background: rgb(253, 187, 45)">
               <div>
-                <h2 class="my-2">{{ this.rest.name }}</h2>
+                <h2 class="my-2 title">{{ this.rest.name }}</h2>
               </div>
               <div v-if="store.userCart.dish.length > 1">
-                <h5 class="mb-0">
+                <h5 class="mb-0 title">
                   Carrello - {{ store.userCart.dish.length }} prodotti
                   selezionati
                 </h5>
               </div>
               <div v-else-if="store.userCart.dish.length == 1">
-                <h5 class="mb-0">
+                <h5 class="mb-0 title">
                   Carrello - {{ store.userCart.dish.length }} prodotto
                   selezionato
                 </h5>
@@ -234,7 +234,6 @@ export default {
               <div v-else-if="store.userCart.dish.length == 0">
                 <h5 class="mb-0">Carrello - nessun prodotto selezionato</h5>
               </div>
-              <button @click="showlog()">Log</button>
             </div>
             <div class="card-body">
               <!-- PRODOTTO -->
@@ -466,8 +465,8 @@ export default {
                             id="submit-button"
                             class="button button--small button--green"
                           >
-                            Purchase</button
-                          >
+                            Purchase
+                          </button>
                           <!-- //braintree -->
                         </div>
                         <div class="modal-footer">
@@ -496,6 +495,9 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.title {
+  color: rgba(195, 34, 34);
+}
 .price {
   position: relative;
   top: -20px;
@@ -535,5 +537,8 @@ export default {
 
 .my-cart {
   padding-top: 125px;
+}
+.my-card {
+  border-color: rgba(195, 34, 34);
 }
 </style>
