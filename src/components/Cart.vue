@@ -260,7 +260,7 @@ export default {
                   <!-- QUANTITA' -->
                   <div class="d-flex mb-4" style="max-width: 300px">
                     <button
-                      class="btn btn-primary px-3 me-2 mb-5"
+                      class="btn btn-quantity color-white px-3 me-2 mb-5"
                       :id="'down-btn-' + index"
                       @click="QuantityDown(index, item.price)"
                       disabled
@@ -283,7 +283,7 @@ export default {
                     </div>
 
                     <button
-                      class="btn btn-primary px-3 ms-2 mb-5"
+                      class="btn btn-quantity color-white px-3 ms-2 mb-5"
                       :id="'up-btn-' + index"
                       @click="QuantityUp(index, item.price)"
                     >
@@ -292,7 +292,7 @@ export default {
                   </div>
 
                   <!-- PREZZO -->
-                  <div class="text-center fw-bold price">
+                  <div class="fw-bold price">
                     <span>€</span>
                     <div
                       class="d-inline text-start text-md-center"
@@ -497,6 +497,9 @@ export default {
 <style lang="scss" scoped>
 .title {
   color: rgba(195, 34, 34);
+}
+.btn-quantity {
+  background-color: rgba(195, 34, 34);
 }
 .price {
   position: relative;
