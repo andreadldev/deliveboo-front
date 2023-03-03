@@ -98,6 +98,8 @@ export default {
         localStorage.removeItem('my_data')
         
         localStorage.setItem('my_data', JSON.stringify(this.order));
+        localStorage.setItem('slug', JSON.stringify(this.$route.params.slug));
+        localStorage.setItem('price_shipping', JSON.stringify(this.restaurant));
 
         document.getElementById('confirmed').classList.remove('d-none');
         document.getElementById('cart').classList.add('d-none');
@@ -105,7 +107,9 @@ export default {
     },
 
     saveData() {
-      if(this.order.dish.length != 0){
+
+    if(store.userCart){
+      if(this.order.dish.length != 0 ){
           let foundMatchingRestaurant = false;
         store.userCart.dish.forEach(element => {
           if (element.restaurant_id === this.restaurant.id) {
@@ -143,9 +147,17 @@ export default {
             document.getElementById('success').classList.remove('d-none');
           }
         }
-      } else {
+      } else  {
         document.getElementById('select').classList.remove('d-none');       
       }
+    } else {
+      
+            localStorage.setItem('my_data', JSON.stringify(this.order));
+            localStorage.setItem('slug', JSON.stringify(this.$route.params.slug));
+            localStorage.setItem('price_shipping', JSON.stringify(this.restaurant));
+            document.getElementById('success').classList.remove('d-none');
+    }
+      
       
     },
 
