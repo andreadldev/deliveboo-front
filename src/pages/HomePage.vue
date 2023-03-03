@@ -13,7 +13,7 @@ export default {
 
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="container hero d-flex align-items-center section-bg">
-      <div class="container">
+      <div class="container my-container2">
         <div class="row justify-content-around gy-5 my-hero">
           <div
             class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
@@ -136,7 +136,7 @@ export default {
   color: rgba(206, 18, 18, 0.8);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .hero h2 {
     font-size: 36px;
   }
@@ -145,6 +145,11 @@ export default {
   .hero .btn-watch-video {
     font-size: 14px;
   }
+
+  .my-container2 {
+    margin-top: -160px;
+  }
+
 }
 
 .rotate {
