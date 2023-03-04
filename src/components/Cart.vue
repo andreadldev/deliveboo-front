@@ -371,7 +371,7 @@ export default {
               </button>
 
               <div
-                class="modal fade"
+                class="modal modal-lg fade"
                 id="exampleModal"
                 tabindex="-1"
                 aria-labelledby="exampleModalLabel"
@@ -391,7 +391,7 @@ export default {
                       ></button>
                     </div>
                     <div class="modal-body">
-                      <form @submit.prevent="addNewOrder()">
+                      <form class="w-75 mx-auto" @submit.prevent="addNewOrder()">
                         <div class="mb-3">
                           <label for="first-name" class="col-form-label"
                             >Nome*:</label
