@@ -267,13 +267,14 @@ article {
   color: rgb(253, 187, 45);
   font-weight: 700;
   font-size: 17px;
+  text-align: center;
+  
 }
 
 article div {
   width: 100%;
   height: 100%;
   transition: 0.5s ease;
-
 }
 
 article input {
@@ -333,6 +334,13 @@ input[type="checkbox"]:checked~div {
   }
 }
 
+@media(min-width: 768px) and (max-width: 991px) {
+
+  article{
+  right: -8%;
+}
+}
+
 @media(min-width: 992px) and (max-width: 1399px) {
   .dish{
   margin-top: 120px;
@@ -341,6 +349,9 @@ input[type="checkbox"]:checked~div {
   margin-bottom: 50px;
   padding-bottom: 30px;
   margin-top: 150px;
+}
+article{
+  right: -10%;
 }
 }
 
@@ -354,5 +365,8 @@ input[type="checkbox"]:checked~div {
     margin-top: 180px;
     padding-bottom: 30px;
   }
+  article{
+  right: -4%;
+}
 }
 </style>
