@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 // Pages
+import RestaurantSponsored from "./pages/RestaurantSponsored.vue"
 import HomePage from "./pages/HomePage.vue";
 import Restaurants from "./pages/Restaurants.vue";
 import SingleRestaurant from "./pages/SingleRestaurant.vue";
@@ -9,7 +10,6 @@ import SingleCategory from "./pages/SingleCategory.vue";
 import AboutUs from "./pages/AboutUs.vue";
 import Dishes from "./pages/Dishes.vue";
 import Checkout from "./pages/Checkout.vue";
-import RestaurantSponsored from "./pages/restaurantSponsored.vue"
 
 import Page404 from "./pages/Page404.vue";
 import Order from "./pages/Order.vue";
@@ -29,7 +29,7 @@ const router = createRouter({
     },
     {
       path: "/sponsorizzati",
-      name: "restaurantSponsored",
+      name: "restaurant-sponsored",
       component: RestaurantSponsored,
     },
     {

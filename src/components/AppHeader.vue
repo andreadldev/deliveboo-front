@@ -47,7 +47,7 @@ $(document).ready(function () {
             </li>
             <li class="nav-item">
               <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
-                :to="{ name: 'restaurantSponsored' }"><span>Consigliati</span></router-link>
+                :to="{ name: 'restaurant-sponsored' }"><span>Consigliati</span></router-link>
             </li>
             <li class="nav-item view">
               <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"

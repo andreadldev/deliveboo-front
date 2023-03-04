@@ -3,7 +3,7 @@ import { store } from "../store.js";
 import RestaurantCard from "../components/RestaurantCard.vue";
 
 export default {
-  name: "restaurantSponsored",
+  name: "restaurant-sponsored",
   components: {
     RestaurantCard,
   },
@@ -13,7 +13,8 @@ export default {
     };
   },
   created() {
-    console.log(store.restaurants);
+    console.log('ciaociaociao');
+    console.log('ciaociooo')
   },
   computed: {
     filteredRestaurants() {
@@ -27,7 +28,7 @@ export default {
 </script>
 
 <template>
-  <section class="ms-container space">
+  <section class="container py-5">
     <div class="row">
       <div class="col-lg-4 my-col" v-for="restaurant in filteredRestaurants">
         <RestaurantCard :data="restaurant" />
@@ -50,7 +51,5 @@ export default {
     padding-right: 40px;
   }
 }
-.ms-container {
-  margin-top: 72px !important; 
-}
+
 </style>
