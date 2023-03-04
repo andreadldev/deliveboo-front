@@ -36,7 +36,9 @@
                     <div>
                       <label :for="'check-' + index">{{ dish.name }}</label>
                       <div>
-                        <label :for="'check-' + index">{{ dish.price }}</label>
+                        <label :for="'check-' + index"
+                          >{{ dish.price }} €</label
+                        >
                       </div>
                       <!-- <img  class="img-fluid w-50" :src="dish.img" alt=""> -->
                     </div>
