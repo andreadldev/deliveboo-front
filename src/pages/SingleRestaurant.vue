@@ -52,16 +52,16 @@
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h4 class="modal-title">Modal Header</h4>
+                        <h4 class="modal-title">ATTENZIONE</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                       </div>
                       <div class="modal-body">
-                        <p>Attenzione stai creando un nuovo carrello!</p>
+                        <p>ATTENZIONE STAI CREANDO UN NUOVO CARRELLO!</p>
                       </div>
                       <div class="modal-footer">
                         <button id="cart" class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <p id="confirmed" class="d-none">Carrello modificato!</p>
+                        <p id="confirmed" class="d-none">CARRELLO MODIFICATO!</p>
                       </div>
                     </div>
                   </div>
