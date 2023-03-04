@@ -213,7 +213,7 @@ export default {
   background-color: rgb(253, 187, 45);
 }
 .name{
-  padding-top: 40px;
+  padding-top: 10px;
   color: rgb(195, 34, 34);
   font-size: 60px;
   font-weight: 700;
@@ -308,8 +308,9 @@ input[type="checkbox"]:checked~div {
 }
 } 
 @media(min-width: 800px) and (max-width: 991px){
-  
+ 
 .info{
+  margin-top: 50px;
   margin-bottom: 10px;
   margin-top: 150px;
 }
@@ -329,7 +330,7 @@ input[type="checkbox"]:checked~div {
 }
 .info{
   margin-bottom: 50px;
-  margin-top: 100px;
+  margin-top: 180px;
   padding-bottom: 30px;
 }
 }
