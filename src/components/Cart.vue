@@ -243,7 +243,7 @@ export default {
                   <div>
                     <img
                       :src="item.img"
-                      class="img-fluid dish rounded-3 w-50"
+                      class="img-fluid dish rounded-3"
                       alt="item"
                     />
                   </div>
@@ -318,8 +318,8 @@ export default {
 
         <!-- RIEPILOGO ORDINE -->
         <div v-if="store.userCart" class="col-md-4">
-          <div class="card mb-4">
-            <div class="card-header py-3">
+          <div class="card mb-4 my-card">
+            <div class="card-header py-3" style="background: rgb(253, 187, 45)">
               <h5 class="mb-0">Riepilogo ordine</h5>
             </div>
             <div class="card-body">
@@ -498,7 +498,7 @@ export default {
 
 <style lang="scss" scoped>
 .title {
-  color: rgba(195, 34, 34);
+  color: white;
 }
 .btn-quantity {
   background-color: rgba(195, 34, 34);
