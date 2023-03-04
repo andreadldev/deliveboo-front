@@ -1,29 +1,41 @@
 <template>
   <div v-if="restaurant" class="text-center my-restaurant">
-
-<div class="container">
-  <div class="row ">
-    <div class="col-lg-6 info">
-      <h1 class="name">{{ restaurant.name }}</h1>
-      <img class="my-img" v-if="restaurant.img" :src="restaurant.img" :alt="restaurant.name">
-      <div class="text-center">
-        <div> {{ restaurant.description }}</div>
-        <div>{{ restaurant.address }}</div>
-        <div>Orario Apertura {{ restaurant.opening_time }} </div>
-        <div>Orario Chiusura {{ restaurant.closing_time }} </div>
-        <span>Costo spedizione: {{ restaurant.price_shipping }}€</span>            
-      </div>
-    </div>
-    <div class="col-lg-6 dish">
-      <!-- form -->
+    <div class="container">
       <div class="row">
-        <h5>I nostri piatti:</h5>
-          <form  @submit.prevent="saveData()">
-            <div v-for="(dish, index) in restaurant.dishes" :key="index">
-              <div>
-                <article class="wrapper" id="demo">
-                    <input :id="'check-' + index" class="check ms-1 mt-2" type="checkbox" :value="dish" v-model="order.dish">
-                      <div>
+        <div class="col-lg-6 info">
+          <h1 class="name">{{ restaurant.name }}</h1>
+          <img
+            class="my-img"
+            v-if="restaurant.img"
+            :src="restaurant.img"
+            :alt="restaurant.name"
+          />
+          <div class="text-center">
+            <div class="m-2">{{ restaurant.description }}</div>
+            <div class="m-2">{{ restaurant.address }}</div>
+            <div class="m-2">Orario Apertura {{ restaurant.opening_time }}</div>
+            <div class="m-2">Orario Chiusura {{ restaurant.closing_time }}</div>
+            <span class="m-2"
+              >Costo spedizione: {{ restaurant.price_shipping }}€</span
+            >
+          </div>
+        </div>
+        <div class="col-lg-6 dish">
+          <!-- form -->
+          <div class="row">
+            <h5>I NOSTRI PIATTI:</h5>
+            <form @submit.prevent="saveData()">
+              <div v-for="(dish, index) in restaurant.dishes" :key="index">
+                <div>
+                  <article class="wrapper" id="demo">
+                    <input
+                      :id="'check-' + index"
+                      class="check ms-1 mt-2"
+                      type="checkbox"
+                      :value="dish"
+                      v-model="order.dish"
+                    />
+                    <div>
                       <label :for="'check-' + index">{{ dish.name }}</label>
                       <div>
                         <label :for="'check-' + index">{{ dish.price }}</label>
@@ -31,49 +43,86 @@
                       <!-- <img  class="img-fluid w-50" :src="dish.img" alt=""> -->
                     </div>
                     <!-- modificare e aggiungere bottone -->
-                </article>
+                  </article>
+                </div>
               </div>
-            </div>
-            <div>
-            <div class="m-4">
-            <div>
-              <button class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
-              <!-- <button @click="showlog()">Log</button> -->
-            </div>
-            <div id="advise" class="d-none"><p>Non puoi ordinare da più ristoranti!</p></div>
-            <div id="success" class="d-none"><p>Piatti aggiunti al carrello!</p></div>
-            <div id="warning" class="d-none"><p>Piatto già presenti nel carrello!</p></div>
-            <div id="select" class="d-none"><p>Seleziona almeno un piatto!</p></div>
-            <!-- <div id="modifying" class="d-none"><p>Attenzione stai creando un nuovo carrello!</p></div> -->
-
-            <!-- //bootstrap modal -->
-            <div id="myModal" class="modal fade" role="dialog" style="display: none;">
-              <form @submit.prevent="overWriteCart()">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h4 class="modal-title">ATTENZIONE</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      </div>
-                      <div class="modal-body">
-                        <p>ATTENZIONE STAI CREANDO UN NUOVO CARRELLO!</p>
-                      </div>
-                      <div class="modal-footer">
-                        <button id="cart" class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al Carrello</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <p id="confirmed" class="d-none">CARRELLO MODIFICATO!</p>
-                      </div>
-                    </div>
+              <div>
+                <div class="m-4">
+                  <div>
+                    <button class="text-white btn rounded-3 m-4" type="submit">
+                      Aggiungi al carrello
+                    </button>
+                    <!-- <button @click="showlog()">Log</button> -->
                   </div>
-              </form>
-            </div>
-            <router-link class="text-decoration-none text-white btn rounded-3" :to="{ name: 'checkout' }">Vai al Carrello</router-link>
-          </div>
-      </div>
+                  <div id="advise" class="d-none">
+                    <p>Non puoi ordinare da più ristoranti!</p>
+                  </div>
+                  <div id="success" class="d-none">
+                    <p>Piatti aggiunti al carrello!</p>
+                  </div>
+                  <div id="warning" class="d-none">
+                    <p>Piatto già presenti nel carrello!</p>
+                  </div>
+                  <div id="select" class="d-none">
+                    <p>Seleziona almeno un piatto!</p>
+                  </div>
+                  <!-- <div id="modifying" class="d-none"><p>Attenzione stai creando un nuovo carrello!</p></div> -->
 
+                  <!-- //bootstrap modal -->
+                  <div
+                    id="myModal"
+                    class="modal fade"
+                    role="dialog"
+                    style="display: none"
+                  >
+                    <form @submit.prevent="overWriteCart()">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">ATTENZIONE</h4>
+                            <button
+                              type="button"
+                              class="close"
+                              data-dismiss="modal"
+                            >
+                              &times;
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>ATTENZIONE STAI CREANDO UN NUOVO CARRELLO!</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button
+                              id="cart"
+                              class="text-white btn rounded-3 m-4"
+                              type="submit"
+                            >
+                              Aggiungi al Carrello
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-secondary"
+                              data-bs-dismiss="modal"
+                            >
+                              Close
+                            </button>
+                            <p id="confirmed" class="d-none">
+                              CARRELLO MODIFICATO!
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <router-link
+                    class="text-decoration-none text-white btn rounded-3"
+                    :to="{ name: 'checkout' }"
+                    >Vai al Carrello</router-link
+                  >
+                </div>
+              </div>
             </form>
           </div>
-
         </div>
       </div>
     </div>
@@ -81,14 +130,14 @@
 </template>
 
 <script>
-import { store } from '../store'
+import { store } from "../store";
 import axios from "axios";
 export default {
   name: "SingleRestaurant",
   data() {
     return {
       components: {
-        store
+        store,
       },
       restaurant: null,
       order: {
@@ -97,99 +146,91 @@ export default {
     };
   },
   methods: {
-
     overWriteCart() {
-      localStorage.removeItem('my_data')
+      localStorage.removeItem("my_data");
 
-      localStorage.setItem('my_data', JSON.stringify(this.order));
-      localStorage.setItem('slug', JSON.stringify(this.$route.params.slug));
-      localStorage.setItem('price_shipping', JSON.stringify(this.restaurant));
+      localStorage.setItem("my_data", JSON.stringify(this.order));
+      localStorage.setItem("slug", JSON.stringify(this.$route.params.slug));
+      localStorage.setItem("price_shipping", JSON.stringify(this.restaurant));
 
       store.userCart = JSON.parse(localStorage.getItem("my_data"));
 
-      document.getElementById('confirmed').classList.remove('d-none');
-      document.getElementById('cart').classList.add('d-none');
-
+      document.getElementById("confirmed").classList.remove("d-none");
+      document.getElementById("cart").classList.add("d-none");
     },
 
     saveData() {
-
       if (store.userCart) {
         if (this.order.dish.length != 0) {
           let foundMatchingRestaurant = false;
-          store.userCart.dish.forEach(element => {
+          store.userCart.dish.forEach((element) => {
             if (element.restaurant_id === this.restaurant.id) {
               foundMatchingRestaurant = true;
             }
           });
 
           if (store.userCart.dish.length > 0 && !foundMatchingRestaurant) {
-
-            document.getElementById('advise').classList.remove('d-none');
-
+            document.getElementById("advise").classList.remove("d-none");
           } else {
             if (store.userCart.dish.length > 0 && foundMatchingRestaurant) {
-
-              store.userCart.dish.forEach(cartDish => {
-                this.order.dish.forEach(menuDish => {
+              store.userCart.dish.forEach((cartDish) => {
+                this.order.dish.forEach((menuDish) => {
                   if (cartDish.name === menuDish.name) {
-
-                    document.getElementById('warning').classList.remove('d-none');
-
+                    document
+                      .getElementById("warning")
+                      .classList.remove("d-none");
                   } else {
-
-                    $('#myModal').modal('show');
-
+                    $("#myModal").modal("show");
                   }
-
                 });
               });
-
             } else {
-
-              localStorage.setItem('my_data', JSON.stringify(this.order));
-              localStorage.setItem('slug', JSON.stringify(this.$route.params.slug));
-              localStorage.setItem('price_shipping', JSON.stringify(this.restaurant));
+              localStorage.setItem("my_data", JSON.stringify(this.order));
+              localStorage.setItem(
+                "slug",
+                JSON.stringify(this.$route.params.slug)
+              );
+              localStorage.setItem(
+                "price_shipping",
+                JSON.stringify(this.restaurant)
+              );
 
               store.userCart = JSON.parse(localStorage.getItem("my_data"));
 
-              document.getElementById('success').classList.remove('d-none');
+              document.getElementById("success").classList.remove("d-none");
             }
           }
         } else {
-          document.getElementById('select').classList.remove('d-none');
+          document.getElementById("select").classList.remove("d-none");
         }
       } else {
-
-        localStorage.setItem('my_data', JSON.stringify(this.order));
-        localStorage.setItem('slug', JSON.stringify(this.$route.params.slug));
-        localStorage.setItem('price_shipping', JSON.stringify(this.restaurant));
+        localStorage.setItem("my_data", JSON.stringify(this.order));
+        localStorage.setItem("slug", JSON.stringify(this.$route.params.slug));
+        localStorage.setItem("price_shipping", JSON.stringify(this.restaurant));
 
         store.userCart = JSON.parse(localStorage.getItem("my_data"));
 
-        document.getElementById('success').classList.remove('d-none');
+        document.getElementById("success").classList.remove("d-none");
       }
-
     },
 
     showlog() {
       // console.log(store.userCart.dish)
-      console.log(localStorage.getItem('my_data'))
-      console.log(this.order)
-      console.log(store.userCart)
+      console.log(localStorage.getItem("my_data"));
+      console.log(this.order);
+      console.log(store.userCart);
     },
 
     disableInput() {
       for (let i = 0; i < this.restaurant.dishes.length; i++) {
         if (document.querySelector(`.check_${i}`).checked === true) {
           document.querySelector(`.input_${i}`).disabled = false;
-        }
-        else if (document.querySelector(`.check_${i}`).checked === false) {
-          document.querySelector(`.input_${i}`).value = '';
+        } else if (document.querySelector(`.check_${i}`).checked === false) {
+          document.querySelector(`.input_${i}`).value = "";
           document.querySelector(`.input_${i}`).disabled = true;
         }
       }
-    }
+    },
   },
   created() {
     axios
@@ -231,23 +272,19 @@ h5 {
 }
 
 .info {
-
   color: white;
   font-size: 20px;
   font-weight: 700;
 }
 
 .dish {
-
   border-radius: 15px;
   padding-top: 60px;
-
 }
 
 .quant {
   width: 50px;
 }
-
 
 .my-img {
   padding-top: 30px;
@@ -268,7 +305,6 @@ article {
   font-weight: 700;
   font-size: 17px;
   text-align: center;
-  
 }
 
 article div {
@@ -297,23 +333,25 @@ article input {
   /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
-input[type="checkbox"]:checked~div {
+input[type="checkbox"]:checked ~ div {
   background-color: rgb(195, 34, 34);
 }
 
-#advise, #warning, #select{
-  color:rgb(195, 34, 34) ;
+#advise,
+#warning,
+#select {
+  color: rgb(195, 34, 34);
   font-size: 20px;
   font-weight: 700;
 }
 
-#success{
-  color:green;
+#success {
+  color: green;
   font-size: 20px;
   font-weight: 700;
 }
 
-@media(max-width: 798px) {
+@media (max-width: 798px) {
   .dish {
     margin-top: 10px;
   }
@@ -325,8 +363,7 @@ input[type="checkbox"]:checked~div {
   }
 }
 
-@media(min-width: 800px) and (max-width: 991px) {
-
+@media (min-width: 800px) and (max-width: 991px) {
   .info {
     margin-top: 50px;
     margin-bottom: 10px;
@@ -334,28 +371,27 @@ input[type="checkbox"]:checked~div {
   }
 }
 
-@media(min-width: 768px) and (max-width: 991px) {
-
-  article{
-  right: -8%;
-}
-}
-
-@media(min-width: 992px) and (max-width: 1399px) {
-  .dish{
-  margin-top: 120px;
-}
-.info{
-  margin-bottom: 50px;
-  padding-bottom: 30px;
-  margin-top: 150px;
-}
-article{
-  right: -10%;
-}
+@media (min-width: 768px) and (max-width: 991px) {
+  article {
+    right: -8%;
+  }
 }
 
-@media(min-width: 1400px) {
+@media (min-width: 992px) and (max-width: 1399px) {
+  .dish {
+    margin-top: 120px;
+  }
+  .info {
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    margin-top: 150px;
+  }
+  article {
+    right: -10%;
+  }
+}
+
+@media (min-width: 1400px) {
   .dish {
     margin-top: 150px;
   }
@@ -365,8 +401,8 @@ article{
     margin-top: 180px;
     padding-bottom: 30px;
   }
-  article{
-  right: -4%;
-}
+  article {
+    right: -4%;
+  }
 }
 </style>
