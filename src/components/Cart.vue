@@ -50,6 +50,8 @@ export default {
           // console.log(response)
         })
         .catch((err) => {});
+        document.querySelector('.btn-close').click();
+        this.$router.push("/ordine");
     },
     showlog() {
       for (let i = 0; i < store.userCart.dish.length; i++) {
