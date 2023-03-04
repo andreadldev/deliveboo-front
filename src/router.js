@@ -9,7 +9,7 @@ import SingleCategory from "./pages/SingleCategory.vue";
 import AboutUs from "./pages/AboutUs.vue";
 import Dishes from "./pages/Dishes.vue";
 import Checkout from "./pages/Checkout.vue";
-import RestaurantSponsored from "./pages/restaurantSponsored.vue";
+import RestaurantSponsored from "./pages/restaurantSponsored.vue"
 
 import Page404 from "./pages/Page404.vue";
 import Order from "./pages/Order.vue";
@@ -58,14 +58,14 @@ const router = createRouter({
       component: Checkout,
     },
     {
-      path: "/:pathMatch(.*)*",
-      name: "page-404",
-      component: Page404,
-    },
-    {
       path: "/ordine",
       name: "ordine",
       component: Order,
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "page-404",
+      component: Page404,
     },
   ],
 });

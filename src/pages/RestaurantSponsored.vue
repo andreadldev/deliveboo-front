@@ -3,7 +3,7 @@ import { store } from "../store.js";
 import RestaurantCard from "../components/RestaurantCard.vue";
 
 export default {
-  name: "RestaurantSponsored",
+  name: "restaurantSponsored",
   components: {
     RestaurantCard,
   },

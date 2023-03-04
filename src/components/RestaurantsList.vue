@@ -15,12 +15,6 @@ export default {
   created() {
     console.log(store.restaurants);
   },
-  // computed:{
-  //   filteredRestaurants() {
-  //     const sponsoredRestaurant = store.restaurants.filter(rist => rist.sponsored )
-  //     return sponsoredRestaurant 
-  //   },
-  // }
   
 };
 </script>
