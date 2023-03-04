@@ -11,15 +11,12 @@ export default {
 <template>
   <div class="my-container">
     <!-- ======= Hero Section ======= -->
-    <section
-      id="hero"
-      class="container hero d-flex align-items-center section-bg"
-    >
+    <section id="hero" class="container hero d-flex align-items-center section-bg">
       <div class="container my-container2">
         <div class="row justify-content-around gy-5 my-hero">
           <div
-            class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start"
-          >
+            class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
+            <img class="img-fluid" src="../assets/img/delivebo-fork.png" alt="">
             <h2 data-aos="fade-up">
               I piatti dei ristoranti che ami, a domicilio
             </h2>
@@ -29,41 +26,26 @@ export default {
             </p>
           </div>
           <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
-            <img
-              src="src\assets\img\PIZZA HERO_preview_rev_1.png"
-              class="img-fluid rotate"
-              alt=""
-              data-aos="zoom-out"
-              data-aos-delay="300"
-            />
+            <img src="src\assets\img\PIZZA HERO_preview_rev_1.png" class="img-fluid rotate" alt="" data-aos="zoom-out"
+              data-aos-delay="300" />
           </div>
         </div>
       </div>
     </section>
   </div>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 80 1440 200">
-    <path
-      fill="#fdbb2d"
-      fill-opacity="1"
-      d="M0,128L40,144C80,160,160,192,240,197.3C320,203,400,181,480,154.7C560,128,640,96,720,85.3C800,75,880,85,960,112C1040,139,1120,181,1200,192C1280,203,1360,181,1400,170.7L1440,160L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"
-    ></path>
+    <path fill="#fdbb2d" fill-opacity="1"
+      d="M0,128L40,144C80,160,160,192,240,197.3C320,203,400,181,480,154.7C560,128,640,96,720,85.3C800,75,880,85,960,112C1040,139,1120,181,1200,192C1280,203,1360,181,1400,170.7L1440,160L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z">
+    </path>
   </svg>
   <!-- End Hero Section -->
   <div>
     <CategoryList class="text-center" />
   </div>
-  <svg
-    class="my-rotate"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 80 1440 200"
-    data-v-2d1117dc=""
-  >
-    <path
-      fill="#fdbb2d"
-      fill-opacity="1"
+  <svg class="my-rotate" xmlns="http://www.w3.org/2000/svg" viewBox="0 80 1440 200" data-v-2d1117dc="">
+    <path fill="#fdbb2d" fill-opacity="1"
       d="M0,128L40,144C80,160,160,192,240,197.3C320,203,400,181,480,154.7C560,128,640,96,720,85.3C800,75,880,85,960,112C1040,139,1120,181,1200,192C1280,203,1360,181,1400,170.7L1440,160L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"
-      data-v-2d1117dc=""
-    ></path>
+      data-v-2d1117dc=""></path>
   </svg>
 </template>
 
