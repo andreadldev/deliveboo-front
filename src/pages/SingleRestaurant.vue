@@ -59,7 +59,7 @@
                         <p>ATTENZIONE STAI CREANDO UN NUOVO CARRELLO!</p>
                       </div>
                       <div class="modal-footer">
-                        <button id="cart" class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
+                        <button id="cart" class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al Carrello</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <p id="confirmed" class="d-none">CARRELLO MODIFICATO!</p>
                       </div>
@@ -67,7 +67,7 @@
                   </div>
               </form>
             </div>
-            <router-link class="text-decoration-none text-white btn rounded-3" :to="{ name: 'checkout' }">Vai al carrello</router-link>
+            <router-link class="text-decoration-none text-white btn rounded-3" :to="{ name: 'checkout' }">Vai al Carrello</router-link>
           </div>
       </div>
 
