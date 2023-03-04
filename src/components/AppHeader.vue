@@ -54,11 +54,11 @@ $(document).ready(function () {
                 >Ristoranti</router-link
               >
             </li>
-            <li class="nav-item">
+            <li class="nav-item view">
               <router-link
                 class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
                 :to="{ name: 'about-us' }"
-                >Chi siamo</router-link
+                ><span> Chi siamo</span></router-link
               >
             </li>
             <li class="nav-item">
@@ -214,6 +214,12 @@ nav ul li ul li a {
 
 #nav-toggle.active span::after {
   transform: rotate(-45deg);
+}
+li:hover span {
+  background-color: rgba(195, 34, 34);
+  height: 100%;
+  padding: 20px 0;
+  border-radius: 5px;
 }
 
 @media only screen and (max-width: 799px) {
