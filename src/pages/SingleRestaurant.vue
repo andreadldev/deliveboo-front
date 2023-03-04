@@ -2,7 +2,7 @@
   <div v-if="restaurant" class="text-center my-restaurant">
 
 <div class="container">
-  <div class="row align-items-center">
+  <div class="row ">
     <div class="col-lg-6 info">
       <h1 class="name">{{ restaurant.name }}</h1>
       <img class="my-img" v-if="restaurant.img" :src="restaurant.img" :alt="restaurant.name">
@@ -38,7 +38,7 @@
             <div class="m-4">
             <div>
               <button class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
-              <button @click="showlog()">Log</button>
+              <!-- <button @click="showlog()">Log</button> -->
             </div>
             <div id="advise" class="d-none"><p>Non puoi ordinare da più ristoranti!</p></div>
             <div id="success" class="d-none"><p>Piatti aggiunti al carrello!</p></div>
@@ -257,7 +257,7 @@ h5 {
 article {
   position: relative;
   width: 160px;
-  height: 60px;
+  height: 80px;
   margin: 20px;
   float: left;
   border: 2px solid rgb(195, 34, 34);
@@ -299,7 +299,18 @@ input[type="checkbox"]:checked~div {
   background-color: rgb(195, 34, 34);
 }
 
- 
+#advise, #warning, #select{
+  color:rgb(195, 34, 34) ;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+#success{
+  color:green;
+  font-size: 20px;
+  font-weight: 700;
+}
+
 @media(max-width: 798px) {
   .dish {
     margin-top: 10px;
