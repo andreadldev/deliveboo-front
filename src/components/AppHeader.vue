@@ -32,12 +32,7 @@ $(document).ready(function () {
     <div class="nav-bar">
       <div class="nav-container">
         <div class="brand">
-          <a href="/"
-            ><img
-              class="img-fluid my-img"
-              src="../assets/img/delivebo-fork.png"
-              alt=""
-          /></a>
+          <a href="/"><img class="img-fluid my-img" src="../assets/img/delivebo-fork.png" alt="" /></a>
         </div>
         <nav>
           <div class="nav-mobile">
@@ -47,40 +42,27 @@ $(document).ready(function () {
           </div>
           <ul class="nav-list">
             <li class="nav-item">
-              <router-link
-                class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
-                :to="{ name: 'homepage' }"
-                >Home</router-link
-              >
+              <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
+                :to="{ name: 'homepage' }"><span>Home</span></router-link>
             </li>
             <li class="nav-item">
-              <router-link
-                class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
-                :to="{ name: 'restaurants' }"
-                >Ristoranti</router-link
-              >
+              <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
+                :to="{ name: 'restaurants' }"><span>Ristoranti</span></router-link>
             </li>
             <li class="nav-item view">
-              <router-link
-                class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
-                :to="{ name: 'about-us' }"
-                ><span> Chi siamo</span></router-link
-              >
+              <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
+                :to="{ name: 'about-us' }"><span> Chi siamo</span></router-link>
             </li>
             <li class="nav-item">
               <router-link
                 class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger btn position-relative"
-                style="background: rgba(195, 34, 34)"
-                :to="{ name: 'checkout' }"
-                ><i class="fa-solid fa-cart-shopping my-cart"></i>
-                <span
-                  v-if="store.userCart.dish"
-                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                >
+                style="background: rgba(195, 34, 34)" :to="{ name: 'checkout' }"><i
+                  class="fa-solid fa-cart-shopping my-cart"></i>
+                <span v-if="store.userCart.dish"
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   {{ store.userCart.dish.length }}
                   <span class="visually-hidden">unread messages</span>
-                </span></router-link
-              >
+                </span></router-link>
             </li>
           </ul>
         </nav>
@@ -228,10 +210,11 @@ nav ul li ul li a {
 #nav-toggle.active span::after {
   transform: rotate(-45deg);
 }
+
 li:hover span {
-  background-color: rgba(195, 34, 34);
-  height: 100%;
-  padding: 20px 0;
+  border-bottom: 2px solid rgb(173, 121, 7);
+  // height: 100%;
+  padding-bottom: 5px;
   border-radius: 5px;
 }
 
