@@ -223,6 +223,7 @@ export default {
 h5 {
   color: rgb(195, 34, 34);
   font-weight: 700;
+  font-size: 30px;
 }
 
 .btn {
@@ -334,11 +335,12 @@ input[type="checkbox"]:checked~div {
 
 @media(min-width: 992px) and (max-width: 1399px) {
   .dish{
-  margin-top: 150px;
+  margin-top: 120px;
 }
 .info{
   margin-bottom: 50px;
   padding-bottom: 30px;
+  margin-top: 150px;
 }
 }
 
