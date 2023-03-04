@@ -4,9 +4,10 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 info">
+          <h1 class="name">{{ restaurant.name }}</h1>
           <img class="my-img" v-if="restaurant.img" :src="restaurant.img" :alt="restaurant.name">
           <div class="text-center">
-            <h1 class="name">{{ restaurant.name }}</h1>
+            
             <div> {{ restaurant.description }}</div>
             <div>{{ restaurant.address }}</div>
             <div>Orario Apertura {{ restaurant.opening_time }} </div>
@@ -17,7 +18,7 @@
         <div class="col-lg-6 dish">
           <!-- form -->
           <div class="row">
-            <h5>I nostri piatti:</h5>
+            <h5>I NOSTRI PIATTI:</h5>
               <form @submit.prevent="saveData()">
                 <div v-for="(dish, index) in restaurant.dishes" :key="index">
                   <div>
@@ -34,6 +35,8 @@
                     </article>
                   </div>
                 </div>
+              </form>
+              </div>
                 <div class="row">
             <div class="m-4">
               <div>
@@ -69,11 +72,7 @@
                 </div>
                 <router-link class="text-decoration-none text-white btn rounded-3" :to="{ name: 'checkout' }">Vai al carrello</router-link>
             </div>
-          </div>
-
-              </form>
-          </div>
-                   
+          </div>    
         </div>
       </div>
     </div>
@@ -226,15 +225,13 @@ h5{
   background-color: rgb(195, 34, 34);
 }
 .info{
-  margin-top: 250px;
-  margin-bottom: 50px;
-  padding-bottom: 30px;
+  
   color: white;
   font-size: 20px;
   font-weight: 700;
 }
 .dish{
-  margin-top: 150px;
+  
   border-radius: 15px;
   padding-top: 60px;
   
@@ -248,7 +245,8 @@ h5{
 }
 
 .my-img {
-  padding-top: 60px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   width: 400px;
 }
 
@@ -295,5 +293,43 @@ article input {
 
 input[type="checkbox"]:checked~div {
     background-color: rgb(195, 34, 34);
+}
+
+ 
+@media(max-width: 798px) {
+  .dish{
+  margin-top: 10px;
+}
+.info{
+  margin-bottom: 10px;
+  margin-top: 100px;
+  padding-bottom: 30px;
+}
+} 
+@media(min-width: 800px) and (max-width: 991px){
+  
+.info{
+  margin-bottom: 10px;
+  margin-top: 150px;
+}
+}  
+@media(min-width: 992px) and (max-width: 1399px) {
+  .dish{
+  margin-top: 150px;
+}
+.info{
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+}
+}
+@media(min-width: 1400px) {
+  .dish{
+  margin-top: 150px;
+}
+.info{
+  margin-bottom: 50px;
+  margin-top: 100px;
+  padding-bottom: 30px;
+}
 }
 </style>
