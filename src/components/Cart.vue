@@ -50,6 +50,8 @@ export default {
           // console.log(response)
         })
         .catch((err) => {});
+        document.querySelector('.btn-close').click();
+        this.$router.push("/ordine");
     },
     showlog() {
       for (let i = 0; i < store.userCart.dish.length; i++) {
@@ -119,13 +121,13 @@ export default {
         this.orderData.price = this.shipping + this.subtotal;
         // console.log(this.orderData.price)
       }
+
+      if (document.querySelector(`#price-${i}`).innerHTML.includes(".")) {
+        document.querySelector(`#price-${i}`).innerHTML += "0";
+      } else document.querySelector(`#price-${i}`).innerHTML += ".00";
     },
 
     getQuantities() {
-      let Script = document.createElement("script");
-      Script.setAttribute("src", "./src/braintree.js");
-      document.head.appendChild(Script);
-
       console.log(this.cartItems.dishesQuantity);
       if (this.cartItems.dishesQuantity.length > 0) {
         this.cartItems.dishesQuantity = [];
@@ -141,7 +143,9 @@ export default {
     clearQuantities() {
       this.cartItems.dishesQuantity = [];
     },
+    addZeroToPrice() {
 
+    },
     deleteCart(i) {
         store.userCart.dish.splice(i, 1);
 
@@ -174,6 +178,14 @@ export default {
   },
 
   mounted() {
+    document.getElementById('card-number').addEventListener('input', function (e) {
+        e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
+    });
+
+    document.getElementById('expiration-date').addEventListener('input', function (e) {
+        e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{2})/g, '$1 ').trim();
+    });
+
     //calcolo prezzo totale
     if (store.userCart) {
       for (let i = 0; i < store.userCart.dish.length; i++) {
@@ -327,13 +339,15 @@ export default {
                   class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"
                 >
                   Subtotale
-                  <span id="subtotal">{{ this.subtotal }}€</span>
+                  <span id="subtotal">{{ this.subtotal }}<span v-if="this.subtotal.toString().includes('.')">0</span><span v-else>.00</span>
+                    €</span>
                 </li>
                 <li
                   class="list-group-item d-flex justify-content-between align-items-center px-0"
                 >
                   Prezzo di consegna
-                  <span> {{ this.rest.price_shipping }}€</span>
+                  <span>{{this.rest.price_shipping}}<span v-if="this.rest.price_shipping.toString().includes('.')">0</span><span v-else>.00</span>
+                  €</span>
                 </li>
                 <li
                   class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3"
@@ -346,10 +360,8 @@ export default {
                   </div>
                   <span>
                     <strong id="price"
-                      >{{
-                        parseFloat(this.subtotal) +
-                        parseFloat(this.rest.price_shipping)
-                      }}€
+                      >{{ parseFloat(this.subtotal) + parseFloat(this.rest.price_shipping) }}<span v-if="parseFloat(this.subtotal) + parseFloat(this.rest.price_shipping).toString().includes('.')">0</span><span v-else>.00</span>
+                      €
                     </strong>
                   </span>
                 </li>
@@ -367,7 +379,7 @@ export default {
               </button>
 
               <div
-                class="modal fade"
+                class="modal modal-lg fade"
                 id="exampleModal"
                 tabindex="-1"
                 aria-labelledby="exampleModalLabel"
@@ -387,7 +399,7 @@ export default {
                       ></button>
                     </div>
                     <div class="modal-body">
-                      <form @submit.prevent="addNewOrder()">
+                      <form class="w-75 mx-auto" @submit.prevent="addNewOrder()">
                         <div class="mb-3">
                           <label for="first-name" class="col-form-label"
                             >Nome*:</label
@@ -460,32 +472,53 @@ export default {
                             placeholder="Aggiungi informazioni che possono esserci utili"
                             v-model="orderData.additional_info"
                           ></textarea>
-                          <!-- //braintree -->
-                          <!-- <div id="dropin-container"></div>
-                          <button
-                            id="submit-button"
-                            class="button button--small button--green"
-                          >
-                            Purchase
-                          </button> -->
-                          <!-- //braintree -->
+
+                          <div class="border mt-5">
+                              <div class="border-bottom d-flex justify-content-between p-2 ps-3 pe-4">
+                              <div class="d-flex">
+                                  <img style="width:30px" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yMiAzYy41MyAwIDEuMDM5LjIxMSAxLjQxNC41ODZzLjU4Ni44ODQuNTg2IDEuNDE0djE0YzAgLjUzLS4yMTEgMS4wMzktLjU4NiAxLjQxNHMtLjg4NC41ODYtMS40MTQuNTg2aC0yMGMtLjUzIDAtMS4wMzktLjIxMS0xLjQxNC0uNTg2cy0uNTg2LS44ODQtLjU4Ni0xLjQxNHYtMTRjMC0uNTMuMjExLTEuMDM5LjU4Ni0xLjQxNHMuODg0LS41ODYgMS40MTQtLjU4NmgyMHptMSA4aC0yMnY4YzAgLjU1Mi40NDggMSAxIDFoMjBjLjU1MiAwIDEtLjQ0OCAxLTF2LTh6bS0xNSA1djFoLTV2LTFoNXptMTMtMnYxaC0zdi0xaDN6bS0xMCAwdjFoLTh2LTFoOHptLTEwLTZ2MmgyMnYtMmgtMjJ6bTIyLTF2LTJjMC0uNTUyLS40NDgtMS0xLTFoLTIwYy0uNTUyIDAtMSAuNDQ4LTEgMXYyaDIyeiIvPjwvc3ZnPg==">
+                                  <div class="px-3">Pagamento</div>
+                                </div>
+                              <div>
+                                  <img class="mx-2" style="width:45px" width="45" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="">
+                                  <img class="mx-2" style="width:35px" src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="">
+                                  <img class="mx-2" style="width:40px" src="https://upload.wikimedia.org/wikipedia/commons/1/1b/UnionPay_logo.svg" alt="">
+                                  <img class="mx-2" style="width:30px" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg" alt="">
+                                  <img class="mx-2 me-0" style="width:40px" src="https://upload.wikimedia.org/wikipedia/commons/4/40/JCB_logo.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="p-3 my-3">
+                                <label for="card-number">Numero carta</label>
+                                <input id="card-number" class="mb-3 shadow-none form-control" type="text" maxlength="19" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="**** **** **** ****" required>
+                                
+                                <label for="expiration-date">Data di scadenza</label>
+                                <input id="expiration-date" class="mb-3 shadow-none form-control" type="text" maxlength="5" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="MM/YY" required>
+                            </div>
+                            </div>
                         </div>
-                        <div class="modal-footer">
+
+                        <div class="d-flex justify-content-end mt-2">
+                            <button
+                              id="submit-button"
+                              class="button button--small button--green mx-3"
+                            >
+                              Conferma ordine</button
+                            >
                           <button
                             type="button"
-                            class="btn btn-quantity"
+                            class="btn btn-secondary"
                             data-bs-dismiss="modal"
                           >
                             Chiudi
-                          </button>
-                          <button type="submit" class="btn btn-delete">
-                            <router-link
-                              class="text-decoration-none text"
-                              :to="{ name: 'ordine' }"
-                            >
-                              Conferma ordine
+                            </button>
+                            <!-- <button type="submit" class="btn btn-delete">
+                                <router-link
+                                class="text-decoration-none text"
+                                :to="{ name: 'ordine' }"
+                                >
+                                Conferma ordine
                             </router-link>
-                          </button>
+                        </button> -->
                         </div>
                       </form>
                     </div>
