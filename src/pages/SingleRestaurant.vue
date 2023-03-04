@@ -22,53 +22,48 @@
         </div>
         <div class="col-lg-6 dish">
           <!-- form -->
-          <div class="row">
-            <h5>I NOSTRI PIATTI:</h5>
             <form @submit.prevent="saveData()">
-              <div v-for="(dish, index) in restaurant.dishes" :key="index">
-                <div>
-                  <article class="wrapper" id="demo">
-                    <input
-                      :id="'check-' + index"
-                      class="check ms-1 mt-2"
-                      type="checkbox"
-                      :value="dish"
-                      v-model="order.dish"
-                    />
-                    <div>
-                      <label :for="'check-' + index">{{ dish.name }}</label>
+              <h5>I NOSTRI PIATTI:</h5>
+            
+              <div class="d-flex flex-wrap">
+                <div v-for="(dish, index) in restaurant.dishes" :key="index">
+                    <article class="wrapper" id="demo">
+                      <input
+                        :id="'check-' + index"
+                        class="check ms-1 mt-2"
+                        type="checkbox"
+                        :value="dish"
+                        v-model="order.dish"
+                      />
                       <div>
-                        <label :for="'check-' + index">{{ dish.price }}</label>
+                        <label :for="'check-' + index">{{ dish.name }}</label>
+                        <div>
+                          <label :for="'check-' + index">{{ dish.price }}</label>
+                        </div>
+                        <!-- <img  class="img-fluid w-50" :src="dish.img" alt=""> -->
                       </div>
-                      <!-- <img  class="img-fluid w-50" :src="dish.img" alt=""> -->
-                    </div>
-                    <!-- modificare e aggiungere bottone -->
-                  </article>
-                </div>
+                    </article>                    
+                  </div>
               </div>
-              <div>
-                <div class="m-4">
-                  <div>
+                
+                  <div class="addcart">
                     <button class="text-white btn rounded-3 m-4" type="submit">
                       Aggiungi al carrello
                     </button>
-                    <!-- <button @click="showlog()">Log</button> -->
                   </div>
-                  <div id="advise" class="d-none">
-                    <p>Non puoi ordinare da più ristoranti!</p>
-                  </div>
-                  <div id="success" class="d-none">
-                    <p>Piatti aggiunti al carrello!</p>
-                  </div>
-                  <div id="warning" class="d-none">
-                    <p>Piatto già presenti nel carrello!</p>
-                  </div>
-                  <div id="select" class="d-none">
-                    <p>Seleziona almeno un piatto!</p>
-                  </div>
+              
+                
+                  <!-- tasto carrello -->
+                  
                   <!-- <div id="modifying" class="d-none"><p>Attenzione stai creando un nuovo carrello!</p></div> -->
+                  
+                  <!-- <router-link
+                    class="text-decoration-none text-white btn rounded-3"
+                    :to="{ name: 'checkout' }"
+                    >Vai al Carrello</router-link
+                  > -->
 
-                  <!-- //bootstrap modal -->
+                  <!-- modale -->
                   <div
                     id="myModal"
                     class="modal fade"
@@ -114,16 +109,22 @@
                       </div>
                     </form>
                   </div>
-                  <router-link
-                    class="text-decoration-none text-white btn rounded-3"
-                    :to="{ name: 'checkout' }"
-                    >Vai al Carrello</router-link
-                  >
-                </div>
-              </div>
+                  <!-- modale -->
+
+                  <div id="advise" class="d-none">
+                    <p>Non puoi ordinare da più ristoranti!</p>
+                  </div>
+                  <div id="success" class="d-none">
+                    <p>Piatti aggiunti al carrello!</p>
+                  </div>
+                  <div id="warning" class="d-none">
+                    <p>Piatto già presenti nel carrello!</p>
+                  </div>
+                  <div id="select" class="d-none">
+                    <p>Seleziona almeno un piatto!</p>
+                  </div>
             </form>
           </div>
-        </div>
       </div>
     </div>
   </div>
@@ -250,6 +251,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .my-restaurant {
   background-color: rgb(253, 187, 45);
 }
@@ -297,7 +299,7 @@ article {
   width: 160px;
   height: 80px;
   margin: 20px;
-  float: left;
+  // float: left;
   border: 2px solid rgb(195, 34, 34);
   box-sizing: border-box;
   background-color: white;

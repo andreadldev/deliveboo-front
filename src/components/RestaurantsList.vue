@@ -15,12 +15,12 @@ export default {
   created() {
     console.log(store.restaurants);
   },
-  computed:{
-    filteredRestaurants() {
-      const sponsoredRestaurant = store.restaurants.filter(rist => rist.sponsored )
-      return sponsoredRestaurant 
-    },
-  }
+  // computed:{
+  //   filteredRestaurants() {
+  //     const sponsoredRestaurant = store.restaurants.filter(rist => rist.sponsored )
+  //     return sponsoredRestaurant 
+  //   },
+  // }
   
 };
 </script>
@@ -29,7 +29,7 @@ export default {
   <section class="container">
     <div class="row">
       <div class="col-lg-4 my-col" v-for="restaurant in store.restaurants">
-        <RestaurantCard :data="restaurant" />
+       <RestaurantCard :data="restaurant" />
       </div>
     </div>
   </section>

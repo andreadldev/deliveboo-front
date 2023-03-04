@@ -27,7 +27,7 @@ export default {
 </script>
 
 <template>
-  <section class="container space">
+  <section class="ms-container space">
     <div class="row">
       <div class="col-lg-4 my-col" v-for="restaurant in filteredRestaurants">
         <RestaurantCard :data="restaurant" />
@@ -37,6 +37,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
 @media (min-width: 800px) {
   .my-col {
     padding-top: 80px;
@@ -49,7 +50,7 @@ export default {
     padding-right: 40px;
   }
 }
-.space {
-  padding: 72px;
+.ms-container {
+  margin-top: 72px !important; 
 }
 </style>
