@@ -89,7 +89,7 @@ export default {
   background-size: cover;
   position: relative;
   min-height: 60vh;
-  padding: 160px 0 60px 0;
+  padding: 100px 0 60px 0;
 }
 
 .my-hero {
@@ -159,6 +159,7 @@ export default {
 .logo-hero {
   width: 300px;
   margin-top: -100px;
+  margin-bottom: -100px;
 }
 
 @media (max-width: 768px) {
@@ -172,6 +173,15 @@ export default {
   }
   .logo-hero {
     display: none;
+  }
+  .hero {
+    padding: 130px 0 60px 0;
+  }
+  .hero h2 {
+    font-size: 25px;
+  }
+  h2 {
+    margin-top: -40px;
   }
 
   .my-container2 {
