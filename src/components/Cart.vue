@@ -252,7 +252,7 @@ export default {
                 <!-- NOME PRODOTTO -->
                 <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                   <p>
-                    <strong class="text">{{ item.name }}</strong>
+                    <strong>{{ item.name }}</strong>
                   </p>
                 </div>
 
@@ -277,11 +277,9 @@ export default {
                         :name="'quantity-' + index"
                         value="1"
                         type="number"
-                        class="form-control text"
+                        class="form-control"
                       />
-                      <label class="form-label text" for="form1"
-                        >Quantità</label
-                      >
+                      <label class="form-label" for="form1">Quantità</label>
                     </div>
 
                     <button
@@ -295,9 +293,9 @@ export default {
 
                   <!-- PREZZO -->
                   <div class="fw-bold price">
-                    <span class="text">€</span>
+                    <span>€</span>
                     <div
-                      class="d-inline text-start text-md-center text"
+                      class="d-inline text-start text-md-center"
                       :id="'price-' + index"
                     >
                       {{ item.price }}
@@ -320,7 +318,7 @@ export default {
         <div v-if="store.userCart" class="col-md-4">
           <div class="card mb-4 my-card">
             <div class="card-header py-3" style="background: rgb(253, 187, 45)">
-              <h5 class="mb-0">Riepilogo ordine</h5>
+              <h5 class="mb-0 title">Riepilogo ordine</h5>
             </div>
             <div class="card-body">
               <ul class="list-group list-group-flush">
@@ -328,21 +326,21 @@ export default {
                   class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"
                 >
                   Subtotale
-                  <span id="subtotal">{{ this.subtotal }}</span>
+                  <span id="subtotal">{{ this.subtotal }}€</span>
                 </li>
                 <li
                   class="list-group-item d-flex justify-content-between align-items-center px-0"
                 >
-                  Shipping
-                  <span> {{ this.rest.price_shipping }}</span>
+                  Prezzo di consegna
+                  <span> {{ this.rest.price_shipping }}€</span>
                 </li>
                 <li
                   class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3"
                 >
                   <div>
-                    <strong>Total amount</strong>
+                    <strong>Totale</strong>
                     <strong>
-                      <p class="mb-0">(including VAT)</p>
+                      <p class="mb-0">(Iva inclusa)</p>
                     </strong>
                   </div>
                   <span>
@@ -350,7 +348,7 @@ export default {
                       >{{
                         parseFloat(this.subtotal) +
                         parseFloat(this.rest.price_shipping)
-                      }}
+                      }}€
                     </strong>
                   </span>
                 </li>
@@ -358,7 +356,7 @@ export default {
               <!-- <button type="button" class="btn btn-primary btn-lg btn-block">Go to checkout</button> -->
               <button
                 type="button"
-                class="btn btn-primary"
+                class="btn btn-primary btn-delete border-none"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
                 data-bs-whatever="@getbootstrap"
@@ -378,7 +376,7 @@ export default {
                   <div class="modal-content">
                     <div class="modal-header">
                       <h1 class="modal-title fs-5" id="exampleModalLabel">
-                        New message
+                        Inserisci i tuoi dati
                       </h1>
                       <button
                         type="button"
@@ -514,6 +512,7 @@ export default {
 .btn-delete {
   background-color: rgb(253, 187, 45);
   color: white;
+  border: none;
 }
 img {
   width: 300px;
