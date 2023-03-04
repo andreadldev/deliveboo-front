@@ -121,6 +121,10 @@ export default {
         this.orderData.price = this.shipping + this.subtotal;
         // console.log(this.orderData.price)
       }
+
+      if (document.querySelector(`#price-${i}`).innerHTML.includes(".")) {
+        document.querySelector(`#price-${i}`).innerHTML += "0";
+      } else document.querySelector(`#price-${i}`).innerHTML += ".00";
     },
 
     getQuantities() {
@@ -139,7 +143,9 @@ export default {
     clearQuantities() {
       this.cartItems.dishesQuantity = [];
     },
+    addZeroToPrice() {
 
+    },
     deleteCart(i) {
         store.userCart.dish.splice(i, 1);
 
@@ -333,13 +339,15 @@ export default {
                   class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"
                 >
                   Subtotale
-                  <span id="subtotal">{{ this.subtotal }}€</span>
+                  <span id="subtotal">{{ this.subtotal }}<span v-if="this.subtotal.toString().includes('.')">0</span><span v-else>.00</span>
+                    €</span>
                 </li>
                 <li
                   class="list-group-item d-flex justify-content-between align-items-center px-0"
                 >
                   Prezzo di consegna
-                  <span> {{ this.rest.price_shipping }}€</span>
+                  <span>{{this.rest.price_shipping}}<span v-if="this.rest.price_shipping.toString().includes('.')">0</span><span v-else>.00</span>
+                  €</span>
                 </li>
                 <li
                   class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3"
@@ -352,10 +360,8 @@ export default {
                   </div>
                   <span>
                     <strong id="price"
-                      >{{
-                        parseFloat(this.subtotal) +
-                        parseFloat(this.rest.price_shipping)
-                      }}€
+                      >{{ parseFloat(this.subtotal) + parseFloat(this.rest.price_shipping) }}<span v-if="parseFloat(this.subtotal) + parseFloat(this.rest.price_shipping).toString().includes('.')">0</span><span v-else>.00</span>
+                      €
                     </strong>
                   </span>
                 </li>
