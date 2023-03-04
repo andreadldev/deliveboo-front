@@ -2,7 +2,7 @@
   <div v-if="restaurant" class="text-center my-restaurant">
 
 <div class="container">
-  <div class="row align-items-center">
+  <div class="row ">
     <div class="col-lg-6 info">
       <h1 class="name">{{ restaurant.name }}</h1>
       <img class="my-img" v-if="restaurant.img" :src="restaurant.img" :alt="restaurant.name">
@@ -20,8 +20,8 @@
         <h5>I nostri piatti:</h5>
           <form  @submit.prevent="saveData()">
             <div v-for="(dish, index) in restaurant.dishes" :key="index">
-              <div>
-                <article class="wrapper" id="demo">
+              <div class="">
+                <article class="" id="demo">
                     <input :id="'check-' + index" class="check ms-1 mt-2" type="checkbox" :value="dish" v-model="order.dish">
                       <div>
                       <label :for="'check-' + index">{{ dish.name }}</label>
@@ -38,7 +38,7 @@
             <div class="m-4">
             <div>
               <button class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
-              <button @click="showlog()">Log</button>
+              <!-- <button @click="showlog()">Log</button> -->
             </div>
             <div id="advise" class="d-none"><p>Non puoi ordinare da più ristoranti!</p></div>
             <div id="success" class="d-none"><p>Piatti aggiunti al carrello!</p></div>
@@ -61,7 +61,7 @@
                       <div class="modal-footer">
                         <button id="cart" class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <p id="confirmed" class="d-none">CARRELLO MODIFICATO!</p>
+                        <div id="confirmed" class="d-none">CARRELLO MODIFICATO!</div>
                       </div>
                     </div>
                   </div>
@@ -241,9 +241,6 @@ h5{
   width: 50px;
 }
 
-.wrapper {
-  position: relative
-}
 
 .my-img {
   padding-top: 30px;
@@ -295,8 +292,18 @@ article input {
 input[type="checkbox"]:checked~div {
     background-color: rgb(195, 34, 34);
 }
-
+#advise, #warning, #select{
+  color: rgb(195, 34, 34);
+  font-size: 20px;
+  font-weight: 700;
+}
  
+#success{
+  color: green;
+  font-size: 20px;
+  font-weight: 700;
+}
+
 @media(max-width: 798px) {
   .dish{
   margin-top: 10px;
@@ -317,9 +324,10 @@ input[type="checkbox"]:checked~div {
 }  
 @media(min-width: 992px) and (max-width: 1399px) {
   .dish{
-  margin-top: 150px;
+  margin-top: 120px;
 }
 .info{
+  margin-top: 150px;
   margin-bottom: 50px;
   padding-bottom: 30px;
 }
