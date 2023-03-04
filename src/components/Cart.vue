@@ -47,11 +47,12 @@ export default {
           tot_quantity: this.cartItems.dishesQuantity,
         })
         .then((response) => {
-          // console.log(response)
+          store.userCart = [];
+          localStorage.clear();
         })
         .catch((err) => { });
-      document.querySelector('.btn-close').click();
-      this.$router.push("/ordine");
+        document.querySelector('.btn-close').click();
+        this.$router.push("/ordine");
     },
     showlog() {
       for (let i = 0; i < store.userCart.dish.length; i++) {
@@ -306,8 +307,9 @@ export default {
             </div>
           </div>
         </div>
-        <div v-else>
-          <h2 class="text-center m-auto">Il carrello è vuoto!</h2>
+        <div class="d-flex flex-column align-items-center" v-else>
+          <h2>Il carrello è vuoto!</h2>
+          <img class="empty img-fluid" src="../assets/img/117-1170538_404-your-cart-is-empty.png" alt="empty">
         </div>
 
         <!-- RIEPILOGO ORDINE -->
@@ -462,6 +464,10 @@ section {
 }
 .title {
   color: white;
+}
+
+.empty{
+  
 }
 
 .btn-quantity {

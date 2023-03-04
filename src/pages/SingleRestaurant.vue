@@ -26,6 +26,7 @@
               <h5>I NOSTRI PIATTI:</h5>
             
               <div class="d-flex flex-wrap">
+                <!-- <button @click="showlog">Log</button> -->
                 <div v-for="(dish, index) in restaurant.dishes" :key="index">
                     <article class="wrapper" id="demo">
                       <input
@@ -75,18 +76,11 @@
                         <div class="modal-content">
                           <div class="modal-header">
                             <h4 class="modal-title">ATTENZIONE</h4>
-                            <button
-                              type="button"
-                              class="close"
-                              data-dismiss="modal"
-                            >
-                              &times;
-                            </button>
                           </div>
                           <div class="modal-body">
                             <p>ATTENZIONE STAI CREANDO UN NUOVO CARRELLO!</p>
                           </div>
-                          <div class="modal-footer">
+                          <div class="modal-footer d-flex justify-content-center">
                             <button
                               id="cart"
                               class="text-white btn rounded-3 m-4"
@@ -112,13 +106,13 @@
                   <!-- modale -->
 
                   <div id="advise" class="d-none">
-                    <p>Non puoi ordinare da più ristoranti!</p>
+                    <p>Non puoi ordinare da più ristoranti contemporaneamente!</p>
                   </div>
                   <div id="success" class="d-none">
                     <p>Piatti aggiunti al carrello!</p>
                   </div>
                   <div id="warning" class="d-none">
-                    <p>Piatto già presenti nel carrello!</p>
+                    <p>Piatto già presente nel carrello!</p>
                   </div>
                   <div id="select" class="d-none">
                     <p>Seleziona almeno un piatto!</p>
@@ -148,20 +142,27 @@ export default {
   },
   methods: {
     overWriteCart() {
-      localStorage.removeItem("my_data");
+            localStorage.removeItem("my_data");
 
-      localStorage.setItem("my_data", JSON.stringify(this.order));
-      localStorage.setItem("slug", JSON.stringify(this.$route.params.slug));
-      localStorage.setItem("price_shipping", JSON.stringify(this.restaurant));
+            localStorage.setItem("my_data", JSON.stringify(this.order));
+            localStorage.setItem("slug", JSON.stringify(this.$route.params.slug));
+            localStorage.setItem("price_shipping", JSON.stringify(this.restaurant));
 
-      store.userCart = JSON.parse(localStorage.getItem("my_data"));
+            store.userCart = JSON.parse(localStorage.getItem("my_data"));
 
-      document.getElementById("confirmed").classList.remove("d-none");
-      document.getElementById("cart").classList.add("d-none");
+            document.getElementById("confirmed").classList.remove("d-none");
+            setTimeout(function() {
+              document.getElementById("confirmed").classList.add("d-none");
+          }, 5000);
+
+            document.getElementById("cart").classList.add("d-none");      
     },
 
     saveData() {
       if (store.userCart) {
+
+        document.getElementById("cart").classList.remove("d-none");      
+
         if (this.order.dish.length != 0) {
           let foundMatchingRestaurant = false;
           store.userCart.dish.forEach((element) => {
@@ -171,15 +172,25 @@ export default {
           });
 
           if (store.userCart.dish.length > 0 && !foundMatchingRestaurant) {
+
             document.getElementById("advise").classList.remove("d-none");
+
+            setTimeout(function() {
+            document.getElementById("advise").classList.add("d-none");
+          }, 5000);
+
           } else {
             if (store.userCart.dish.length > 0 && foundMatchingRestaurant) {
               store.userCart.dish.forEach((cartDish) => {
                 this.order.dish.forEach((menuDish) => {
                   if (cartDish.name === menuDish.name) {
-                    document
-                      .getElementById("warning")
-                      .classList.remove("d-none");
+
+                    document.getElementById("warning").classList.remove("d-none");
+
+                      setTimeout(function() {
+                        document.getElementById("warning").classList.add("d-none");
+                      }, 5000);
+                      
                   } else {
                     $("#myModal").modal("show");
                   }
@@ -199,6 +210,11 @@ export default {
               store.userCart = JSON.parse(localStorage.getItem("my_data"));
 
               document.getElementById("success").classList.remove("d-none");
+
+              setTimeout(function() {
+                  document.getElementById("success").classList.add("d-none");
+              }, 5000);
+              
             }
           }
         } else {
@@ -212,14 +228,18 @@ export default {
         store.userCart = JSON.parse(localStorage.getItem("my_data"));
 
         document.getElementById("success").classList.remove("d-none");
+
+        setTimeout(function() {
+          document.getElementById("success").classList.add("d-none");
+        }, 5000);
       }
     },
 
     showlog() {
       // console.log(store.userCart.dish)
       console.log(localStorage.getItem("my_data"));
-      console.log(this.order);
-      console.log(store.userCart);
+      console.log(this.order.dish.length);
+      console.log(store.userCart.dish.length);
     },
 
     disableInput() {
@@ -246,11 +266,18 @@ export default {
         // if (err.response.status === 404) {
         // }
       });
+
+    store.userCart = JSON.parse(localStorage.getItem("my_data"));
+
+    this.restaurant_slug = JSON.parse(localStorage.getItem("slug"));
+    this.rest = JSON.parse(localStorage.getItem("price_shipping"));
+
   },
 };
 </script>
 
 <style lang="scss" scoped>
+
 
 .my-restaurant {
   background-color: rgb(253, 187, 45);
