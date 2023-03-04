@@ -15,37 +15,41 @@ export default {
   created() {
     console.log(store.restaurants);
   },
-  computed:{
+  computed: {
     filteredRestaurants() {
-      const sponsoredRestaurant = store.restaurants.filter(rist => rist.sponsored )
-      return sponsoredRestaurant 
+      const sponsoredRestaurant = store.restaurants.filter(
+        (rist) => rist.sponsored
+      );
+      return sponsoredRestaurant;
     },
-  }
-  
+  },
 };
 </script>
 
 <template>
-  <section class="container">
+  <section class="container space">
     <div class="row">
       <div class="col-lg-4 my-col" v-for="restaurant in filteredRestaurants">
         <RestaurantCard :data="restaurant" />
       </div>
     </div>
-  </section >
+  </section>
 </template>
 
 <style lang="scss" scoped>
-@media(min-width: 800px) {
+@media (min-width: 800px) {
   .my-col {
     padding-top: 80px;
   }
 }
 
-@media(max-width: 800px) {
+@media (max-width: 800px) {
   .my-col {
     margin-bottom: 40px;
     padding-right: 40px;
   }
+}
+.space {
+  padding: 72px;
 }
 </style>
