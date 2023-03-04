@@ -38,7 +38,7 @@
             <div class="m-4">
             <div>
               <button class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
-              <button @click="showlog()">Log</button>
+              
             </div>
             <div id="advise" class="d-none"><p>Non puoi ordinare da più ristoranti!</p></div>
             <div id="success" class="d-none"><p>Piatti aggiunti al carrello!</p></div>
