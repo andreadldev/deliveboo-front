@@ -49,9 +49,9 @@ export default {
         .then((response) => {
           // console.log(response)
         })
-        .catch((err) => {});
-        document.querySelector('.btn-close').click();
-        this.$router.push("/ordine");
+        .catch((err) => { });
+      document.querySelector('.btn-close').click();
+      this.$router.push("/ordine");
     },
     showlog() {
       for (let i = 0; i < store.userCart.dish.length; i++) {
@@ -147,16 +147,16 @@ export default {
 
     },
     deleteCart(i) {
-        store.userCart.dish.splice(i, 1);
+      store.userCart.dish.splice(i, 1);
 
-        localStorage.removeItem('my_data')
-        
-        localStorage.setItem('my_data', JSON.stringify(store.userCart));
+      localStorage.removeItem('my_data')
+
+      localStorage.setItem('my_data', JSON.stringify(store.userCart));
 
 
       if (store.userCart.dish.length === 0) {
         localStorage.clear();
-        
+
       }
     },
   },
@@ -179,11 +179,11 @@ export default {
 
   mounted() {
     document.getElementById('card-number').addEventListener('input', function (e) {
-        e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
+      e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
     });
 
     document.getElementById('expiration-date').addEventListener('input', function (e) {
-        e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{2})/g, '$1 ').trim();
+      e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{2})/g, '$1 ').trim();
     });
 
     //calcolo prezzo totale
@@ -254,11 +254,7 @@ export default {
                 <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
                   <!-- IMMAGINE -->
                   <div>
-                    <img
-                      :src="item.img"
-                      class="img-fluid dish rounded-3"
-                      alt="item"
-                    />
+                    <img :src="item.img" class="img-fluid dish rounded-3" alt="item" />
                   </div>
                 </div>
 
@@ -272,34 +268,19 @@ export default {
                 <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                   <!-- QUANTITA' -->
                   <div class="d-flex mb-4" style="max-width: 300px">
-                    <button
-                      class="btn btn-quantity color-white px-3 me-2 mb-5"
-                      :id="'down-btn-' + index"
-                      @click="QuantityDown(index, item.price)"
-                      disabled
-                    >
+                    <button class="btn btn-quantity color-white px-3 me-2 mb-5" :id="'down-btn-' + index"
+                      @click="QuantityDown(index, item.price)" disabled>
                       -
                     </button>
 
                     <div class="form-outline">
-                      <input
-                        :id="'quantity-' + index"
-                        required
-                        min="1"
-                        max="11"
-                        :name="'quantity-' + index"
-                        value="1"
-                        type="number"
-                        class="form-control"
-                      />
+                      <input :id="'quantity-' + index" required min="1" max="11" :name="'quantity-' + index" value="1"
+                        type="number" class="form-control" />
                       <label class="form-label" for="form1">Quantità</label>
                     </div>
 
-                    <button
-                      class="btn btn-quantity color-white px-3 ms-2 mb-5"
-                      :id="'up-btn-' + index"
-                      @click="QuantityUp(index, item.price)"
-                    >
+                    <button class="btn btn-quantity color-white px-3 ms-2 mb-5" :id="'up-btn-' + index"
+                      @click="QuantityUp(index, item.price)">
                       +
                     </button>
                   </div>
@@ -307,10 +288,7 @@ export default {
                   <!-- PREZZO -->
                   <div class="fw-bold price">
                     <span>€</span>
-                    <div
-                      class="d-inline text-start text-md-center"
-                      :id="'price-' + index"
-                    >
+                    <div class="d-inline text-start text-md-center" :id="'price-' + index">
                       {{ item.price }}
                     </div>
                   </div>
@@ -325,7 +303,9 @@ export default {
             </div>
           </div>
         </div>
-        <div v-else><h2>Il carrello è vuoto!</h2></div>
+        <div v-else>
+          <h2 class="text-center m-auto">Il carrello è vuoto!</h2>
+        </div>
 
         <!-- RIEPILOGO ORDINE -->
         <div v-if="store.userCart" class="col-md-4">
@@ -335,23 +315,19 @@ export default {
             </div>
             <div class="card-body">
               <ul class="list-group list-group-flush">
-                <li
-                  class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"
-                >
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                   Subtotale
-                  <span id="subtotal">{{ this.subtotal }}<span v-if="this.subtotal.toString().includes('.')">0</span><span v-else>.00</span>
+                  <span id="subtotal">{{ this.subtotal }}<span v-if="this.subtotal.toString().includes('.')">0</span><span
+                      v-else>.00</span>
                     €</span>
                 </li>
-                <li
-                  class="list-group-item d-flex justify-content-between align-items-center px-0"
-                >
+                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                   Prezzo di consegna
-                  <span>{{this.rest.price_shipping}}<span v-if="this.rest.price_shipping.toString().includes('.')">0</span><span v-else>.00</span>
-                  €</span>
+                  <span>{{ this.rest.price_shipping }}<span
+                      v-if="this.rest.price_shipping.toString().includes('.')">0</span><span v-else>.00</span>
+                    €</span>
                 </li>
-                <li
-                  class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3"
-                >
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                   <div>
                     <strong>Totale</strong>
                     <strong>
@@ -359,166 +335,109 @@ export default {
                     </strong>
                   </div>
                   <span>
-                    <strong id="price"
-                      >{{ parseFloat(this.subtotal) + parseFloat(this.rest.price_shipping) }}<span v-if="parseFloat(this.subtotal) + parseFloat(this.rest.price_shipping).toString().includes('.')">0</span><span v-else>.00</span>
+                    <strong id="price">{{ parseFloat(this.subtotal) + parseFloat(this.rest.price_shipping) }}<span
+                        v-if="parseFloat(this.subtotal) + parseFloat(this.rest.price_shipping).toString().includes('.')">0</span><span
+                        v-else>.00</span>
                       €
                     </strong>
                   </span>
                 </li>
               </ul>
               <!-- <button type="button" class="btn btn-primary btn-lg btn-block">Go to checkout</button> -->
-              <button
-                type="button"
-                class="btn btn-primary btn-delete border-none"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-                data-bs-whatever="@getbootstrap"
-                @click="getQuantities"
-              >
+              <button type="button" class="btn btn-primary btn-delete border-none" data-bs-toggle="modal"
+                data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" @click="getQuantities">
                 Vai all'ordine
               </button>
 
-              <div
-                class="modal modal-lg fade"
-                id="exampleModal"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
+              <div class="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
                       <h1 class="modal-title fs-5" id="exampleModalLabel">
                         Inserisci i tuoi dati
                       </h1>
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                       <form class="w-75 mx-auto" @submit.prevent="addNewOrder()">
                         <div class="mb-3">
-                          <label for="first-name" class="col-form-label"
-                            >Nome*:</label
-                          >
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="first-name"
-                            v-model="orderData.firstname"
-                            required
-                          />
+                          <label for="first-name" class="col-form-label">Nome*:</label>
+                          <input type="text" class="form-control" id="first-name" v-model="orderData.firstname"
+                            required />
                         </div>
                         <div class="mb-3">
-                          <label for="last-name" class="col-form-label"
-                            >Cognome*:</label
-                          >
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="last-name"
-                            v-model="orderData.lastname"
-                            required
-                          />
+                          <label for="last-name" class="col-form-label">Cognome*:</label>
+                          <input type="text" class="form-control" id="last-name" v-model="orderData.lastname" required />
                         </div>
                         <div class="mb-3">
-                          <label for="address" class="col-form-label"
-                            >Indirizzo*:</label
-                          >
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="address"
-                            v-model="orderData.address"
-                            required
-                          />
+                          <label for="address" class="col-form-label">Indirizzo*:</label>
+                          <input type="text" class="form-control" id="address" v-model="orderData.address" required />
                         </div>
                         <div class="mb-3">
-                          <label for="email" class="col-form-label"
-                            >Email*:</label
-                          >
-                          <input
-                            type="email"
-                            class="form-control"
-                            id="email"
-                            v-model="orderData.email"
-                            required
-                          />
+                          <label for="email" class="col-form-label">Email*:</label>
+                          <input type="email" class="form-control" id="email" v-model="orderData.email" required />
                         </div>
                         <div class="mb-3">
-                          <label for="phone-number" class="col-form-label"
-                            >Numero di telefono*:</label
-                          >
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="phone-number"
-                            pattern="[0-9]+"
-                            v-model="orderData.phone_number"
-                            required
-                          />
+                          <label for="phone-number" class="col-form-label">Numero di telefono*:</label>
+                          <input type="text" class="form-control" id="phone-number" pattern="[0-9]+"
+                            v-model="orderData.phone_number" required />
                         </div>
                         <div class="mb-3">
-                          <label for="info" class="col-form-label"
-                            >Informazioni aggiuntive:</label
-                          >
-                          <textarea
-                            type="textarea"
-                            class="form-control"
-                            id="info"
+                          <label for="info" class="col-form-label">Informazioni aggiuntive:</label>
+                          <textarea type="textarea" class="form-control" id="info"
                             placeholder="Aggiungi informazioni che possono esserci utili"
-                            v-model="orderData.additional_info"
-                          ></textarea>
+                            v-model="orderData.additional_info"></textarea>
 
                           <div class="border mt-5">
-                              <div class="border-bottom d-flex justify-content-between p-2 ps-3 pe-4">
+                            <div class="border-bottom d-flex justify-content-between p-2 ps-3 pe-4">
                               <div class="d-flex">
-                                  <img style="width:30px" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yMiAzYy41MyAwIDEuMDM5LjIxMSAxLjQxNC41ODZzLjU4Ni44ODQuNTg2IDEuNDE0djE0YzAgLjUzLS4yMTEgMS4wMzktLjU4NiAxLjQxNHMtLjg4NC41ODYtMS40MTQuNTg2aC0yMGMtLjUzIDAtMS4wMzktLjIxMS0xLjQxNC0uNTg2cy0uNTg2LS44ODQtLjU4Ni0xLjQxNHYtMTRjMC0uNTMuMjExLTEuMDM5LjU4Ni0xLjQxNHMuODg0LS41ODYgMS40MTQtLjU4NmgyMHptMSA4aC0yMnY4YzAgLjU1Mi40NDggMSAxIDFoMjBjLjU1MiAwIDEtLjQ0OCAxLTF2LTh6bS0xNSA1djFoLTV2LTFoNXptMTMtMnYxaC0zdi0xaDN6bS0xMCAwdjFoLTh2LTFoOHptLTEwLTZ2MmgyMnYtMmgtMjJ6bTIyLTF2LTJjMC0uNTUyLS40NDgtMS0xLTFoLTIwYy0uNTUyIDAtMSAuNDQ4LTEgMXYyaDIyeiIvPjwvc3ZnPg==">
-                                  <div class="px-3">Pagamento</div>
-                                </div>
+                                <img style="width:30px"
+                                  src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yMiAzYy41MyAwIDEuMDM5LjIxMSAxLjQxNC41ODZzLjU4Ni44ODQuNTg2IDEuNDE0djE0YzAgLjUzLS4yMTEgMS4wMzktLjU4NiAxLjQxNHMtLjg4NC41ODYtMS40MTQuNTg2aC0yMGMtLjUzIDAtMS4wMzktLjIxMS0xLjQxNC0uNTg2cy0uNTg2LS44ODQtLjU4Ni0xLjQxNHYtMTRjMC0uNTMuMjExLTEuMDM5LjU4Ni0xLjQxNHMuODg0LS41ODYgMS40MTQtLjU4NmgyMHptMSA4aC0yMnY4YzAgLjU1Mi40NDggMSAxIDFoMjBjLjU1MiAwIDEtLjQ0OCAxLTF2LTh6bS0xNSA1djFoLTV2LTFoNXptMTMtMnYxaC0zdi0xaDN6bS0xMCAwdjFoLTh2LTFoOHptLTEwLTZ2MmgyMnYtMmgtMjJ6bTIyLTF2LTJjMC0uNTUyLS40NDgtMS0xLTFoLTIwYy0uNTUyIDAtMSAuNDQ4LTEgMXYyaDIyeiIvPjwvc3ZnPg==">
+                                <div class="px-3">Pagamento</div>
+                              </div>
                               <div>
-                                  <img class="mx-2" style="width:45px" width="45" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="">
-                                  <img class="mx-2" style="width:35px" src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="">
-                                  <img class="mx-2" style="width:40px" src="https://upload.wikimedia.org/wikipedia/commons/1/1b/UnionPay_logo.svg" alt="">
-                                  <img class="mx-2" style="width:30px" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg" alt="">
-                                  <img class="mx-2 me-0" style="width:40px" src="https://upload.wikimedia.org/wikipedia/commons/4/40/JCB_logo.svg" alt="">
-                                </div>
+                                <img class="mx-2" style="width:45px" width="45"
+                                  src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="">
+                                <img class="mx-2" style="width:35px"
+                                  src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="">
+                                <img class="mx-2" style="width:40px"
+                                  src="https://upload.wikimedia.org/wikipedia/commons/1/1b/UnionPay_logo.svg" alt="">
+                                <img class="mx-2" style="width:30px"
+                                  src="https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg"
+                                  alt="">
+                                <img class="mx-2 me-0" style="width:40px"
+                                  src="https://upload.wikimedia.org/wikipedia/commons/4/40/JCB_logo.svg" alt="">
+                              </div>
                             </div>
                             <div class="p-3 my-3">
-                                <label for="card-number">Numero carta</label>
-                                <input id="card-number" class="mb-3 shadow-none form-control" type="text" maxlength="19" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="**** **** **** ****" required>
-                                
-                                <label for="expiration-date">Data di scadenza</label>
-                                <input id="expiration-date" class="mb-3 shadow-none form-control" type="text" maxlength="5" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="MM/YY" required>
+                              <label for="card-number">Numero carta</label>
+                              <input id="card-number" class="mb-3 shadow-none form-control" type="text" maxlength="19"
+                                onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                                placeholder="**** **** **** ****" required>
+
+                              <label for="expiration-date">Data di scadenza</label>
+                              <input id="expiration-date" class="mb-3 shadow-none form-control" type="text" maxlength="5"
+                                onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                                placeholder="MM/YY" required>
                             </div>
-                            </div>
+                          </div>
                         </div>
 
                         <div class="d-flex justify-content-end mt-2">
-                            <button
-                              id="submit-button"
-                              class="button button--small button--green mx-3"
-                            >
-                              Conferma ordine</button
-                            >
-                          <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                          >
+                          <button id="submit-button" class="button button--small button--green mx-3">
+                            Conferma ordine</button>
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             Chiudi
-                            </button>
-                            <!-- <button type="submit" class="btn btn-delete">
-                                <router-link
-                                class="text-decoration-none text"
-                                :to="{ name: 'ordine' }"
-                                >
-                                Conferma ordine
-                            </router-link>
-                        </button> -->
+                          </button>
+                          <!-- <button type="submit" class="btn btn-delete">
+                                    <router-link
+                                    class="text-decoration-none text"
+                                    :to="{ name: 'ordine' }"
+                                    >
+                                    Conferma ordine
+                                </router-link>
+                            </button> -->
                         </div>
                       </form>
                     </div>
@@ -537,22 +456,27 @@ export default {
 .title {
   color: white;
 }
+
 .btn-quantity {
   background-color: rgba(195, 34, 34);
   color: white;
 }
+
 .price {
   position: relative;
   top: -20px;
 }
+
 .text {
   color: white;
 }
+
 .btn-delete {
   background-color: rgb(253, 187, 45);
   color: white;
   border: none;
 }
+
 img {
   width: 300px;
 }
@@ -592,6 +516,7 @@ img {
 .my-cart {
   padding-top: 125px;
 }
+
 .my-card {
   border-color: rgba(195, 34, 34);
 }
