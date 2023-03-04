@@ -10,13 +10,13 @@ export default {
 
 <template>
   <div class="my-container">
-
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="container hero d-flex align-items-center section-bg">
       <div class="container my-container2">
-        <div class="row justify-content-around gy-5 my-hero">
+        <div class="row justify-content-center gy-5 my-hero">
           <div
             class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
+            <img class="img-fluid logo-hero" src="../assets/img/delivebo-fork.png" alt="" />
             <h2 data-aos="fade-up">
               I piatti dei ristoranti che ami, a domicilio
             </h2>
@@ -66,7 +66,7 @@ export default {
   background-size: cover;
   position: relative;
   min-height: 60vh;
-  padding: 160px 0 60px 0;
+  padding: 100px 0 60px 0;
 }
 
 .my-hero {
@@ -78,8 +78,6 @@ export default {
   font-weight: 700;
   margin-bottom: 20px;
   color: rgb(195, 34, 34);
-  ;
-
 }
 
 .hero h2 span {
@@ -136,6 +134,12 @@ export default {
   color: rgba(206, 18, 18, 0.8);
 }
 
+.logo-hero {
+  width: 300px;
+  margin-top: -100px;
+  margin-bottom: -100px;
+}
+
 @media (max-width: 768px) {
   .hero h2 {
     font-size: 36px;
@@ -146,10 +150,25 @@ export default {
     font-size: 14px;
   }
 
+  .logo-hero {
+    display: none;
+  }
+
+  .hero {
+    padding: 130px 0 60px 0;
+  }
+
+  .hero h2 {
+    font-size: 25px;
+  }
+
+  h2 {
+    margin-top: -40px;
+  }
+
   .my-container2 {
     margin-top: -160px;
   }
-
 }
 
 .rotate {

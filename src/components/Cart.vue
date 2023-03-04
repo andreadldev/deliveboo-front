@@ -122,9 +122,9 @@ export default {
     },
 
     getQuantities() {
-    let Script = document.createElement("script");
-    Script.setAttribute("src", "./src/braintree.js");
-    document.head.appendChild(Script);
+      let Script = document.createElement("script");
+      Script.setAttribute("src", "./src/braintree.js");
+      document.head.appendChild(Script);
 
       console.log(this.cartItems.dishesQuantity);
       if (this.cartItems.dishesQuantity.length > 0) {
@@ -215,19 +215,19 @@ export default {
     <div class="container pt-5">
       <div class="row d-flex justify-content-center my-4 my-cart">
         <div v-if="store.userCart" class="col-md-8">
-          <div class="card mb-4">
-            <div class="card-header py-3">
+          <div class="card my-card mb-4">
+            <div class="card-header py-3" style="background: rgb(253, 187, 45)">
               <div>
-                <h2 class="my-2">{{ this.rest.name }}</h2>
+                <h2 class="my-2 title">{{ this.rest.name }}</h2>
               </div>
               <div v-if="store.userCart.dish.length > 1">
-                <h5 class="mb-0">
+                <h5 class="mb-0 title">
                   Carrello - {{ store.userCart.dish.length }} prodotti
                   selezionati
                 </h5>
               </div>
               <div v-else-if="store.userCart.dish.length == 1">
-                <h5 class="mb-0">
+                <h5 class="mb-0 title">
                   Carrello - {{ store.userCart.dish.length }} prodotto
                   selezionato
                 </h5>
@@ -235,7 +235,6 @@ export default {
               <div v-else-if="store.userCart.dish.length == 0">
                 <h5 class="mb-0">Carrello - nessun prodotto selezionato</h5>
               </div>
-              <button @click="showlog()">Log</button>
             </div>
             <div class="card-body">
               <!-- PRODOTTO -->
@@ -245,7 +244,7 @@ export default {
                   <div>
                     <img
                       :src="item.img"
-                      class="img-fluid rounded-3 w-50"
+                      class="img-fluid dish rounded-3"
                       alt="item"
                     />
                   </div>
@@ -262,7 +261,7 @@ export default {
                   <!-- QUANTITA' -->
                   <div class="d-flex mb-4" style="max-width: 300px">
                     <button
-                      class="btn btn-primary px-3 me-2 mb-5"
+                      class="btn btn-quantity color-white px-3 me-2 mb-5"
                       :id="'down-btn-' + index"
                       @click="QuantityDown(index, item.price)"
                       disabled
@@ -285,7 +284,7 @@ export default {
                     </div>
 
                     <button
-                      class="btn btn-primary px-3 ms-2 mb-5"
+                      class="btn btn-quantity color-white px-3 ms-2 mb-5"
                       :id="'up-btn-' + index"
                       @click="QuantityUp(index, item.price)"
                     >
@@ -294,7 +293,7 @@ export default {
                   </div>
 
                   <!-- PREZZO -->
-                  <div class="text-center fw-bold price">
+                  <div class="fw-bold price">
                     <span>€</span>
                     <div
                       class="d-inline text-start text-md-center"
@@ -303,7 +302,7 @@ export default {
                       {{ item.price }}
                     </div>
                   </div>
-                  <button class="btn btn-danger" @click="deleteCart(index)">
+                  <button class="btn btn-delete" @click="deleteCart(index)">
                     Elimina
                   </button>
                 </div>
@@ -318,9 +317,9 @@ export default {
 
         <!-- RIEPILOGO ORDINE -->
         <div v-if="store.userCart" class="col-md-4">
-          <div class="card mb-4">
-            <div class="card-header py-3">
-              <h5 class="mb-0">Riepilogo ordine</h5>
+          <div class="card mb-4 my-card">
+            <div class="card-header py-3" style="background: rgb(253, 187, 45)">
+              <h5 class="mb-0 title">Riepilogo ordine</h5>
             </div>
             <div class="card-body">
               <ul class="list-group list-group-flush">
@@ -328,21 +327,21 @@ export default {
                   class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"
                 >
                   Subtotale
-                  <span id="subtotal">{{ this.subtotal }}</span>
+                  <span id="subtotal">{{ this.subtotal }}€</span>
                 </li>
                 <li
                   class="list-group-item d-flex justify-content-between align-items-center px-0"
                 >
-                  Shipping
-                  <span> {{ this.rest.price_shipping }}</span>
+                  Prezzo di consegna
+                  <span> {{ this.rest.price_shipping }}€</span>
                 </li>
                 <li
                   class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3"
                 >
                   <div>
-                    <strong>Total amount</strong>
+                    <strong>Totale</strong>
                     <strong>
-                      <p class="mb-0">(including VAT)</p>
+                      <p class="mb-0">(Iva inclusa)</p>
                     </strong>
                   </div>
                   <span>
@@ -350,7 +349,7 @@ export default {
                       >{{
                         parseFloat(this.subtotal) +
                         parseFloat(this.rest.price_shipping)
-                      }}
+                      }}€
                     </strong>
                   </span>
                 </li>
@@ -358,7 +357,7 @@ export default {
               <!-- <button type="button" class="btn btn-primary btn-lg btn-block">Go to checkout</button> -->
               <button
                 type="button"
-                class="btn btn-primary"
+                class="btn btn-primary btn-delete border-none"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
                 data-bs-whatever="@getbootstrap"
@@ -378,7 +377,7 @@ export default {
                   <div class="modal-content">
                     <div class="modal-header">
                       <h1 class="modal-title fs-5" id="exampleModalLabel">
-                        New message
+                        Inserisci i tuoi dati
                       </h1>
                       <button
                         type="button"
@@ -462,25 +461,30 @@ export default {
                             v-model="orderData.additional_info"
                           ></textarea>
                           <!-- //braintree -->
-                          <div id="dropin-container"></div>
+                          <!-- <div id="dropin-container"></div>
                           <button
                             id="submit-button"
                             class="button button--small button--green"
                           >
-                            Purchase</button
-                          >
+                            Purchase
+                          </button> -->
                           <!-- //braintree -->
                         </div>
                         <div class="modal-footer">
                           <button
                             type="button"
-                            class="btn btn-secondary"
+                            class="btn btn-quantity"
                             data-bs-dismiss="modal"
                           >
                             Chiudi
                           </button>
-                          <button type="submit" class="btn btn-primary">
-                            Conferma ordine
+                          <button type="submit" class="btn btn-delete">
+                            <router-link
+                              class="text-decoration-none text"
+                              :to="{ name: 'ordine' }"
+                            >
+                              Conferma ordine
+                            </router-link>
                           </button>
                         </div>
                       </form>
@@ -497,9 +501,27 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.title {
+  color: white;
+}
+.btn-quantity {
+  background-color: rgba(195, 34, 34);
+  color: white;
+}
 .price {
   position: relative;
   top: -20px;
+}
+.text {
+  color: white;
+}
+.btn-delete {
+  background-color: rgb(253, 187, 45);
+  color: white;
+  border: none;
+}
+img {
+  width: 300px;
 }
 
 .button {
@@ -536,5 +558,8 @@ export default {
 
 .my-cart {
   padding-top: 125px;
+}
+.my-card {
+  border-color: rgba(195, 34, 34);
 }
 </style>

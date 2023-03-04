@@ -67,9 +67,9 @@ export default {
           class="d-flex flex-row flex-wrap w-100 justify-content-start gy-3 col-lg-9 m-auto container-first container category">
           <li v-for="(category, index) in store.categories" :key="index">
             <!-- <div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  {{ category.name }}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <input type="checkbox" v-model="category.selected" @change="toggleCategory(index)">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    {{ category.name }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </div> -->
             <article id="demo" class="feature1">
               <input type="checkbox" id="feature1" v-model="category.selected" @change="toggleCategory(index)" />
               <div class="w-200 d-flex flex-column justify-content-between">
@@ -82,8 +82,10 @@ export default {
       </div>
       <div class="container">
         <div class="d-flex">
-          <ul class="row " v-if="isActive">
-            <h4 class="my-title">Hai selezionato:</h4>
+          <ul class="row my-list" v-if="isActive">
+
+            <h4 class="my-title">Hai filtrato: </h4>
+
             <li class="col-lg-4 my-card" v-for="(restaurant, index) in filteredRestaurants" :key="index">
               <RestaurantCard :data="restaurant" />
               <router-link :to="{
@@ -93,7 +95,7 @@ export default {
             </li>
           </ul>
           <div class="my-container" v-else>
-            <h4 class="my-title">Ristoranti su Deliveboo</h4>
+            <h4 class="my-title2">Ristoranti su Deliveboo</h4>
             <RestaurantsList />
           </div>
         </div>
@@ -103,6 +105,11 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.my-list {
+  margin-left: -40px;
+  margin-top: -50px;
+}
+
 .container-first {
   padding: 0px 28px;
 }
@@ -118,6 +125,11 @@ export default {
 
 .my-title {
   margin-bottom: -150px;
+  margin-left: 25px;
+}
+
+.my-title2 {
+  margin-bottom: -180px;
   margin-left: 35px;
 }
 

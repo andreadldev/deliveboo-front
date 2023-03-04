@@ -29,16 +29,16 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
 @media(min-width: 800px) {
   .my-col {
-  padding-top: 80px;
+    padding-top: 80px;
+  }
 }
-}
+
 @media(max-width: 800px) {
   .my-col {
-  margin-bottom: 40px;
-  padding-right: 40px;
-}
+    margin-bottom: 40px;
+    padding-right: 40px;
+  }
 }
 </style>
