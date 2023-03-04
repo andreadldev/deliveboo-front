@@ -4,9 +4,9 @@
 <div class="container">
   <div class="row align-items-center">
     <div class="col-lg-6 info">
+      <h1 class="name">{{ restaurant.name }}</h1>
       <img class="my-img" v-if="restaurant.img" :src="restaurant.img" :alt="restaurant.name">
       <div class="text-center">
-        <h1 class="name">{{ restaurant.name }}</h1>
         <div> {{ restaurant.description }}</div>
         <div>{{ restaurant.address }}</div>
         <div>Orario Apertura {{ restaurant.opening_time }} </div>
