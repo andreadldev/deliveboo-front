@@ -13,15 +13,22 @@ export default {
     };
   },
   created() {
-    console.log(this.store.restaurants);
+    console.log(store.restaurants);
+  },
+  computed:{
+    filteredRestaurants() {
+      const sponsoredRestaurant = store.restaurants.filter(rist => rist.sponsored )
+      return sponsoredRestaurant 
+    },
   }
+  
 };
 </script>
 
 <template>
   <section class="container">
     <div class="row">
-      <div class="col-lg-4 my-col" v-for="restaurant in store.restaurants">
+      <div class="col-lg-4 my-col" v-for="restaurant in filteredRestaurants">
         <RestaurantCard :data="restaurant" />
       </div>
     </div>

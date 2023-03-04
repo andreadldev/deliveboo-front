@@ -18,6 +18,9 @@ export default {
 
         <div class="text-center">
           <small class="card-title ">Consegna €{{ data.price_shipping }}</small>
+          <div v-if="data.sponsored" class="heart">
+            <img src="../assets/img/pngtree-recommended-icon-advice-badge-banner-png-image_4683991.png" alt="sponsored">
+          </div>
         </div>
       </div>
     </router-link>
@@ -25,6 +28,21 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+.text-center{
+  position:relative
+}
+
+.heart{
+    position: absolute;
+    right: -10px;
+    bottom: -50px;
+    img {
+      width: 130px;
+      transform: rotate(-30deg);
+    }
+  }
+
 .card {
   border-color: rgba(216, 143, 84, 0.5);
   border-width: 3px;

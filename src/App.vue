@@ -18,11 +18,11 @@ export default {
   },
   created() {
     axios.get("http://127.0.0.1:8000/api/restaurants").then((response) => {
-      this.store.restaurants = response.data;
+      store.restaurants = response.data;
       // console.log(response.data)
     });
     axios.get("http://127.0.0.1:8000/api/categories").then((response) => {
-      this.store.categories = response.data;
+      store.categories = response.data;
       // console.log(this.store.categories)
 
     });
