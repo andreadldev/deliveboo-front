@@ -220,10 +220,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-article {
-  padding-top: 15px;
-}
-
 .my-restaurant {
   background-color: rgb(253, 187, 45);
 }
@@ -275,7 +271,7 @@ h5 {
 article {
   position: relative;
   width: 160px;
-  height: 80px;
+  height: 60px;
   margin: 20px;
   float: left;
   border: 2px solid rgb(195, 34, 34);
@@ -360,4 +356,5 @@ input[type="checkbox"]:checked~div {
     margin-top: 180px;
     padding-bottom: 30px;
   }
-}</style>
+}
+</style>
