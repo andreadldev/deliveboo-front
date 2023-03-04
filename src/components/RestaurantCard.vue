@@ -17,7 +17,7 @@ export default {
         <h5 class="card-title text-center" style=" color:rgb(195, 34, 34)">{{ data.name }}</h5>
 
         <div class="text-center">
-          <small class="card-title ">Consegna €{{ data.price_shipping }}</small>
+          <small class="card-title ">Consegna €{{ data.price_shipping }}<span v-if="data.price_shipping.toString().includes('.')">0</span><span v-else>.00</span></small>
           <div v-if="data.sponsored" class="heart">
             <img src="../assets/img/pngtree-recommended-icon-advice-badge-banner-png-image_4683991.png" alt="sponsored">
           </div>
