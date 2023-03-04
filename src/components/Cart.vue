@@ -178,13 +178,16 @@ export default {
   },
 
   mounted() {
-    document.getElementById('card-number').addEventListener('input', function (e) {
+    if(store.userCart){
+      document.getElementById('card-number').addEventListener('input', function (e) {
       e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
     });
 
     document.getElementById('expiration-date').addEventListener('input', function (e) {
       e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{2})/g, '$1 ').trim();
     });
+    }
+    
 
     //calcolo prezzo totale
     if (store.userCart) {
@@ -453,6 +456,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+section {
+  min-height: calc( 100vh - 340.19px);
+}
 .title {
   color: white;
 }
