@@ -243,7 +243,7 @@ export default {
                   <div>
                     <img
                       :src="item.img"
-                      class="img-fluid rounded-3 w-50"
+                      class="img-fluid dish rounded-3 w-50"
                       alt="item"
                     />
                   </div>
@@ -252,7 +252,7 @@ export default {
                 <!-- NOME PRODOTTO -->
                 <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                   <p>
-                    <strong>{{ item.name }}</strong>
+                    <strong class="text">{{ item.name }}</strong>
                   </p>
                 </div>
 
@@ -277,9 +277,11 @@ export default {
                         :name="'quantity-' + index"
                         value="1"
                         type="number"
-                        class="form-control"
+                        class="form-control text"
                       />
-                      <label class="form-label" for="form1">Quantità</label>
+                      <label class="form-label text" for="form1"
+                        >Quantità</label
+                      >
                     </div>
 
                     <button
@@ -293,15 +295,15 @@ export default {
 
                   <!-- PREZZO -->
                   <div class="fw-bold price">
-                    <span>€</span>
+                    <span class="text">€</span>
                     <div
-                      class="d-inline text-start text-md-center"
+                      class="d-inline text-start text-md-center text"
                       :id="'price-' + index"
                     >
                       {{ item.price }}
                     </div>
                   </div>
-                  <button class="btn btn-danger" @click="deleteCart(index)">
+                  <button class="btn btn-delete" @click="deleteCart(index)">
                     Elimina
                   </button>
                 </div>
@@ -500,10 +502,21 @@ export default {
 }
 .btn-quantity {
   background-color: rgba(195, 34, 34);
+  color: white;
 }
 .price {
   position: relative;
   top: -20px;
+}
+.text {
+  color: rgba(195, 34, 34);
+}
+.btn-delete {
+  background-color: rgb(253, 187, 45);
+  color: white;
+}
+img {
+  width: 300px;
 }
 
 .button {
