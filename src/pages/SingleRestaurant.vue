@@ -1,82 +1,83 @@
 <template>
   <div v-if="restaurant" class="text-center my-restaurant">
 
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 info">
-          <h1 class="name">{{ restaurant.name }}</h1>
-          <img class="my-img" v-if="restaurant.img" :src="restaurant.img" :alt="restaurant.name">
-          <div class="text-center">
-            
-            <div> {{ restaurant.description }}</div>
-            <div>{{ restaurant.address }}</div>
-            <div>Orario Apertura {{ restaurant.opening_time }} </div>
-            <div>Orario Chiusura {{ restaurant.closing_time }} </div>
-            <span>Costo spedizione: {{ restaurant.price_shipping }}€</span>            
-          </div>
-        </div>
-        <div class="col-lg-6 dish">
-          <!-- form -->
-          <div class="row">
-            <h5>I NOSTRI PIATTI:</h5>
-              <form @submit.prevent="saveData()">
-                <div v-for="(dish, index) in restaurant.dishes" :key="index">
-                  <div>
-                    <article class="wrapper" id="demo">
-                        <input :id="'check-' + index" class="check ms-1 mt-2" type="checkbox" :value="dish" v-model="order.dish">
-                        <div>
-                        <label :for="'check-' + index">{{ dish.name }}</label>
-                        <div>
-                          <label :for="'check-' + index">{{ dish.price }}</label>
-                        </div>
-                        <!-- <img  class="img-fluid w-50" :src="dish.img" alt=""> -->
-                      </div>
-                      <!-- modificare e aggiungere bottone -->
-                    </article>
-                  </div>
-                </div>
-              </form>
-              </div>
-                <div class="row">
-            <div class="m-4">
-              <div>
-                  <button class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
-                  <button @click="showlog()">Log</button>
-                </div>
-                <div id="advise" class="d-none"><p>Non puoi ordinare da più ristoranti!</p></div>
-                <div id="success" class="d-none"><p>Piatti aggiunti al carrello!</p></div>
-                <div id="warning" class="d-none"><p>Piatto già presenti nel carrello!</p></div>
-                <div id="select" class="d-none"><p>Seleziona almeno un piatto!</p></div>
-                <!-- <div id="modifying" class="d-none"><p>Attenzione stai creando un nuovo carrello!</p></div> -->
-
-                <!-- //bootstrap modal -->
-                <div id="myModal" class="modal fade" role="dialog" style="display: none;">
-                  <form @submit.prevent="overWriteCart()">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h4 class="modal-title">Modal Header</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          </div>
-                          <div class="modal-body">
-                            <p>Attenzione stai creando un nuovo carrello!</p>
-                          </div>
-                          <div class="modal-footer">
-                            <button id="cart" class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <p id="confirmed" class="d-none">Carrello modificato!</p>
-                          </div>
-                        </div>
-                      </div>
-                  </form>
-                </div>
-                <router-link class="text-decoration-none text-white btn rounded-3" :to="{ name: 'checkout' }">Vai al carrello</router-link>
-            </div>
-          </div>    
-        </div>
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col-lg-6 info">
+      <img class="my-img" v-if="restaurant.img" :src="restaurant.img" :alt="restaurant.name">
+      <div class="text-center">
+        <h1 class="name">{{ restaurant.name }}</h1>
+        <div> {{ restaurant.description }}</div>
+        <div>{{ restaurant.address }}</div>
+        <div>Orario Apertura {{ restaurant.opening_time }} </div>
+        <div>Orario Chiusura {{ restaurant.closing_time }} </div>
+        <span>Costo spedizione: {{ restaurant.price_shipping }}€</span>            
       </div>
     </div>
+    <div class="col-lg-6 dish">
+      <!-- form -->
+      <div class="row">
+        <h5>I nostri piatti:</h5>
+          <form  @submit.prevent="saveData()">
+            <div v-for="(dish, index) in restaurant.dishes" :key="index">
+              <div>
+                <article class="wrapper" id="demo">
+                    <input :id="'check-' + index" class="check ms-1 mt-2" type="checkbox" :value="dish" v-model="order.dish">
+                      <div>
+                      <label :for="'check-' + index">{{ dish.name }}</label>
+                      <div>
+                      <label :for="'check-' + index">{{ dish.price }}</label>
+                      </div>
+                      <!-- <img  class="img-fluid w-50" :src="dish.img" alt=""> -->
+                    </div>
+                    <!-- modificare e aggiungere bottone -->
+                </article>
+              </div>
+            </div>
+            <div>
+            <div class="m-4">
+            <div>
+              <button class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
+              <button @click="showlog()">Log</button>
+            </div>
+            <div id="advise" class="d-none"><p>Non puoi ordinare da più ristoranti!</p></div>
+            <div id="success" class="d-none"><p>Piatti aggiunti al carrello!</p></div>
+            <div id="warning" class="d-none"><p>Piatto già presenti nel carrello!</p></div>
+            <div id="select" class="d-none"><p>Seleziona almeno un piatto!</p></div>
+            <!-- <div id="modifying" class="d-none"><p>Attenzione stai creando un nuovo carrello!</p></div> -->
+
+            <!-- //bootstrap modal -->
+            <div id="myModal" class="modal fade" role="dialog" style="display: none;">
+              <form @submit.prevent="overWriteCart()">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Modal Header</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Attenzione stai creando un nuovo carrello!</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button id="cart" class="text-white btn rounded-3 m-4 " type="submit">Aggiungi al carrello</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <p id="confirmed" class="d-none">Carrello modificato!</p>
+                      </div>
+                    </div>
+                  </div>
+              </form>
+            </div>
+            <router-link class="text-decoration-none text-white btn rounded-3" :to="{ name: 'checkout' }">Vai al carrello</router-link>
+          </div>
+      </div>
+
+          </form>
+      </div>
+               
+    </div>
   </div>
+</div>
+</div>
 </template>
 
 <script>
