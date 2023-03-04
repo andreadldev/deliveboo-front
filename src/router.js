@@ -9,6 +9,7 @@ import SingleCategory from "./pages/SingleCategory.vue";
 import AboutUs from "./pages/AboutUs.vue";
 import Dishes from "./pages/Dishes.vue";
 import Checkout from "./pages/Checkout.vue";
+import RestaurantSponsored from "./pages/restaurantSponsored.vue"
 
 import Page404 from "./pages/Page404.vue";
 import Order from "./pages/Order.vue";
@@ -25,6 +26,11 @@ const router = createRouter({
       path: "/ristoranti",
       name: "restaurants",
       component: Restaurants,
+    },
+    {
+      path: "/sponsorizzati",
+      name: "restaurantSponsored",
+      component: RestaurantSponsored,
     },
     {
       path: "/chi-siamo",

@@ -1,9 +1,9 @@
 <script>
 import { store } from "../store.js";
-import RestaurantCard from "./RestaurantCard.vue";
+import RestaurantCard from "../components/RestaurantCard.vue";
 
 export default {
-  name: "RestaurantsList",
+  name: "RestaurantSponsored",
   components: {
     RestaurantCard,
   },
@@ -28,11 +28,11 @@ export default {
 <template>
   <section class="container">
     <div class="row">
-      <div class="col-lg-4 my-col" v-for="restaurant in store.restaurants">
+      <div class="col-lg-4 my-col" v-for="restaurant in filteredRestaurants">
         <RestaurantCard :data="restaurant" />
       </div>
     </div>
-  </section>
+  </section >
 </template>
 
 <style lang="scss" scoped>
