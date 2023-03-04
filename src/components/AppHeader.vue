@@ -35,26 +35,31 @@ $(document).ready(function () {
             </a>
           </div>
 
-          <ul class="nav-list">
-            <li class="nav-item">
-              <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
-                :to="{ name: 'homepage' }">Home</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
-                :to="{ name: 'restaurants' }">Ristoranti</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
-                :to="{ name: 'about-us' }">Chi
-                siamo</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger btn "
-                style="background: rgba(195, 34, 34)" :to="{ name: 'checkout' }"><i
-                  class="fa-solid fa-cart-shopping my-cart"></i></router-link>
-            </li>
-          </ul>
+
+          <div class="d-flex justify-content-between">
+            <a href="/"><img class="img-fluid my-img img-none" src="../assets/img/DELIVEBOO (4)_preview_rev_1.png"
+                alt=""></a>
+            <ul class="nav-list">
+              <li class="nav-item">
+                <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
+                  :to="{ name: 'homepage' }">Home</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
+                  :to="{ name: 'restaurants' }">Ristoranti</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger"
+                  :to="{ name: 'about-us' }">Chi
+                  siamo</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="text-decoration-none text-white nav-link mx-2 m-0 py-2 my-hamburger btn "
+                  style="background: rgba(195, 34, 34)" :to="{ name: 'checkout' }"><i
+                    class="fa-solid fa-cart-shopping my-cart"></i></router-link>
+              </li>
+            </ul>
+          </div>
         </nav>
       </div>
     </div>
@@ -204,6 +209,10 @@ nav ul li ul li a {
 
 @media only screen and (max-width: 799px) {
   .img-preheader {
+    display: none;
+  }
+
+  .img-none {
     display: none;
   }
 
