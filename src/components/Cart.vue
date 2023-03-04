@@ -460,25 +460,30 @@ export default {
                             v-model="orderData.additional_info"
                           ></textarea>
                           <!-- //braintree -->
-                          <div id="dropin-container"></div>
+                          <!-- <div id="dropin-container"></div>
                           <button
                             id="submit-button"
                             class="button button--small button--green"
                           >
                             Purchase
-                          </button>
+                          </button> -->
                           <!-- //braintree -->
                         </div>
                         <div class="modal-footer">
                           <button
                             type="button"
-                            class="btn btn-secondary"
+                            class="btn btn-quantity"
                             data-bs-dismiss="modal"
                           >
                             Chiudi
                           </button>
-                          <button type="submit" class="btn btn-primary">
-                            Conferma ordine
+                          <button type="submit" class="btn btn-delete">
+                            <router-link
+                              class="text-decoration-none text"
+                              :to="{ name: 'ordine' }"
+                            >
+                              Conferma ordine
+                            </router-link>
                           </button>
                         </div>
                       </form>
@@ -507,7 +512,7 @@ export default {
   top: -20px;
 }
 .text {
-  color: rgba(195, 34, 34);
+  color: white;
 }
 .btn-delete {
   background-color: rgb(253, 187, 45);

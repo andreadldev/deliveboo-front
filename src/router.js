@@ -11,6 +11,7 @@ import Dishes from "./pages/Dishes.vue";
 import Checkout from "./pages/Checkout.vue";
 
 import Page404 from "./pages/Page404.vue";
+import Order from "./pages/Order.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -54,6 +55,11 @@ const router = createRouter({
       path: "/:pathMatch(.*)*",
       name: "page-404",
       component: Page404,
+    },
+    {
+      path: "/ordine",
+      name: "ordine",
+      component: Order,
     },
   ],
 });
