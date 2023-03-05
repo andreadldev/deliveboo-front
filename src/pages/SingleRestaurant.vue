@@ -34,7 +34,7 @@
                     class="check ms-1 mt-2 selected"
                     type="checkbox"
                     :value="dish"
-                    @click="this.prova(index)"
+                    @click="this.selectDish(index)"
                     v-model="order.dish"
                   />
                   <div
@@ -145,7 +145,7 @@ export default {
     };
   },
   methods: {
-    prova(index) {
+    selectDish(index) {
         document.querySelector(`#check-${index}`).parentElement.classList.toggle('selected')
     },
     overWriteCart() {
