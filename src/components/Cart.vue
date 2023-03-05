@@ -159,6 +159,7 @@ export default {
         localStorage.clear();
 
       }
+      this.$router.go(0);
     },
   },
   // computed: {
@@ -177,7 +178,6 @@ export default {
     this.restaurant_slug = JSON.parse(localStorage.getItem("slug"));
     this.rest = JSON.parse(localStorage.getItem("price_shipping"));
   },
-
   mounted() {
     if(store.userCart){
       document.getElementById('card-number').addEventListener('input', function (e) {
