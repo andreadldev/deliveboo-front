@@ -31,9 +31,10 @@
                 <article class="wrapper" id="demo">
                   <input
                     :id="'check-' + index"
-                    class="check ms-1 mt-2"
+                    class="check ms-1 mt-2 selected"
                     type="checkbox"
                     :value="dish"
+                    @click="this.prova(index)"
                     v-model="order.dish"
                   />
                   <div
@@ -144,6 +145,9 @@ export default {
     };
   },
   methods: {
+    prova(index) {
+        document.querySelector(`#check-${index}`).parentElement.classList.toggle('selected')
+    },
     overWriteCart() {
       localStorage.removeItem("my_data");
 
@@ -277,6 +281,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.selected {
+    filter: grayscale(100%) brightness(35%) sepia(100%) hue-rotate(-50deg) saturate(700%) contrast(0.8) !important;
+}
 .dish-text {
   color: black;
 }
@@ -335,6 +342,7 @@ article {
   font-weight: 700;
   font-size: 17px;
   text-align: center;
+  transition: all 0.1s;
 }
 
 article div {
