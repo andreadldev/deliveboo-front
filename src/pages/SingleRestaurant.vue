@@ -22,103 +22,104 @@
         </div>
         <div class="col-lg-6 dish">
           <!-- form -->
-            <form @submit.prevent="saveData()">
-              <h5>I NOSTRI PIATTI:</h5>
-            
-              <div class="d-flex flex-wrap">
-                <!-- <button @click="showlog">Log</button> -->
-                <div v-for="(dish, index) in restaurant.dishes" :key="index">
-                    <article class="wrapper" id="demo">
-                      <input
-                        :id="'check-' + index"
-                        class="check ms-1 mt-2"
-                        type="checkbox"
-                        :value="dish"
-                        v-model="order.dish"
-                      />
-                      <div>
-                        <label :for="'check-' + index">{{ dish.name }}</label>
-                        <div>
-                          <label :for="'check-' + index">{{ dish.price }}</label>
-                        </div>
-                        <!-- <img  class="img-fluid w-50" :src="dish.img" alt=""> -->
-                      </div>
-                    </article>                    
+          <form @submit.prevent="saveData()">
+            <h5>I NOSTRI PIATTI:</h5>
+
+            <div class="d-flex flex-wrap">
+              <!-- <button @click="showlog">Log</button> -->
+              <div v-for="(dish, index) in restaurant.dishes" :key="index">
+                <article class="wrapper" id="demo">
+                  <input
+                    :id="'check-' + index"
+                    class="check ms-1 mt-2"
+                    type="checkbox"
+                    :value="dish"
+                    v-model="order.dish"
+                  />
+                  <div class="overflow-hidden position-relative">
+                    <img
+                      class="img-fluid img-1 object-fit-fill"
+                      :src="dish.img"
+                      alt=""
+                    />
+                    <div>
+                      <label :for="'check-' + index">{{ dish.name }}</label>
+                      <label :for="'check-' + index">{{ dish.price }}</label>
+                    </div>
                   </div>
+                </article>
               </div>
-                
-                  <div class="addcart">
-                    <button class="text-white btn rounded-3 m-4" type="submit">
-                      Aggiungi al carrello
-                    </button>
-                  </div>
-              
-                
-                  <!-- tasto carrello -->
-                  
-                  <!-- <div id="modifying" class="d-none"><p>Attenzione stai creando un nuovo carrello!</p></div> -->
-                  
-                  <!-- <router-link
+            </div>
+
+            <div class="addcart">
+              <button class="text-white btn rounded-3 m-4" type="submit">
+                Aggiungi al carrello
+              </button>
+            </div>
+
+            <!-- tasto carrello -->
+
+            <!-- <div id="modifying" class="d-none"><p>Attenzione stai creando un nuovo carrello!</p></div> -->
+
+            <!-- <router-link
                     class="text-decoration-none text-white btn rounded-3"
                     :to="{ name: 'checkout' }"
                     >Vai al Carrello</router-link
                   > -->
 
-                  <!-- modale -->
-                  <div
-                    id="myModal"
-                    class="modal fade"
-                    role="dialog"
-                    style="display: none"
-                  >
-                    <form @submit.prevent="overWriteCart()">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h4 class="modal-title">ATTENZIONE</h4>
-                          </div>
-                          <div class="modal-body">
-                            <p>ATTENZIONE STAI CREANDO UN NUOVO CARRELLO!</p>
-                          </div>
-                          <div class="modal-footer d-flex justify-content-center">
-                            <button
-                              id="cart"
-                              class="text-white btn rounded-3 m-4"
-                              type="submit"
-                            >
-                              Aggiungi al Carrello
-                            </button>
-                            <button
-                              type="button"
-                              class="btn btn-secondary"
-                              data-bs-dismiss="modal"
-                            >
-                              Close
-                            </button>
-                            <p id="confirmed" class="d-none">
-                              CARRELLO MODIFICATO!
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
+            <!-- modale -->
+            <div
+              id="myModal"
+              class="modal fade"
+              role="dialog"
+              style="display: none"
+            >
+              <form @submit.prevent="overWriteCart()">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">ATTENZIONE</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>ATTENZIONE STAI CREANDO UN NUOVO CARRELLO!</p>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                      <button
+                        id="cart"
+                        class="text-white btn rounded-3 m-4"
+                        type="submit"
+                      >
+                        Aggiungi al Carrello
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <p id="confirmed" class="d-none">CARRELLO MODIFICATO!</p>
+                    </div>
                   </div>
-                  <!-- modale -->
+                </div>
+              </form>
+            </div>
+            <!-- modale -->
 
-                  <div id="advise" class="d-none">
-                    <p>Non puoi ordinare da più ristoranti contemporaneamente!</p>
-                  </div>
-                  <div id="success" class="d-none">
-                    <p>Piatti aggiunti al carrello!</p>
-                  </div>
-                  <div id="warning" class="d-none">
-                    <p>Piatto già presente nel carrello!</p>
-                  </div>
-                  <div id="select" class="d-none">
-                    <p>Seleziona almeno un piatto!</p>
-                  </div>
-            </form>
-          </div>
+            <div id="advise" class="d-none">
+              <p>Non puoi ordinare da più ristoranti contemporaneamente!</p>
+            </div>
+            <div id="success" class="d-none">
+              <p>Piatti aggiunti al carrello!</p>
+            </div>
+            <div id="warning" class="d-none">
+              <p>Piatto già presente nel carrello!</p>
+            </div>
+            <div id="select" class="d-none">
+              <p>Seleziona almeno un piatto!</p>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -142,26 +143,25 @@ export default {
   },
   methods: {
     overWriteCart() {
-            localStorage.removeItem("my_data");
+      localStorage.removeItem("my_data");
 
-            localStorage.setItem("my_data", JSON.stringify(this.order));
-            localStorage.setItem("slug", JSON.stringify(this.$route.params.slug));
-            localStorage.setItem("price_shipping", JSON.stringify(this.restaurant));
+      localStorage.setItem("my_data", JSON.stringify(this.order));
+      localStorage.setItem("slug", JSON.stringify(this.$route.params.slug));
+      localStorage.setItem("price_shipping", JSON.stringify(this.restaurant));
 
-            store.userCart = JSON.parse(localStorage.getItem("my_data"));
+      store.userCart = JSON.parse(localStorage.getItem("my_data"));
 
-            document.getElementById("confirmed").classList.remove("d-none");
-            setTimeout(function() {
-              document.getElementById("confirmed").classList.add("d-none");
-          }, 5000);
+      document.getElementById("confirmed").classList.remove("d-none");
+      setTimeout(function () {
+        document.getElementById("confirmed").classList.add("d-none");
+      }, 5000);
 
-            document.getElementById("cart").classList.add("d-none");      
+      document.getElementById("cart").classList.add("d-none");
     },
 
     saveData() {
       if (store.userCart) {
-
-        document.getElementById("cart").classList.remove("d-none");      
+        document.getElementById("cart").classList.remove("d-none");
 
         if (this.order.dish.length != 0) {
           let foundMatchingRestaurant = false;
@@ -172,25 +172,25 @@ export default {
           });
 
           if (store.userCart.dish.length > 0 && !foundMatchingRestaurant) {
-
             document.getElementById("advise").classList.remove("d-none");
 
-            setTimeout(function() {
-            document.getElementById("advise").classList.add("d-none");
-          }, 5000);
-
+            setTimeout(function () {
+              document.getElementById("advise").classList.add("d-none");
+            }, 5000);
           } else {
             if (store.userCart.dish.length > 0 && foundMatchingRestaurant) {
               store.userCart.dish.forEach((cartDish) => {
                 this.order.dish.forEach((menuDish) => {
                   if (cartDish.name === menuDish.name) {
+                    document
+                      .getElementById("warning")
+                      .classList.remove("d-none");
 
-                    document.getElementById("warning").classList.remove("d-none");
-
-                      setTimeout(function() {
-                        document.getElementById("warning").classList.add("d-none");
-                      }, 5000);
-                      
+                    setTimeout(function () {
+                      document
+                        .getElementById("warning")
+                        .classList.add("d-none");
+                    }, 5000);
                   } else {
                     $("#myModal").modal("show");
                   }
@@ -211,10 +211,9 @@ export default {
 
               document.getElementById("success").classList.remove("d-none");
 
-              setTimeout(function() {
-                  document.getElementById("success").classList.add("d-none");
+              setTimeout(function () {
+                document.getElementById("success").classList.add("d-none");
               }, 5000);
-              
             }
           }
         } else {
@@ -229,7 +228,7 @@ export default {
 
         document.getElementById("success").classList.remove("d-none");
 
-        setTimeout(function() {
+        setTimeout(function () {
           document.getElementById("success").classList.add("d-none");
         }, 5000);
       }
@@ -271,14 +270,17 @@ export default {
 
     this.restaurant_slug = JSON.parse(localStorage.getItem("slug"));
     this.rest = JSON.parse(localStorage.getItem("price_shipping"));
-
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
-
+.img-1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .my-restaurant {
   background-color: rgb(253, 187, 45);
 }
