@@ -38,7 +38,8 @@
                     v-model="order.dish"
                   />
                   <div
-                    :style="`background-image: url(${dish.img});background-size:cover;background-position:center`"
+                  
+                    :style="`background-image: url(${dish.img});background-color: black; background-size:cover; background-position:center; background-repeat: no-repeat;  background-color: white;`"
                   >
                     <!-- <img
                       class="img-fluid img-1 object-fit-fill"
@@ -330,14 +331,16 @@ h5 {
 }
 
 article {
+    border-radius: 5px;
+    overflow: hidden;
   position: relative;
-  width: 160px;
+  width: 110px;
   height: 80px;
   margin: 20px;
   // float: left;
   border: 2px solid rgb(195, 34, 34);
   box-sizing: border-box;
-  background-color: white;
+  background-color: black !important;
   color: rgb(253, 187, 45);
   font-weight: 700;
   font-size: 17px;
