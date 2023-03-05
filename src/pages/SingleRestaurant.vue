@@ -38,7 +38,6 @@
                     v-model="order.dish"
                   />
                   <div
-                  
                     :style="`background-image: url(${dish.img});background-color: black; background-size:cover; background-position:center; background-repeat: no-repeat;  background-color: white;`"
                   >
                     <!-- <img
@@ -85,7 +84,7 @@
                       <h4 class="modal-title">ATTENZIONE</h4>
                     </div>
                     <div class="modal-body">
-                      <p>ATTENZIONE STAI CREANDO UN NUOVO CARRELLO!</p>
+                      <p>ATTENZIONE STAI MODIFICANDO IL CARRELLO!</p>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
                       <button
@@ -147,7 +146,9 @@ export default {
   },
   methods: {
     selectDish(index) {
-        document.querySelector(`#check-${index}`).parentElement.classList.toggle('selected')
+      document
+        .querySelector(`#check-${index}`)
+        .parentElement.classList.toggle("selected");
     },
     overWriteCart() {
       localStorage.removeItem("my_data");
@@ -283,7 +284,8 @@ export default {
 
 <style lang="scss" scoped>
 .selected {
-    filter: grayscale(100%) brightness(35%) sepia(100%) hue-rotate(-50deg) saturate(700%) contrast(0.8) !important;
+  filter: grayscale(100%) brightness(35%) sepia(100%) hue-rotate(-50deg)
+    saturate(700%) contrast(0.8) !important;
 }
 .dish-text {
   color: black;
@@ -331,8 +333,8 @@ h5 {
 }
 
 article {
-    border-radius: 5px;
-    overflow: hidden;
+  border-radius: 5px;
+  overflow: hidden;
   position: relative;
   width: 110px;
   height: 80px;
