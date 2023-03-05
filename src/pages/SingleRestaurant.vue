@@ -44,13 +44,12 @@
                       :src="dish.img"
                       alt=""
                     /> -->
-
-                    <div class="dish-text">
-                      <label :for="'check-' + index">{{ dish.name }}</label>
-                      <label :for="'check-' + index">{{ dish.price }}</label>
-                    </div>
                   </div>
                 </article>
+                <div class="d-flex flex-column">
+                  <label :for="'check-' + index">{{ dish.name }}</label>
+                  <label :for="'check-' + index">{{ dish.price }}€</label>
+                </div>
               </div>
             </div>
 
