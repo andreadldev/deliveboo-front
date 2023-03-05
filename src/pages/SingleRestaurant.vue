@@ -36,13 +36,16 @@
                     :value="dish"
                     v-model="order.dish"
                   />
-                  <div class="overflow-hidden position-relative">
-                    <img
+                  <div
+                    :style="`background-image: url(${dish.img});background-size:cover;background-position:center`"
+                  >
+                    <!-- <img
                       class="img-fluid img-1 object-fit-fill"
                       :src="dish.img"
                       alt=""
-                    />
-                    <div>
+                    /> -->
+
+                    <div class="dish-text">
                       <label :for="'check-' + index">{{ dish.name }}</label>
                       <label :for="'check-' + index">{{ dish.price }}</label>
                     </div>
@@ -275,11 +278,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.img-1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.dish-text {
+  color: black;
 }
 .my-restaurant {
   background-color: rgb(253, 187, 45);
